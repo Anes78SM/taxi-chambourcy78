@@ -292,6 +292,126 @@ export const locations: Location[] = [
     ],
   },
   {
+    slug: 'taxi-aigremont',
+    name: 'Aigremont',
+    title: 'Taxi à Aigremont',
+    postalCode: '78240',
+    tagline: 'Votre taxi premium à Aigremont, au calme des Yvelines',
+    context: [
+      'Aigremont est un petit village résidentiel des Yvelines, niché dans un écrin boisé entre Chambourcy, Saint-Germain-en-Laye et Mareil-Marly, et partageant le code postal 78240 avec Chambourcy.',
+      'Ce cadre paisible, à l’écart des grands axes mais à quelques minutes de l’A14 et de l’A13, appelle un service de transport porte à porte, pratique là où les transports en commun sont peu présents.',
+    ],
+    needs: [
+      'Transferts aéroports au départ d’Aigremont.',
+      'Déplacements professionnels vers Paris et La Défense.',
+      'Trajets privés et sorties en soirée.',
+      'Liaisons vers la gare RER A de Saint-Germain-en-Laye.',
+    ],
+    destinations: [
+      { label: 'Roissy CDG / Orly', detail: 'Transferts aéroports organisés à l’avance.' },
+      { label: 'Saint-Germain-en-Laye (RER A)', detail: 'Accès rapide au réseau RER.' },
+      { label: 'Paris / La Défense', detail: 'Déplacements professionnels et privés.' },
+      { label: 'Chambourcy & communes voisines', detail: 'Liaisons locales immédiates.' },
+    ],
+    practical: [
+      'Prise en charge à l’adresse de votre choix à Aigremont.',
+      'Solution adaptée à un village peu desservi par les transports en commun.',
+      'Réservation conseillée, surtout pour les départs matinaux.',
+    ],
+    faq: [
+      {
+        question: 'Desservez-vous le village d’Aigremont ?',
+        answer:
+          'Oui. Aigremont fait partie de notre zone immédiate autour de Chambourcy. La prise en charge se fait à l’adresse de votre choix, sur réservation.',
+      },
+      {
+        question: 'Aigremont est-elle bien reliée aux aéroports ?',
+        answer:
+          'Nous organisons les transferts vers Roissy et Orly au départ d’Aigremont, avec une heure de prise en charge définie selon votre vol et une marge pour le trafic.',
+      },
+    ],
+  },
+  {
+    slug: 'taxi-fourqueux',
+    name: 'Fourqueux',
+    title: 'Taxi à Fourqueux',
+    postalCode: '78112',
+    tagline: 'Transport premium à Fourqueux, aux portes de Saint-Germain',
+    context: [
+      'Fourqueux, commune déléguée rattachée à Saint-Germain-en-Laye depuis 2019, est un quartier résidentiel verdoyant réputé pour son golf et son cadre paisible, en lisière de la forêt de Saint-Germain.',
+      'Sa proximité immédiate avec le centre de Saint-Germain-en-Laye et le RER A en fait un point de départ idéal, en particulier pour les trajets avec bagages ou en dehors des horaires de transports en commun.',
+    ],
+    needs: [
+      'Transferts aéroports au départ de Fourqueux.',
+      'Déplacements professionnels vers Paris et La Défense.',
+      'Compléments au RER A de Saint-Germain-en-Laye.',
+      'Trajets privés, sorties et événements.',
+    ],
+    destinations: [
+      { label: 'Roissy CDG / Orly', detail: 'Transferts aéroports de porte à porte.' },
+      { label: 'Saint-Germain-en-Laye centre', detail: 'Liaison immédiate (RER A, commerces).' },
+      { label: 'La Défense', detail: 'Déplacements d’affaires.' },
+      { label: 'Paris intra-muros', detail: 'Trajets privés et professionnels.' },
+    ],
+    practical: [
+      'Prise en charge à l’adresse de votre choix à Fourqueux.',
+      'Idéal avec des bagages ou en soirée, en complément du RER.',
+      'Service sur réservation.',
+    ],
+    faq: [
+      {
+        question: 'Fourqueux fait-elle partie de Saint-Germain-en-Laye ?',
+        answer:
+          'Depuis 2019, Fourqueux est une commune déléguée rattachée à Saint-Germain-en-Laye. Nous y assurons la prise en charge à l’adresse de votre choix, sur réservation.',
+      },
+      {
+        question: 'Proposez-vous une alternative au RER depuis Fourqueux ?',
+        answer:
+          'Oui. Notre service de porte à porte est particulièrement utile avec des bagages, en soirée ou pour un trajet direct sans correspondance.',
+      },
+    ],
+  },
+  {
+    slug: 'taxi-mareil-marly',
+    name: 'Mareil-Marly',
+    title: 'Taxi à Mareil-Marly',
+    postalCode: '78750',
+    tagline: 'Votre taxi premium à Mareil-Marly',
+    context: [
+      'Mareil-Marly est une commune résidentielle des Yvelines, lovée dans un environnement vallonné et boisé entre Saint-Germain-en-Laye, Marly-le-Roi et L’Étang-la-Ville.',
+      'Desservie par la gare de Mareil-Marly sur la ligne L du Transilien, la commune bénéficie d’un cadre calme ; notre service complète ces liaisons par un transport direct, utile pour les aéroports et les horaires décalés.',
+    ],
+    needs: [
+      'Transferts aéroports au départ de Mareil-Marly.',
+      'Déplacements professionnels vers Paris et La Défense.',
+      'Compléments à la gare et au Transilien (ligne L).',
+      'Trajets privés et sorties.',
+    ],
+    destinations: [
+      { label: 'Roissy CDG / Orly', detail: 'Transferts aéroports planifiés.' },
+      { label: 'La Défense', detail: 'Déplacements professionnels.' },
+      { label: 'Saint-Germain-en-Laye (RER A)', detail: 'Liaison locale et correspondance.' },
+      { label: 'Paris / gares parisiennes', detail: 'Trajets directs de porte à porte.' },
+    ],
+    practical: [
+      'Prise en charge à l’adresse de votre choix à Mareil-Marly.',
+      'Utile pour les trajets tôt le matin ou tard le soir, hors horaires de train.',
+      'Service sur réservation.',
+    ],
+    faq: [
+      {
+        question: 'Desservez-vous Mareil-Marly ?',
+        answer:
+          'Oui. Mareil-Marly fait partie de notre zone autour de Saint-Germain-en-Laye et Marly-le-Roi. La prise en charge se fait à l’adresse de votre choix, sur réservation.',
+      },
+      {
+        question: 'Puis-je réserver un trajet en dehors des horaires de train ?',
+        answer:
+          'Bien sûr. Notre service est particulièrement adapté aux départs matinaux et aux retours tardifs, lorsque le Transilien circule peu.',
+      },
+    ],
+  },
+  {
     slug: 'taxi-paris-ouest',
     name: 'Paris Ouest',
     title: 'Taxi Paris Ouest et Île-de-France',
