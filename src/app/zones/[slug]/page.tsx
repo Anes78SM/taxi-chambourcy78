@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Check, ArrowRight, Navigation } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-import { PageHero } from '@/components/layout/PageHero';
+import { ZoneHero } from '@/components/zones/ZoneHero';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FAQAccordion } from '@/components/ui/FAQAccordion';
 import { Button } from '@/components/ui/Button';
@@ -62,10 +62,9 @@ export default async function ZonePage({ params }: Params) {
         ]}
       />
 
-      <PageHero
-        eyebrow="Zone desservie"
+      <ZoneHero
+        city={location.name}
         title={location.title}
-        description={location.tagline}
         crumbs={[
           { name: 'Accueil', path: '/' },
           { name: 'Zones desservies', path: '/zones' },
@@ -74,6 +73,9 @@ export default async function ZonePage({ params }: Params) {
       />
 
       <ReassuranceBar />
+
+      {/* Ils nous font confiance */}
+      <ClientsSection />
 
       {/* Contexte + besoins */}
       <section className="bg-cream py-20 sm:py-24">
@@ -164,9 +166,6 @@ export default async function ZonePage({ params }: Params) {
           </div>
         </Container>
       </section>
-
-      {/* Ils nous font confiance */}
-      <ClientsSection />
 
       {/* Réserver un taxi à {ville} */}
       <BookingSection city={location.name} />
