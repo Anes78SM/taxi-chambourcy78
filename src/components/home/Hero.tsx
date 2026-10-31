@@ -39,7 +39,7 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-center lg:py-20">
+      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pt-16">
         <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
         <h1 className="mt-5 max-w-3xl text-display">
           Taxi Chambourcy <span className="text-champagne">(78)</span>
@@ -52,10 +52,8 @@ export function Hero() {
         </p>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream/80">
           Besoin d’un taxi à Chambourcy ? Anes vous prend en charge à domicile, au bureau ou à
-          l’hôtel. Il vous conduit ainsi vers les gares de Saint-Germain et de Poissy, les
-          aéroports ou vos rendez-vous. Par ailleurs, il assure vos trajets médicaux et vos
-          sorties privées. Le service fonctionne 7j/7, à l’avance comme en dernière minute, selon
-          les disponibilités. Enfin, indiquez votre trajet et votre horaire : nous faisons le reste.
+          l’hôtel. Il vous conduit ainsi vers les gares, les aéroports de Paris et vos rendez-vous,
+          7j/7. Indiquez simplement votre trajet et votre horaire : nous faisons le reste.
         </p>
         <p className="mt-5 flex flex-wrap items-center gap-2 text-sm text-cream/90">
           <span className="text-base tracking-widest text-champagne" aria-hidden>
