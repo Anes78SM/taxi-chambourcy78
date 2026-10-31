@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 import { WhatsAppIcon, whatsappUrl } from '@/components/ui/WhatsAppIcon';
 import { PaymentMethods } from '@/components/ui/PaymentMethods';
+import { AddressAutocomplete } from '@/components/booking/AddressAutocomplete';
 
 type Errors = Partial<Record<keyof BookingInput, string>>;
 type Status = 'idle' | 'submitting' | 'sent' | 'ready' | 'error';
@@ -211,21 +212,17 @@ export function BookingForm() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id={field('depart')} name="depart" label="Lieu de départ" error={errors.depart}>
-          <input
+          <AddressAutocomplete
             id={field('depart')}
             name="depart"
-            type="text"
             placeholder="Adresse, hôtel, aéroport…"
-            autoComplete="off"
           />
         </Field>
         <Field id={field('arrivee')} name="arrivee" label="Destination" error={errors.arrivee}>
-          <input
+          <AddressAutocomplete
             id={field('arrivee')}
             name="arrivee"
-            type="text"
             placeholder="Adresse, hôtel, aéroport…"
-            autoComplete="off"
           />
         </Field>
 
