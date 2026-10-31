@@ -10,7 +10,7 @@ export const services: Service[] = [
       'Roissy-Charles-de-Gaulle, Orly, Le Bourget et Beauvais. Une prise en charge organisée pour voyager l’esprit libre.',
     icon: 'Plane',
     image: '/images/services/airport.webp',
-    imageAlt: 'Break BMW bleu nuit, coffre ouvert, prêt pour un transfert aéroport',
+    imageAlt: 'Taxi à Chambourcy : break BMW bleu nuit, coffre ouvert, prêt pour un transfert aéroport',
     intro: [
       'Le transfert vers l’aéroport est un moment sensible : il conditionne la sérénité de tout un voyage. Nous organisons votre prise en charge à l’avance, avec une adresse de départ précise et une heure calculée en tenant compte du trajet et des marges d’enregistrement habituelles.',
       'Au retour, le principe est le même : vous indiquez votre vol, nous convenons ensemble du point de rendez-vous, et vous retrouvez un véhicule confortable sans attente inutile à la sortie de l’avion.',

@@ -1,35 +1,55 @@
 import type { FaqItem } from '@/types';
 
-/** FAQ générale affichée sur la page d'accueil. */
+/** FAQ générale affichée sur la page d'accueil (alimente aussi le JSON-LD FAQPage). */
 export const homeFaq: FaqItem[] = [
   {
-    question: 'Comment réserver un trajet ?',
+    question: 'Comment réserver un taxi à Chambourcy ?',
     answer:
-      'Remplissez le formulaire de réservation en ligne en précisant votre trajet, la date, l’heure et le nombre de passagers. Votre demande est préparée pour être transmise au professionnel, qui vous recontacte pour confirmer les modalités. Aucune réservation n’est validée automatiquement.',
+      'Remplissez le formulaire en ligne ou appelez-nous au 06 07 29 66 67, également joignable par WhatsApp. Ensuite, précisez votre départ, votre destination, la date, l’heure et le nombre de passagers et de bagages. Enfin, nous revenons vers vous pour confirmer. Aucune réservation ne part automatiquement.',
   },
   {
-    question: 'Proposez-vous des transferts vers les aéroports ?',
+    question: 'Quels sont les tarifs des taxis dans les Yvelines en 2026 ?',
     answer:
-      'Oui. Nous assurons les transferts vers Roissy-Charles-de-Gaulle, Orly et Le Bourget, au départ de Chambourcy et des communes voisines. L’heure de prise en charge est définie ensemble selon votre vol.',
+      'Une réglementation encadre les tarifs des taxis. En 2026, le minimum de course atteint 8 €. Par ailleurs, les plafonds nationaux s’élèvent à 4,48 € pour la prise en charge, 1,30 € le kilomètre et 42,15 € l’heure d’attente. Dans les Yvelines, l’arrêté préfectoral fixe ensuite les montants exacts. Au final, le taximètre affiche le prix de votre course.',
   },
   {
-    question: 'Quelles zones desservez-vous ?',
+    question: 'Comment calcule-t-on le prix d’une course ?',
     answer:
-      'Notre service rayonne depuis Chambourcy sur l’ensemble de Paris Ouest et de l’Île-de-France : Saint-Germain-en-Laye, Poissy, Orgeval, Le Pecq, Le Vésinet, Marly-le-Roi, Maisons-Laffitte et les communes voisines.',
+      'Le taximètre additionne trois éléments : la prise en charge, la distance et le temps d’attente. D’abord, le tarif kilométrique varie selon le jour, l’heure et le retour du taxi. Ensuite, des suppléments réglementés peuvent s’ajouter. Dans tous les cas, le minimum de course reste de 8 €.',
+  },
+  {
+    question: 'Comment connaître le prix de ma course ?',
+    answer:
+      'Demandez une estimation avant le départ : indiquez votre adresse, votre destination et votre horaire. Nous vous donnons alors une fourchette indicative. Toutefois, le taximètre fixe le prix définitif. En effet, il additionne la prise en charge, la distance et le temps d’attente, sans dépasser les tarifs réglementés.',
   },
   {
     question: 'Faut-il réserver à l’avance ?',
     answer:
-      'Le service fonctionne sur réservation. Une réservation anticipée est fortement recommandée pour les départs matinaux, les transferts aéroports et les trajets en soirée, afin de garantir la disponibilité.',
+      'Oui, surtout pour une gare, un aéroport ou un rendez-vous à heure fixe. Ainsi, vous avez un chauffeur à l’heure convenue, bagages compris. Pour un départ tôt le matin ou tard le soir, anticipez davantage. Une course de dernière minute reste toutefois possible, selon les disponibilités.',
   },
   {
-    question: 'Comment connaître le tarif de mon trajet ?',
+    question: 'Peut-on réserver un taxi pour Orly ou Roissy depuis Chambourcy ?',
     answer:
-      'Le tarif et les modalités vous sont communiqués directement par le professionnel après réception de votre demande. Aucun prix n’est annoncé automatiquement sur le site.',
+      'Oui. Nous assurons les transferts vers Paris-Charles-de-Gaulle, Orly et Le Bourget. Réservez à l’avance : précisez votre heure de départ ou votre numéro de vol, ainsi que vos passagers et bagages. Le taximètre calcule ensuite le prix selon le tarif des Yvelines. N’hésitez donc pas à demander une estimation à la réservation.',
+  },
+  {
+    question: 'Proposez-vous un taxi conventionné (transport médical remboursé) ?',
+    answer:
+      'Non, nous ne réalisons pas de transport conventionné par l’Assurance Maladie. Néanmoins, nous vous conduisons à vos rendez-vous médicaux : consultations, examens ou hôpital de Poissy–Saint-Germain. Dans ce cas, nous facturons la course au tarif réglementé, sans prise en charge CPAM.',
+  },
+  {
+    question: 'Quelles zones desservez-vous ?',
+    answer:
+      'Depuis Chambourcy, notre service rayonne sur Paris Ouest et l’Île-de-France. Nous desservons notamment Saint-Germain-en-Laye, Poissy, Orgeval, Aigremont, Fourqueux, Mareil-Marly, Le Pecq, Le Vésinet, Marly-le-Roi et Maisons-Laffitte. Votre commune n’y figure pas ? Contactez-nous pour confirmation.',
+  },
+  {
+    question: 'Quels moyens de paiement acceptez-vous ?',
+    answer:
+      'Vous réglez votre course par carte bancaire (Visa, Mastercard) ou en espèces. Par ailleurs, vous pouvez préciser votre moyen de paiement dès la réservation.',
   },
   {
     question: 'Puis-je voyager avec des bagages ?',
     answer:
-      'Oui. Indiquez le nombre de passagers et de bagages lors de votre demande afin que le véhicule soit adapté à votre trajet, notamment pour les transferts aéroports.',
+      'Oui. Indiquez simplement le nombre de passagers et de bagages lors de votre demande. Ainsi, nous adaptons le véhicule à votre trajet, notamment pour les transferts aéroports. Par ailleurs, un supplément réglementé peut s’appliquer aux bagages encombrants.',
   },
 ];

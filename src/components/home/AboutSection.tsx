@@ -15,12 +15,13 @@ export function AboutSection() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-800/75">
               <p>
-                Pour vos déplacements privés et professionnels, nous privilégions la qualité de
-                l’accueil, l’attention portée aux détails et la simplicité de réservation.
+                Pour vos déplacements privés et professionnels, nous soignons d’abord la qualité
+                de l’accueil. En effet, l’attention aux détails et la simplicité de réservation
+                font toute la différence.
               </p>
               <p>
-                Départs depuis Chambourcy, Saint-Germain-en-Laye, Poissy et les communes voisines,
-                vers Paris et les principaux aéroports d’Île-de-France.
+                Par ailleurs, nous partons de Chambourcy, Saint-Germain-en-Laye, Poissy et des
+                communes voisines, vers Paris et les aéroports d’Île-de-France.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -37,7 +38,7 @@ export function AboutSection() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] shadow-card">
               <Image
                 src="/images/hero/interior.webp"
-                alt="Intérieur cuir perforé d’un break BMW haut de gamme"
+                alt="Taxi à Chambourcy : intérieur cuir perforé d’un break BMW haut de gamme"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

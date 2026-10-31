@@ -15,7 +15,7 @@ const features = [
 
 export function Hero() {
   return (
-    <section id="accueil" className="relative overflow-hidden bg-ink-900 pt-[88px] text-white lg:flex lg:min-h-[760px] lg:items-center">
+    <section id="accueil" className="relative overflow-hidden bg-ink-900 pt-[88px] text-white lg:flex lg:min-h-[100svh] lg:flex-col">
       {/* Image de fond */}
       <div className="absolute inset-0" aria-hidden>
         <Image
@@ -39,15 +39,23 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 py-12 sm:py-16 lg:py-24">
+      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-center lg:py-20">
         <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
-        <h1 className="mt-5 max-w-3xl text-display">Votre taxi premium à Chambourcy</h1>
+        <h1 className="mt-5 max-w-3xl text-display">
+          Taxi Chambourcy <span className="text-champagne">(78)</span>
+          <span className="mt-4 block font-sans text-[clamp(1rem,2vw,1.4rem)] font-medium leading-snug tracking-normal text-cream/85">
+            Réservation, tarifs et transport 7j/7
+          </span>
+        </h1>
         <p className="mt-4 text-sm font-semibold tracking-[0.2em] text-champagne/90">
           CONFORT · PONCTUALITÉ · DISCRÉTION
         </p>
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/80">
-          Transferts aéroports, déplacements professionnels et trajets privés. Un service de
-          transport soigné, adapté à vos exigences, dans un confort haut de gamme.
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream/80">
+          Besoin d’un taxi à Chambourcy ? Anes vous prend en charge à domicile, au bureau ou à
+          l’hôtel. Il vous conduit ainsi vers les gares de Saint-Germain et de Poissy, les
+          aéroports ou vos rendez-vous. Par ailleurs, il assure vos trajets médicaux et vos
+          sorties privées. Le service fonctionne 7j/7, à l’avance comme en dernière minute, selon
+          les disponibilités. Enfin, indiquez votre trajet et votre horaire : nous faisons le reste.
         </p>
         <p className="mt-5 flex flex-wrap items-center gap-2 text-sm text-cream/90">
           <span className="text-base tracking-widest text-champagne" aria-hidden>
@@ -73,7 +81,7 @@ export function Hero() {
       </Container>
 
       {/* Barre de réassurance : bandeau défilant en mobile/tablette, rangée alignée sur desktop */}
-      <div className="relative z-10 border-t border-white/12 bg-ink-900/70 backdrop-blur-sm lg:absolute lg:inset-x-0 lg:bottom-0 lg:bg-ink-900/55">
+      <div className="relative z-10 border-t border-white/12 bg-ink-900/70 backdrop-blur-sm lg:mt-auto lg:bg-ink-900/55">
         {/* Mobile & tablette : bandeau défilant (évite tout chevauchement) */}
         <Marquee className="py-4 lg:hidden" durationSec={28} gap="2.75rem" ariaLabel="Nos atouts">
           {features.map(({ icon: FeatureIcon, label }) => (

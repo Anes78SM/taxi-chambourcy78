@@ -28,7 +28,6 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
   {
     title: 'Zones desservies',
     items: [
-      { label: 'Taxi Chambourcy', href: '/zones/taxi-chambourcy' },
       { label: 'Taxi Saint-Germain-en-Laye', href: '/zones/taxi-saint-germain-en-laye' },
       { label: 'Taxi Poissy', href: '/zones/taxi-poissy' },
       { label: 'Toutes les zones', href: '/zones' },

@@ -7,46 +7,6 @@ import type { Location } from '@/types';
  */
 export const locations: Location[] = [
   {
-    slug: 'taxi-chambourcy',
-    name: 'Chambourcy',
-    title: 'Taxi à Chambourcy',
-    postalCode: '78240',
-    tagline: 'Votre service de taxi premium au cœur de Chambourcy',
-    context: [
-      'Chambourcy, commune des Yvelines proche de Saint-Germain-en-Laye, bénéficie d’une situation privilégiée aux portes de Paris Ouest, à proximité immédiate de l’A14 et de l’A13.',
-      'Cette position facilite les liaisons rapides vers la capitale, les aéroports franciliens et les grands axes de l’Ouest parisien, tout en profitant d’un cadre résidentiel recherché.',
-    ],
-    needs: [
-      'Transferts vers les aéroports de Roissy, Orly et Le Bourget.',
-      'Déplacements professionnels vers Paris et La Défense.',
-      'Trajets privés pour vos sorties, rendez-vous et événements.',
-      'Liaisons vers les gares parisiennes et la gare de Saint-Germain-en-Laye.',
-    ],
-    destinations: [
-      { label: 'Roissy CDG', detail: 'Transfert aéroport planifié à l’avance.' },
-      { label: 'Orly', detail: 'Prise en charge de porte à porte.' },
-      { label: 'Paris / La Défense', detail: 'Déplacements professionnels et privés.' },
-      { label: 'Saint-Germain-en-Laye (RER A)', detail: 'Accès rapide au réseau RER.' },
-    ],
-    practical: [
-      'Service sur réservation, prise en charge à l’adresse de votre choix dans Chambourcy.',
-      'Réservation anticipée recommandée pour les départs matinaux.',
-      'Les durées de trajet dépendent du trafic et sont estimées lors de la demande.',
-    ],
-    faq: [
-      {
-        question: 'Desservez-vous tout Chambourcy ?',
-        answer:
-          'Oui, la prise en charge se fait à l’adresse de votre choix dans la commune. Le service fonctionne sur réservation.',
-      },
-      {
-        question: 'Combien de temps pour rejoindre Roissy depuis Chambourcy ?',
-        answer:
-          'La durée dépend du trafic et de l’heure. Nous estimons le temps de trajet lors de votre demande et prévoyons une marge pour les transferts aéroports.',
-      },
-    ],
-  },
-  {
     slug: 'taxi-saint-germain-en-laye',
     name: 'Saint-Germain-en-Laye',
     title: 'Taxi à Saint-Germain-en-Laye',
