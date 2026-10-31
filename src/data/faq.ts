@@ -10,7 +10,12 @@ export const homeFaq: FaqItem[] = [
   {
     question: 'Quels sont les tarifs des taxis dans les Yvelines en 2026 ?',
     answer:
-      'Une réglementation encadre les tarifs des taxis. En 2026, le minimum de course atteint 8 €. Par ailleurs, les plafonds nationaux s’élèvent à 4,48 € pour la prise en charge, 1,30 € le kilomètre et 42,15 € l’heure d’attente. Dans les Yvelines, l’arrêté préfectoral fixe ensuite les montants exacts. Au final, le taximètre affiche le prix de votre course.',
+      'Dans les Yvelines, en 2026 : prise en charge 3,00 €, kilomètre de 1,00 € à 3,00 € selon le tarif A, B, C ou D, heure d’attente 41,56 € et minimum de course 8 €. Par ailleurs, des suppléments réglementés s’ajoutent : 2 € par bagage encombrant et 4 € dès le 5ᵉ passager. Vous trouvez le détail dans notre grille tarifaire.',
+  },
+  {
+    question: 'Quel est le prix d’un taxi pour 10 km à Chambourcy ?',
+    answer:
+      'Comptez environ 13 € à 23 € pour 10 km de jour, selon que le taxi revient en charge (tarif A) ou à vide (tarif C) : prise en charge 3,00 € + 10 km. De nuit, le dimanche et les jours fériés, la fourchette monte à 18 € – 33 €. L’attente et les suppléments s’ajoutent ; le taximètre fait foi.',
   },
   {
     question: 'Comment calcule-t-on le prix d’une course ?',
