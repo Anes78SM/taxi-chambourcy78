@@ -10,7 +10,7 @@ export const services: Service[] = [
       'Roissy-Charles-de-Gaulle, Orly, Le Bourget et Beauvais. Une prise en charge organisée pour voyager l’esprit libre.',
     icon: 'Plane',
     image: '/images/services/airport.webp',
-    imageAlt: 'Berline premium stationnée devant un terminal d’aéroport',
+    imageAlt: 'Break BMW bleu nuit, coffre ouvert, prêt pour un transfert aéroport',
     intro: [
       'Le transfert vers l’aéroport est un moment sensible : il conditionne la sérénité de tout un voyage. Nous organisons votre prise en charge à l’avance, avec une adresse de départ précise et une heure calculée en tenant compte du trajet et des marges d’enregistrement habituelles.',
       'Au retour, le principe est le même : vous indiquez votre vol, nous convenons ensemble du point de rendez-vous, et vous retrouvez un véhicule confortable sans attente inutile à la sortie de l’avion.',
@@ -70,7 +70,7 @@ export const services: Service[] = [
       'Rendez-vous, gares et déplacements d’affaires. Un service discret et soigné pour vos trajets professionnels.',
     icon: 'Briefcase',
     image: '/images/services/business.webp',
-    imageAlt: 'Intérieur soigné d’une berline pour déplacements professionnels',
+    imageAlt: 'Intérieur lumineux et soigné d’un break BMW premium',
     intro: [
       'Pour vos rendez-vous et déplacements d’affaires, la régularité et la discrétion comptent autant que le confort. Nous proposons un transport pensé pour les professionnels : un cadre calme pour préparer une réunion, passer un appel ou simplement souffler entre deux étapes.',
       'Les trajets récurrents peuvent être organisés à l’avance afin de fluidifier votre agenda, depuis Chambourcy et les communes voisines vers Paris, les quartiers d’affaires et les principales gares.',
@@ -125,7 +125,7 @@ export const services: Service[] = [
       'Soirées, shopping, restaurants et événements. Un trajet privé pour profiter pleinement du moment.',
     icon: 'Sparkles',
     image: '/images/services/private.webp',
-    imageAlt: 'Berline haut de gamme de nuit devant une adresse élégante',
+    imageAlt: 'Break BMW bleu nuit, portière ouverte, pour vos trajets privés',
     intro: [
       'Certaines occasions méritent un transport à la hauteur du moment. Pour une soirée, un dîner, une sortie culturelle ou un événement familial, nous assurons un trajet privé qui vous permet de profiter pleinement, sans vous soucier du stationnement ni du retour.',
       'Vous choisissez vos horaires, nous nous occupons du reste, dans un véhicule confortable et un service attentionné.',
@@ -180,7 +180,7 @@ export const services: Service[] = [
       'À l’heure, à la demi-journée ou sur plusieurs rendez-vous. Un véhicule et un chauffeur dédiés à votre programme.',
     icon: 'Clock',
     image: '/images/services/disposal.webp',
-    imageAlt: 'Chauffeur ouvrant la portière d’une berline premium',
+    imageAlt: 'Break BMW bleu nuit à disposition, stationné devant un portail',
     intro: [
       'Lorsque votre journée comporte plusieurs étapes, la mise à disposition est la solution la plus souple. Un véhicule et un chauffeur restent dédiés à votre programme : rendez-vous successifs, visites, événement sur une journée ou déplacement comportant des temps d’attente.',
       'Vous définissez les grandes lignes de votre journée, nous adaptons le déroulé au fil de vos besoins.',

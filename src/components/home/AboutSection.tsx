@@ -37,7 +37,7 @@ export function AboutSection() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] shadow-card">
               <Image
                 src="/images/hero/interior.webp"
-                alt="Intérieur raffiné d’une berline haut de gamme"
+                alt="Intérieur cuir perforé d’un break BMW haut de gamme"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
