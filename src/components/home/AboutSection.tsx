@@ -1,0 +1,51 @@
+import Image from 'next/image';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+import { Reveal } from '@/components/ui/Reveal';
+
+export function AboutSection() {
+  return (
+    <section className="bg-cream py-20 sm:py-24">
+      <Container>
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <Reveal>
+            <p className="eyebrow text-champagne-dark">À propos</p>
+            <h2 className="mt-4 text-h2 text-ink-900">
+              Un service de confiance à Chambourcy et ses environs
+            </h2>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-800/75">
+              <p>
+                Pour vos déplacements privés et professionnels, nous privilégions la qualité de
+                l’accueil, l’attention portée aux détails et la simplicité de réservation.
+              </p>
+              <p>
+                Départs depuis Chambourcy, Saint-Germain-en-Laye, Poissy et les communes voisines,
+                vers Paris et les principaux aéroports d’Île-de-France.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="/a-propos" variant="dark">
+                En savoir plus
+              </Button>
+              <Button href="/#reservation" variant="ghost">
+                Organiser mon trajet →
+              </Button>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] shadow-card">
+              <Image
+                src="/images/hero/interior.webp"
+                alt="Intérieur raffiné d’une berline haut de gamme"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
+  );
+}

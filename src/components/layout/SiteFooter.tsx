@@ -1,0 +1,94 @@
+import Link from 'next/link';
+import { MapPin, Phone, Mail } from 'lucide-react';
+import { Container } from '@/components/ui/Container';
+import { footerNav } from '@/config/navigation';
+import { siteConfig, hasRealContact } from '@/config/site';
+
+export function SiteFooter() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="bg-[#050d11] text-cream/90">
+      <Container className="py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
+          {/* Marque + coordonnées */}
+          <div>
+            <Link href="/" className="flex items-center gap-3" aria-label={`${siteConfig.name} — accueil`}>
+              <span className="text-2xl leading-none text-champagne" aria-hidden>
+                ⌁
+              </span>
+              <span className="leading-none">
+                <span className="block font-serif text-lg tracking-[0.12em] text-cream">
+                  CHAMBOURCY
+                </span>
+                <span className="mt-1 block text-[0.5rem] tracking-[0.32em] text-champagne/90">
+                  EXECUTIVE TAXI
+                </span>
+              </span>
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
+              Service de taxi premium à Chambourcy. Transferts aéroports, déplacements
+              professionnels et trajets privés en Île-de-France.
+            </p>
+
+            <ul className="mt-6 space-y-3 text-sm">
+              <li className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 shrink-0 text-champagne" aria-hidden />
+                <span>
+                  {siteConfig.address.city} ({siteConfig.address.postalCode}) ·{' '}
+                  {siteConfig.serviceArea}
+                </span>
+              </li>
+              {hasRealContact ? (
+                <>
+                  <li className="flex items-center gap-3">
+                    <Phone className="h-4 w-4 shrink-0 text-champagne" aria-hidden />
+                    <a href={siteConfig.contact.phoneHref} className="hover:text-champagne">
+                      {siteConfig.contact.phone}
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Mail className="h-4 w-4 shrink-0 text-champagne" aria-hidden />
+                    <a href={siteConfig.contact.emailHref} className="hover:text-champagne">
+                      {siteConfig.contact.email}
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <li className="flex items-center gap-3 text-mist">
+                  <Phone className="h-4 w-4 shrink-0 text-champagne" aria-hidden />
+                  <span>Coordonnées à configurer avant publication.</span>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {/* Colonnes de navigation */}
+          {footerNav.map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <h2 className="eyebrow text-champagne">{column.title}</h2>
+              <ul className="mt-5 space-y-3 text-sm text-mist">
+                {column.items.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="transition-colors hover:text-cream">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {siteConfig.name}. Tous droits réservés.
+          </p>
+          <p className="max-w-md sm:text-right">
+            Informations légales et professionnelles à compléter avant publication.
+          </p>
+        </div>
+      </Container>
+    </footer>
+  );
+}
