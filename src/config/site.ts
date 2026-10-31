@@ -96,9 +96,10 @@ export const siteConfig = {
     // Siège social (distinct de la zone d'exploitation à Chambourcy).
     headquarters: '111 avenue Victor Hugo, 75016 Paris',
     operatorName: '', // Représentant légal — À COMPLÉTER si vous souhaitez l'afficher
-    siret: '', // SIRET complet (14 chiffres) — À COMPLÉTER (SIREN connu : 108 434 416)
+    siret: '108 434 416 00013', // SIRET complet (14 chiffres)
     vatNumber: '', // N° de TVA intracommunautaire — À COMPLÉTER le cas échéant
-    licenseNumber: '', // Autorisation de stationnement (taxi) — À COMPLÉTER
+    licenseNumber: '', // Autorisation de stationnement (taxi) — N° ADS À COMPLÉTER
+    stationZone: 'Chambourcy', // Commune de rattachement / zone de stationnement du taxi
   },
 
   /** Image Open Graph par défaut (aperçu lors du partage de liens). */

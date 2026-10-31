@@ -32,8 +32,8 @@ export default function LegalPage() {
         <Container>
           <div className="mx-auto max-w-prose">
             <div className="mb-10 rounded-[var(--radius)] border border-ink-900/10 bg-white/60 p-5 text-sm text-ink-800/70">
-              Informations de la société éditrice. Quelques champs complémentaires (SIRET complet,
-              autorisation de stationnement) restent à renseigner — ils sont signalés entre crochets.
+              Informations de la société éditrice. Le numéro d’autorisation de stationnement (ADS)
+              reste à renseigner — il est signalé entre crochets.
             </div>
 
             <div className="prose-content max-w-none">
@@ -76,6 +76,8 @@ export default function LegalPage() {
                 <br />
                 Autorisation de stationnement (taxi) :{' '}
                 <Value value={legal.licenseNumber} placeholder="à compléter" />
+                <br />
+                Zone de stationnement (commune de rattachement) : {legal.stationZone}
               </p>
               <p className="text-sm text-ink-800/65">
                 Activité de taxi exploitée en {siteConfig.serviceArea}.

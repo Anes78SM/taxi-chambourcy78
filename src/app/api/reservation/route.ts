@@ -63,6 +63,30 @@ function htmlBody(d: BookingServerInput): string {
   </div>`;
 }
 
+/**
+ * Vérifie le jeton anti-spam Cloudflare Turnstile.
+ * Nécessite la variable d'environnement TURNSTILE_SECRET_KEY (secret).
+ */
+async function verifyTurnstile(token: string, secret: string, request: Request): Promise<boolean> {
+  if (!token) return false;
+  try {
+    const body = new URLSearchParams({ secret, response: token });
+    const ip =
+      request.headers.get('CF-Connecting-IP') ?? request.headers.get('x-forwarded-for') ?? '';
+    if (ip) body.set('remoteip', ip.split(',')[0]!.trim());
+
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    });
+    const data = (await res.json()) as { success?: boolean };
+    return data.success === true;
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: Request) {
   let payload: unknown;
   try {
@@ -77,6 +101,17 @@ export async function POST(request: Request) {
       { error: 'Données invalides.', issues: parsed.error.flatten().fieldErrors },
       { status: 422 },
     );
+  }
+
+  // Anti-spam : vérification Cloudflare Turnstile (seulement si la clé secrète est configurée).
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  if (turnstileSecret) {
+    const raw = payload as Record<string, unknown>;
+    const token = typeof raw.turnstileToken === 'string' ? raw.turnstileToken : '';
+    const isHuman = await verifyTurnstile(token, turnstileSecret, request);
+    if (!isHuman) {
+      return NextResponse.json({ error: 'Vérification anti-spam échouée.' }, { status: 403 });
+    }
   }
 
   const apiKey = process.env.RESEND_API_KEY;

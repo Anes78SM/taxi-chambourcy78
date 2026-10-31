@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { WhatsAppIcon, whatsappUrl } from '@/components/ui/WhatsAppIcon';
 import { PaymentMethods } from '@/components/ui/PaymentMethods';
 import { AddressAutocomplete } from '@/components/booking/AddressAutocomplete';
+import { Turnstile, turnstileEnabled } from '@/components/booking/Turnstile';
 
 type Errors = Partial<Record<keyof BookingInput, string>>;
 type Status = 'idle' | 'submitting' | 'sent' | 'ready' | 'error';
@@ -47,6 +48,9 @@ export function BookingForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [mailtoUrl, setMailtoUrl] = useState<string>('');
   const [copied, setCopied] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileKey, setTurnstileKey] = useState(0);
+  const [formError, setFormError] = useState('');
   const minDate = useMemo(todayISO, []);
 
   const field = (name: string) => `${formId}-${name}`;
@@ -110,6 +114,14 @@ export function BookingForm() {
     const data = validateForm(event.currentTarget);
     if (!data) return;
 
+    // Anti-spam : un jeton Turnstile valide est requis si la vérification est active.
+    if (turnstileEnabled && !turnstileToken) {
+      setFormError('Merci de confirmer que vous n’êtes pas un robot.');
+      setStatus('error');
+      return;
+    }
+
+    setFormError('');
     setStatus('submitting');
 
     // 1) Tentative d'envoi automatique via la route API (Resend).
@@ -118,10 +130,18 @@ export function BookingForm() {
       const res = await fetch('/api/reservation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
       if (res.ok) {
         setStatus('sent');
+        return;
+      }
+      // Jeton anti-spam rejeté : on redemande une vérification (jeton à usage unique).
+      if (res.status === 403) {
+        setFormError('La vérification anti-spam a échoué. Merci de réessayer.');
+        setTurnstileToken('');
+        setTurnstileKey((k) => k + 1);
+        setStatus('error');
         return;
       }
     } catch {
@@ -306,6 +326,8 @@ export function BookingForm() {
         )}
       </div>
 
+      <Turnstile key={turnstileKey} onToken={setTurnstileToken} />
+
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <button
           type="submit"
@@ -325,6 +347,12 @@ export function BookingForm() {
           Réserver sur WhatsApp
         </button>
       </div>
+
+      {formError && (
+        <p className="mt-3 text-xs text-red-600" role="alert">
+          {formError}
+        </p>
+      )}
 
       <p id={`${formId}-status`} role="status" className="mt-4 text-xs text-ink-800/60">
         Votre demande nous est transmise par e-mail ou WhatsApp. Aucun paiement n’est demandé et
