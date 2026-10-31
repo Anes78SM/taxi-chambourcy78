@@ -33,11 +33,11 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema(homeFaq)} />
       <Hero />
+      <ClientsSection />
       <BookingSection />
       <HowToBookSection />
       <ServicesSection />
       <WhyChoose />
-      <ClientsSection />
       <DestinationsSection />
       <PricingSection />
       <AboutSection />
