@@ -8,8 +8,6 @@ export const mainNav: NavItem[] = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Destinations', href: '/zones' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'À propos', href: '/a-propos' },
   { label: 'Avis', href: '/#avis' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -30,6 +28,8 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { label: 'Taxi Saint-Germain-en-Laye', href: '/zones/taxi-saint-germain-en-laye' },
       { label: 'Taxi Poissy', href: '/zones/taxi-poissy' },
+      { label: 'Taxi Orgeval', href: '/zones/taxi-orgeval' },
+      { label: 'Taxi Maisons-Laffitte', href: '/zones/taxi-maisons-laffitte' },
       { label: 'Toutes les zones', href: '/zones' },
     ],
   },
