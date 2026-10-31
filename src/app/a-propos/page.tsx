@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { ShieldCheck, Gem, Clock, MapPin, UserRound } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { PageHero } from '@/components/layout/PageHero';
@@ -42,59 +43,58 @@ export default function AboutPage() {
 
       <section className="bg-cream py-20 sm:py-24">
         <Container>
-          <div className="prose-content mx-auto max-w-prose">
-            <h2>Une histoire de continuité</h2>
-            <p>
-              {siteConfig.name} s’inscrit dans la continuité d’une activité de taxi reconnue à
-              Chambourcy et dans les Yvelines, appréciée depuis plus de quinze ans pour sa
-              ponctualité, son sérieux et sa discrétion.
-            </p>
-            <p>
-              Cette réputation, c’est Romuald qui l’a bâtie au fil des années, au service des
-              habitants comme des entreprises de la région. C’est aujourd’hui Anes qui reprend cette
-              activité, avec la même exigence et le même état d’esprit : un service premium, humain
-              et fiable.
-            </p>
-            <p>
-              L’essentiel ne change pas : une prise en charge ponctuelle, un véhicule impeccable, une
-              conduite sûre et une attention réelle portée à chaque client, du particulier au
-              professionnel.
-            </p>
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
+            <div className="prose-content max-w-none">
+              <h2>Une reprise dans la continuité</h2>
+              <p>
+                {siteConfig.name} s’inscrit dans la continuité d’une activité de taxi reconnue à
+                Chambourcy et dans les Yvelines, appréciée de longue date pour sa ponctualité, son
+                sérieux et sa discrétion.
+              </p>
+              <p>
+                Depuis <strong>septembre 2026</strong>, cette activité est reprise par{' '}
+                <strong>Anes Smail</strong>, qui a racheté la licence de taxi de l’ancien
+                propriétaire, parti à la retraite.
+              </p>
+              <p>
+                Chauffeur de taxi indépendant depuis plus de quatre ans dans les Yvelines, Anes
+                connaît parfaitement Chambourcy, l’Ouest parisien et les accès vers Paris et les
+                aéroports. Il poursuit le service avec la même exigence : un transport premium,
+                humain et fiable, du particulier au professionnel.
+              </p>
 
-            <h2>Notre approche</h2>
-            <p>
-              Que ce soit pour un transfert aéroport, un déplacement professionnel ou un trajet
-              privé, notre priorité est simple : un transport soigné, ponctuel et discret. Nous
-              privilégions une relation directe et un échange clair avant chaque trajet, afin que les
-              modalités soient toujours comprises et confirmées — aucune réservation n’est validée
-              automatiquement.
-            </p>
+              <h2>Notre approche</h2>
+              <p>
+                Que ce soit pour un transfert aéroport, un déplacement professionnel ou un trajet
+                privé, notre priorité est simple : un transport soigné, ponctuel et discret. Nous
+                privilégions une relation directe et un échange clair avant chaque trajet, afin que
+                les modalités soient toujours comprises et confirmées — aucune réservation n’est
+                validée automatiquement.
+              </p>
 
-            <h2>Zones desservies</h2>
-            <p>
-              Notre service rayonne depuis Chambourcy ({siteConfig.address.postalCode}) sur{' '}
-              {siteConfig.serviceArea} : Saint-Germain-en-Laye, Poissy, Orgeval, Le Pecq, Le
-              Vésinet, Marly-le-Roi, Maisons-Laffitte et les communes voisines, vers Paris et les
-              principaux aéroports.
-            </p>
-          </div>
+              <h2>Zones desservies</h2>
+              <p>
+                Notre service rayonne depuis Chambourcy ({siteConfig.address.postalCode}) sur{' '}
+                {siteConfig.serviceArea} : Saint-Germain-en-Laye, Poissy, Orgeval, Le Pecq, Le
+                Vésinet, Marly-le-Roi, Maisons-Laffitte et les communes voisines, vers Paris et les
+                principaux aéroports.
+              </p>
+            </div>
 
-          {/* Bloc informations à compléter — E-E-A-T */}
-          <div className="mx-auto mt-14 max-w-prose rounded-[var(--radius-lg)] border border-dashed border-ink-900/25 bg-white/60 p-6">
-            <p className="eyebrow text-champagne-dark">À confirmer avant publication</p>
-            <p className="mt-3 text-sm leading-relaxed text-ink-800/70">
-              Quelques points restent à compléter avec les informations réelles avant la mise en
-              ligne :
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-ink-800/75">
-              <li>• Détails de la reprise (date, parcours de l’exploitant actuel)</li>
-              <li>• Présentation du véhicule réellement exploité (avec photos authentiques)</li>
-              <li>• Informations légales : raison sociale, SIRET, licence (voir mentions légales)</li>
-            </ul>
-            <p className="mt-4 text-xs text-ink-800/55">
-              Ces éléments ne doivent jamais être inventés : seules des informations vérifiées
-              doivent figurer sur le site.
-            </p>
+            <figure className="lg:sticky lg:top-28">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-lg)] shadow-card">
+                <Image
+                  src="/images/hero/hero-chauffeur.webp"
+                  alt="Anes Smail, chauffeur de taxi à Chambourcy, devant sa BMW taxi"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-[62%_center]"
+                />
+              </div>
+              <figcaption className="mt-3 text-center text-sm text-ink-800/65">
+                Anes Smail, votre chauffeur de taxi à Chambourcy.
+              </figcaption>
+            </figure>
           </div>
         </Container>
       </section>

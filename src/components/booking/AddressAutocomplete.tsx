@@ -116,11 +116,17 @@ export function AddressAutocomplete({
           setLocating(false);
         }
       },
-      () => {
-        setGeoError('Position refusée ou indisponible. Saisissez votre adresse.');
+      (error) => {
+        const message =
+          error.code === error.PERMISSION_DENIED
+            ? 'Localisation refusée. Autorisez l’accès à votre position dans votre navigateur, ou saisissez votre adresse.'
+            : error.code === error.TIMEOUT
+              ? 'La localisation a pris trop de temps. Réessayez ou saisissez votre adresse.'
+              : 'Position indisponible pour le moment. Saisissez votre adresse.';
+        setGeoError(message);
         setLocating(false);
       },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 },
+      { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 },
     );
   }
 
