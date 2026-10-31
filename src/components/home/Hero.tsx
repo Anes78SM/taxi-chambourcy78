@@ -15,6 +15,7 @@ export function Hero() {
           alt="Chauffeur de taxi à Chambourcy en costume, adossé à sa BMW noire siglée Taxi Chambourcy 78"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover object-[58%_center] lg:object-contain lg:object-right-bottom"
         />

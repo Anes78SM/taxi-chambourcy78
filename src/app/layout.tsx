@@ -13,7 +13,7 @@ const serif = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-serif',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500'],
 });
 
 const sans = Inter({
