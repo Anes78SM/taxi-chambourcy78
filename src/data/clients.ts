@@ -18,6 +18,13 @@ export type Client = {
 };
 
 export const clients: Client[] = [
-  { name: 'Ritz Paris', logo: '/images/clients/ritz-paris.svg' },
-  { name: 'Molitor' },
+  { name: 'Erborian', logo: '/images/clients/erborian.png' },
+  { name: 'Shiseido', logo: '/images/clients/shiseido.png' },
+  { name: 'Kantar', logo: '/images/clients/kantar.png' },
+  { name: 'BMW', logo: '/images/clients/bmw.png' },
+  { name: 'Jetex', logo: '/images/clients/jetex.png' },
+  { name: 'Robin & Co', logo: '/images/clients/robin-co.png' },
+  { name: 'LSM — Leading Sport Management', logo: '/images/clients/lsm.png' },
+  { name: 'A-ROSA', logo: '/images/clients/arosa.png' },
+  { name: 'SNCF', logo: '/images/clients/sncf.png' },
 ];
