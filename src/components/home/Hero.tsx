@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Clock, Gem, UserRound, ShieldCheck, MapPin } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { googleBusiness } from '@/data/reviews';
 
 const features = [
   { icon: Clock, label: 'Ponctualité\net sérénité' },
@@ -46,6 +47,17 @@ export function Hero() {
         <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/80">
           Transferts aéroports, déplacements professionnels et trajets privés. Un service de
           transport soigné, adapté à vos exigences, dans un confort haut de gamme.
+        </p>
+        <p className="mt-5 flex flex-wrap items-center gap-2 text-sm text-cream/90">
+          <span className="text-base tracking-widest text-champagne" aria-hidden>
+            ★★★★★
+          </span>
+          <span>
+            <strong className="font-semibold text-white">
+              {googleBusiness.rating.toFixed(1).replace('.', ',')}/5
+            </strong>{' '}
+            · {googleBusiness.reviewCount} avis sur Google
+          </span>
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <Button href="/#reservation" size="lg">

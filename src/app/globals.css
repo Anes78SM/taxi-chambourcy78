@@ -146,6 +146,31 @@
   .prose-content a.anchor-link {
     text-decoration: none;
   }
+  .prose-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-size: 0.95rem;
+    display: block;
+    overflow-x: auto;
+  }
+  .prose-content th,
+  .prose-content td {
+    border: 1px solid rgba(8, 13, 16, 0.12);
+    padding: 0.7em 0.9em;
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose-content thead th {
+    background: rgba(8, 13, 16, 0.04);
+    font-weight: 600;
+    color: var(--ink-900);
+    white-space: nowrap;
+  }
+  .prose-content tbody td:first-child {
+    font-weight: 600;
+    color: var(--ink-900);
+  }
 }
 
 /* ===========================================================================
