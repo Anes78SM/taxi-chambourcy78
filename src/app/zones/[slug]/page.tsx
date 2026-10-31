@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Check, ArrowRight, Navigation } from 'lucide-react';
+import { Check, ArrowRight, ArrowUpRight, Navigation } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { Reveal } from '@/components/ui/Reveal';
+import { Icon } from '@/components/ui/Icon';
 import { ZoneHero } from '@/components/zones/ZoneHero';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FAQAccordion } from '@/components/ui/FAQAccordion';
@@ -83,24 +85,34 @@ export default async function ZonePage({ params }: Params) {
       {/* Contexte + besoins */}
       <section className="bg-cream py-20 sm:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="prose-content max-w-none">
-              <h2>Un transport premium à {location.name}</h2>
-              {location.context.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </div>
-            <div>
-              <h2 className="font-serif text-2xl text-ink-900">Vos besoins de transport</h2>
-              <ul className="mt-6 space-y-4">
-                {location.needs.map((need) => (
-                  <li key={need} className="flex gap-3 text-sm leading-relaxed text-ink-800/80">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-champagne-dark" aria-hidden strokeWidth={1.5} />
-                    {need}
-                  </li>
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
+            <Reveal>
+              <p className="eyebrow text-champagne-dark">Taxi à {location.name}</p>
+              <h2 className="mt-4 text-h2 text-ink-900">Un transport premium à {location.name}</h2>
+              <div className="prose-content mt-6 max-w-none">
+                {location.context.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
                 ))}
-              </ul>
-            </div>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <div className="rounded-[var(--radius-lg)] border border-ink-900/10 bg-white p-7 shadow-card sm:p-8">
+                <h3 className="font-serif text-xl text-ink-900">Vos besoins de transport</h3>
+                <ul className="mt-6 space-y-4">
+                  {location.needs.map((need) => (
+                    <li
+                      key={need}
+                      className="flex items-start gap-3.5 text-sm leading-relaxed text-ink-800/85"
+                    >
+                      <span className="mt-0.5 inline-grid h-7 w-7 shrink-0 place-items-center rounded-full bg-champagne/15 text-champagne-dark">
+                        <Check className="h-4 w-4" aria-hidden strokeWidth={2} />
+                      </span>
+                      {need}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>
@@ -111,20 +123,22 @@ export default async function ZonePage({ params }: Params) {
           <SectionHeading
             eyebrow="Principales destinations"
             title={`Au départ de ${location.name}`}
+            description={`Les trajets les plus demandés au départ de ${location.name}.`}
             tone="light"
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {location.destinations.map((dest) => (
-              <div
-                key={dest.label}
-                className="flex items-start gap-4 rounded-[var(--radius-lg)] border border-white/10 bg-ink-800/60 p-6"
-              >
-                <Navigation className="mt-0.5 h-5 w-5 shrink-0 text-champagne" aria-hidden strokeWidth={1.5} />
-                <div>
-                  <h3 className="font-serif text-lg text-white">{dest.label}</h3>
-                  <p className="mt-1 text-sm text-mist">{dest.detail}</p>
+            {location.destinations.map((dest, i) => (
+              <Reveal key={dest.label} delay={(i % 2) * 80}>
+                <div className="group flex h-full items-start gap-4 rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-6 transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:border-champagne/40 hover:bg-white/[0.07]">
+                  <span className="inline-grid h-11 w-11 shrink-0 place-items-center rounded-full bg-champagne/15 text-champagne">
+                    <Navigation className="h-5 w-5" aria-hidden strokeWidth={1.5} />
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-lg text-white">{dest.label}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-mist">{dest.detail}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -133,26 +147,31 @@ export default async function ZonePage({ params }: Params) {
       {/* Infos pratiques + services */}
       <section className="bg-cream py-20 sm:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="font-serif text-2xl text-ink-900">Informations pratiques</h2>
-              <ul className="mt-6 space-y-4">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <p className="eyebrow text-champagne-dark">Bon à savoir</p>
+              <h2 className="mt-4 text-h2 text-ink-900">Informations pratiques</h2>
+              <ul className="mt-7 space-y-4">
                 {location.practical.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink-800/80">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-champagne-dark" aria-hidden strokeWidth={1.5} />
+                  <li
+                    key={item}
+                    className="flex items-start gap-3.5 text-sm leading-relaxed text-ink-800/85"
+                  >
+                    <span className="mt-0.5 inline-grid h-7 w-7 shrink-0 place-items-center rounded-full bg-champagne/15 text-champagne-dark">
+                      <Check className="h-4 w-4" aria-hidden strokeWidth={2} />
+                    </span>
                     {item}
                   </li>
                 ))}
               </ul>
-              <div className="mt-8">
-                <Button href="#reservation" variant="dark">
-                  Réserver depuis {location.name}
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Button>
-              </div>
-            </div>
-            <div>
-              <h2 className="font-serif text-2xl text-ink-900">Nos services à {location.name}</h2>
+              <Button href="#reservation" variant="dark" className="mt-8">
+                Réserver depuis {location.name}
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
+            </Reveal>
+            <Reveal delay={100}>
+              <p className="eyebrow text-champagne-dark">Prestations</p>
+              <h3 className="mt-4 font-serif text-2xl text-ink-900">Nos services à {location.name}</h3>
               <div className="mt-6 grid gap-3">
                 {services.map((s) => (
                   <Link
@@ -160,12 +179,15 @@ export default async function ZonePage({ params }: Params) {
                     href={`/services/${s.slug}`}
                     className="group flex items-center justify-between gap-4 rounded-[var(--radius)] border border-ink-900/10 bg-white px-5 py-4 transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:border-champagne hover:shadow-card"
                   >
-                    <span className="font-medium text-ink-900">{s.name}</span>
-                    <ArrowRight className="h-4 w-4 text-ink-900/30 transition-colors group-hover:text-champagne-dark" aria-hidden />
+                    <span className="flex items-center gap-3">
+                      <Icon name={s.icon} className="h-5 w-5 text-champagne-dark" />
+                      <span className="font-medium text-ink-900">{s.name}</span>
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-ink-900/30 transition-colors group-hover:text-champagne-dark" aria-hidden />
                   </Link>
                 ))}
               </div>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>
@@ -184,7 +206,11 @@ export default async function ZonePage({ params }: Params) {
         <section className="bg-[#f7f4ef] py-20 sm:py-24">
           <Container>
             <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-              <SectionHeading eyebrow="Questions fréquentes" title={`Taxi à ${location.name}`} />
+              <SectionHeading
+                eyebrow="Questions fréquentes"
+                title={`Taxi à ${location.name}`}
+                description={`Les réponses aux questions les plus fréquentes sur le taxi à ${location.name}.`}
+              />
               <FAQAccordion items={location.faq} />
             </div>
           </Container>
@@ -194,17 +220,27 @@ export default async function ZonePage({ params }: Params) {
       {/* Autres zones */}
       <section className="bg-cream py-20 sm:py-24">
         <Container>
-          <SectionHeading eyebrow="Autres zones desservies" title="Nous intervenons aussi à proximité" />
+          <SectionHeading
+            eyebrow="Autres zones desservies"
+            title="Nous intervenons aussi à proximité"
+            description="Au départ de Chambourcy, nous rayonnons sur tout l’Ouest parisien et l’Île-de-France."
+          />
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((l) => (
-              <Link
-                key={l.slug}
-                href={`/zones/${l.slug}`}
-                className="group flex items-center justify-between gap-4 rounded-[var(--radius)] border border-ink-900/10 bg-white px-5 py-4 transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:border-champagne hover:shadow-card"
-              >
-                <span className="font-medium text-ink-900">{l.name}</span>
-                <ArrowRight className="h-4 w-4 text-ink-900/30 transition-colors group-hover:text-champagne-dark" aria-hidden />
-              </Link>
+            {others.map((l, i) => (
+              <Reveal key={l.slug} delay={(i % 3) * 60}>
+                <Link
+                  href={`/zones/${l.slug}`}
+                  className="group flex items-center justify-between gap-4 rounded-[var(--radius)] border border-ink-900/10 bg-white px-5 py-4 transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:border-champagne hover:shadow-card"
+                >
+                  <span>
+                    <span className="block font-serif text-lg text-ink-900">{l.name}</span>
+                    {l.postalCode && (
+                      <span className="text-xs text-ink-900/45">{l.postalCode}</span>
+                    )}
+                  </span>
+                  <ArrowUpRight className="h-5 w-5 shrink-0 text-ink-900/30 transition-colors group-hover:text-champagne-dark" aria-hidden />
+                </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
