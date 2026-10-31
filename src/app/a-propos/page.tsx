@@ -83,8 +83,8 @@ export default function AboutPage() {
           <div className="mx-auto mt-14 max-w-prose rounded-[var(--radius-lg)] border border-dashed border-ink-900/25 bg-white/60 p-6">
             <p className="eyebrow text-champagne-dark">À confirmer avant publication</p>
             <p className="mt-3 text-sm leading-relaxed text-ink-800/70">
-              Le récit ci-dessus s’appuie sur des éléments publics (avis clients). Merci de le valider
-              et de compléter les points suivants avec les informations réelles :
+              Quelques points restent à compléter avec les informations réelles avant la mise en
+              ligne :
             </p>
             <ul className="mt-4 space-y-2 text-sm text-ink-800/75">
               <li>• Détails de la reprise (date, parcours de l’exploitant actuel)</li>
