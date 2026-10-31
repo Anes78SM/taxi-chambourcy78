@@ -86,12 +86,19 @@ export const siteConfig = {
    * Ne jamais inventer de SIRET, de licence ou de numéro professionnel.
    */
   legal: {
-    legalName: '', // Raison sociale — À COMPLÉTER
-    operatorName: '', // Nom de l'exploitant — À COMPLÉTER
-    siret: '', // À COMPLÉTER
-    vatNumber: '', // À COMPLÉTER le cas échéant
-    licenseNumber: '', // Numéro d'autorisation de stationnement / licence — À COMPLÉTER
-    rcs: '', // À COMPLÉTER
+    legalName: 'CLUB BUSINESS TAXI PARIS',
+    legalForm: 'Société par actions simplifiée à associé unique (SASU)',
+    capital: '200,00 €',
+    rcs: '108 434 416 R.C.S. Paris',
+    siren: '108 434 416',
+    euid: 'FR7501.108434416',
+    registrationDate: '10/08/2026',
+    // Siège social (distinct de la zone d'exploitation à Chambourcy).
+    headquarters: '111 avenue Victor Hugo, 75016 Paris',
+    operatorName: '', // Représentant légal — À COMPLÉTER si vous souhaitez l'afficher
+    siret: '', // SIRET complet (14 chiffres) — À COMPLÉTER (SIREN connu : 108 434 416)
+    vatNumber: '', // N° de TVA intracommunautaire — À COMPLÉTER le cas échéant
+    licenseNumber: '', // Autorisation de stationnement (taxi) — À COMPLÉTER
   },
 
   /** Image Open Graph par défaut (aperçu lors du partage de liens). */

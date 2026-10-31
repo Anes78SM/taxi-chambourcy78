@@ -95,6 +95,7 @@ export function localBusinessSchema() {
     '@type': 'LocalBusiness',
     '@id': BUSINESS_ID,
     name: siteConfig.name,
+    ...(siteConfig.legal.legalName ? { legalName: siteConfig.legal.legalName } : {}),
     ...(googleBusiness.name && googleBusiness.name !== siteConfig.name
       ? { alternateName: googleBusiness.name }
       : {}),

@@ -17,7 +17,7 @@ function Value({ value, placeholder }: { value: string; placeholder: string }) {
 }
 
 export default function LegalPage() {
-  const { legal, contact, address } = siteConfig;
+  const { legal, contact } = siteConfig;
   return (
     <>
       <PageHero
@@ -31,36 +31,54 @@ export default function LegalPage() {
       <section className="bg-cream py-20 sm:py-24">
         <Container>
           <div className="mx-auto max-w-prose">
-            <div className="mb-10 rounded-[var(--radius)] border border-dashed border-ink-900/25 bg-white/60 p-5 text-sm text-ink-800/70">
-              ⚠️ Modèle à compléter impérativement avant publication avec les informations réelles
-              de l’entreprise. Les champs entre crochets sont des emplacements à renseigner. Aucune
-              information légale ne doit être inventée.
+            <div className="mb-10 rounded-[var(--radius)] border border-ink-900/10 bg-white/60 p-5 text-sm text-ink-800/70">
+              Informations de la société éditrice. Quelques champs complémentaires (SIRET complet,
+              autorisation de stationnement) restent à renseigner — ils sont signalés entre crochets.
             </div>
 
             <div className="prose-content max-w-none">
               <h2>Éditeur du site</h2>
               <p>
-                Raison sociale : <Value value={legal.legalName} placeholder="Raison sociale à compléter" />
+                Ce site, exploité sous le nom commercial «&nbsp;{siteConfig.name}&nbsp;», est édité
+                par :
                 <br />
-                Exploitant : <Value value={legal.operatorName} placeholder="Nom de l’exploitant à compléter" />
+                <strong>{legal.legalName}</strong>
                 <br />
-                Adresse : <Value value={address.street} placeholder="Adresse à compléter" />, {address.postalCode}{' '}
-                {address.city}
+                {legal.legalForm} au capital de {legal.capital}
                 <br />
-                Téléphone : <Value value={contact.phone} placeholder="Téléphone à compléter" />
+                Siège social : {legal.headquarters}
+                <br />
+                Téléphone : {contact.phone}
                 <br />
                 E-mail : {contact.email}
+                {legal.operatorName ? (
+                  <>
+                    <br />
+                    Représentant légal : {legal.operatorName}
+                  </>
+                ) : null}
               </p>
 
               <h2>Informations professionnelles</h2>
               <p>
-                SIRET : <Value value={legal.siret} placeholder="SIRET à compléter" />
+                {legal.rcs}
                 <br />
-                RCS : <Value value={legal.rcs} placeholder="RCS à compléter" />
+                SIREN : {legal.siren}
                 <br />
-                Numéro de TVA : <Value value={legal.vatNumber} placeholder="TVA à compléter le cas échéant" />
+                Identifiant européen (EUID) : {legal.euid}
                 <br />
-                Autorisation / licence : <Value value={legal.licenseNumber} placeholder="Numéro d’autorisation à compléter" />
+                Date d’immatriculation : {legal.registrationDate}
+                <br />
+                SIRET : <Value value={legal.siret} placeholder="SIRET complet à compléter" />
+                <br />
+                N° de TVA intracommunautaire :{' '}
+                <Value value={legal.vatNumber} placeholder="à compléter le cas échéant" />
+                <br />
+                Autorisation de stationnement (taxi) :{' '}
+                <Value value={legal.licenseNumber} placeholder="à compléter" />
+              </p>
+              <p className="text-sm text-ink-800/65">
+                Activité de taxi exploitée en {siteConfig.serviceArea}.
               </p>
 
               <h2>Hébergement</h2>

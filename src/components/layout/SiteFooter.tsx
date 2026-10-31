@@ -102,7 +102,7 @@ export function SiteFooter() {
             © {year} {siteConfig.name}. Tous droits réservés.
           </p>
           <p className="max-w-md sm:text-right">
-            Informations légales et professionnelles à compléter avant publication.
+            Édité par {siteConfig.legal.legalName} · {siteConfig.legal.rcs}
           </p>
         </div>
       </Container>
