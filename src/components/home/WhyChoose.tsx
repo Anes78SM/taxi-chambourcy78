@@ -7,17 +7,17 @@ const pillars = [
   {
     icon: UserRound,
     title: 'Accueil personnalisé',
-    description: 'Une prise en charge adaptée à votre trajet et à vos préférences.',
+    description: 'Anes vous accueille et adapte chaque trajet à vos préférences.',
   },
   {
     icon: Gem,
     title: 'Confort et discrétion',
-    description: 'Un service pensé pour vos déplacements les plus exigeants.',
+    description: 'Véhicule BMW spacieux, bouteille d’eau offerte et trajets discrets, pour voyager au calme.',
   },
   {
     icon: Clock,
     title: 'Organisation soignée',
-    description: 'Planifiez vos transferts en toute simplicité, l’esprit tranquille.',
+    description: 'Réservez à l’avance : votre chauffeur vous attend à l’heure, bagages compris.',
   },
   {
     icon: MapPin,

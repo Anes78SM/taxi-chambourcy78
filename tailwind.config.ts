@@ -18,7 +18,9 @@ const config: Config = {
         champagne: {
           DEFAULT: '#D8B98B',
           light: '#E7CFA8',
-          dark: '#B8986A',
+          // Assombri pour le contraste AA du texte sur fond clair (eyebrows, liens) :
+          // ~4,7:1 sur crème, ~5,3:1 sur blanc.
+          dark: '#876634',
         },
         cream: '#F4F0E9',
         mist: '#A9ADB0',

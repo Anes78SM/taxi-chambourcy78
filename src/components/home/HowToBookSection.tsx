@@ -21,7 +21,7 @@ export function HowToBookSection({ city = 'Chambourcy' }: { city?: string }) {
         <SectionHeading
           eyebrow="Réserver"
           title={`Comment commander un taxi à ${city} ?`}
-          description="Pour un trajet immédiat comme pour un départ programmé, transmettez-nous vos informations. Ensuite, nous organisons la prise en charge à l’adresse de votre choix. Puis nous revenons vers vous pour confirmer."
+          description="Pour un trajet immédiat comme pour un départ programmé, transmettez-nous vos informations : nous organisons la prise en charge à l’adresse de votre choix, puis revenons vers vous pour confirmer."
           tone="light"
         />
 

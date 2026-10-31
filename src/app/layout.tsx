@@ -61,10 +61,16 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const turnstileEnabled = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${serif.variable} ${sans.variable}`}>
       <body>
+        {/* Anti-spam Turnstile : préconnexion pour accélérer le chargement du widget (LCP). */}
+        {turnstileEnabled && (
+          <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="anonymous" />
+        )}
         <JsonLd data={siteGraph()} />
         <a
           href="#contenu"

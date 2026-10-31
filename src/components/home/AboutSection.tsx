@@ -15,13 +15,12 @@ export function AboutSection() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-800/75">
               <p>
-                Pour vos déplacements privés et professionnels, nous soignons d’abord la qualité
-                de l’accueil. En effet, l’attention aux détails et la simplicité de réservation
-                font toute la différence.
+                Pour vos déplacements privés et professionnels, Anes soigne la qualité de
+                l’accueil, l’attention aux détails et la simplicité de réservation.
               </p>
               <p>
-                Par ailleurs, nous partons de Chambourcy, Saint-Germain-en-Laye, Poissy et des
-                communes voisines, vers Paris et les aéroports d’Île-de-France.
+                Nous partons de Chambourcy, Saint-Germain-en-Laye, Poissy et des communes
+                voisines, vers Paris et les aéroports d’Île-de-France.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">

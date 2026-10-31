@@ -75,5 +75,7 @@ export function Turnstile({ onToken }: { onToken: (token: string) => void }) {
   }, [onToken]);
 
   if (!SITE_KEY) return null;
-  return <div ref={containerRef} className="mt-5 min-h-[65px]" aria-label="Vérification anti-spam" />;
+  // Conteneur de montage du widget : pas d'aria-label sur un <div> nu (ARIA invalide).
+  // Le widget Turnstile injecte son propre contenu accessible.
+  return <div ref={containerRef} className="mt-5 min-h-[65px]" />;
 }

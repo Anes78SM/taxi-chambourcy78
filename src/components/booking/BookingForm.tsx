@@ -337,7 +337,7 @@ export function BookingForm() {
           {status === 'submitting' ? 'Préparation…' : 'Réserver un trajet'}
           <ArrowRight className="h-4 w-4" aria-hidden />
         </button>
-        <span className="text-center text-xs text-ink-900/40">ou</span>
+        <span className="text-center text-xs text-ink-900/60">ou</span>
         <button
           type="button"
           onClick={handleWhatsApp}

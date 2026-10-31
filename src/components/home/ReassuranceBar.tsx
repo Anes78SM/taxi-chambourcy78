@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 const features = [
   { icon: Clock, label: 'Ponctualité\net sérénité' },
-  { icon: Gem, label: 'Service\nhaut de gamme' },
+  { icon: Gem, label: 'Véhicule BMW\nspacieux' },
   { icon: UserRound, label: 'Chauffeur\nprofessionnel' },
   { icon: ShieldCheck, label: 'Trajets discrets\net sécurisés' },
   { icon: Languages, label: 'Langues parlées\nFR · EN · ES' },

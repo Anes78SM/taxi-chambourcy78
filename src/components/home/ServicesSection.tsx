@@ -10,7 +10,7 @@ export function ServicesSection() {
       <Container>
         <SectionHeading
           eyebrow="Nos services"
-          title="Des solutions de transport pour tous vos déplacements"
+          title="Aéroport, pro ou privé : un taxi pour chaque trajet"
           tone="light"
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -7,7 +7,7 @@ export const services: Service[] = [
     title: 'Transferts aéroports au départ de Chambourcy',
     tagline: 'Roissy CDG, Orly et Le Bourget en toute sérénité',
     cardDescription:
-      'Roissy-Charles-de-Gaulle, Orly, Le Bourget et Beauvais. Une prise en charge organisée pour voyager l’esprit libre.',
+      'Roissy-Charles-de-Gaulle, Orly, Le Bourget et Beauvais. Forfait aéroport à prix fixe, convenu à l’avance.',
     icon: 'Plane',
     image: '/images/taxi_chambourcy_04_coffre.webp',
     imageAlt: 'Taxi à Chambourcy : coffre ouvert du break BMW avec une valise, prêt pour un transfert aéroport',
@@ -33,6 +33,7 @@ export const services: Service[] = [
       },
     ],
     practical: [
+      'Forfait aéroport à prix fixe possible : demandez votre tarif lors de la réservation.',
       'Réservation conseillée à l’avance, en particulier pour les vols tôt le matin.',
       'Précisez votre numéro de vol pour les retours : le point de rendez-vous est convenu ensemble.',
       'Le temps de trajet dépend du trafic ; les durées ne sont jamais garanties et sont estimées lors de la demande.',

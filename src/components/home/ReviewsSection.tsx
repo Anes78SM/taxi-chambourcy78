@@ -44,7 +44,7 @@ export function ReviewsSection() {
           <SectionHeading
             eyebrow="Avis clients"
             title="Ce que disent nos clients"
-            description="Des avis authentiques laissés sur notre fiche Google."
+            description="Anes a repris en 2026 l’activité de taxi de Romuald, salué ci-dessous par ses fidèles clients. Tous ces avis sont authentiques, publiés sur notre fiche Google."
             tone="light"
           />
           {hasLink ? (
