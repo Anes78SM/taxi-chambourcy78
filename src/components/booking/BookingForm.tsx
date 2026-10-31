@@ -7,7 +7,7 @@ import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
 type Errors = Partial<Record<keyof BookingInput, string>>;
-type Status = 'idle' | 'submitting' | 'ready' | 'error';
+type Status = 'idle' | 'submitting' | 'sent' | 'ready' | 'error';
 
 const todayISO = () => {
   const now = new Date();
@@ -48,7 +48,17 @@ export function BookingForm() {
 
   const field = (name: string) => `${formId}-${name}`;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  /** Repli : prépare un e-mail via « mailto: » et ouvre la messagerie du visiteur. */
+  function fallbackToMailto(data: BookingInput) {
+    const body = buildEmailBody(data);
+    const subject = `Demande de devis — ${data.depart} → ${data.arrivee}`;
+    const url = `${siteConfig.contact.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setMailtoUrl(url);
+    setStatus('ready');
+    window.location.href = url;
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (status === 'submitting') return;
     setStatus('submitting');
@@ -76,20 +86,31 @@ export function BookingForm() {
       }
       setErrors(fieldErrors);
       setStatus('error');
-      // Focus sur le premier champ en erreur
       const firstKey = parsed.error.issues[0]?.path[0];
       if (firstKey) document.getElementById(field(String(firstKey)))?.focus();
       return;
     }
 
     setErrors({});
-    const body = buildEmailBody(parsed.data);
-    const subject = `Demande de devis — ${parsed.data.depart} → ${parsed.data.arrivee}`;
-    const url = `${siteConfig.contact.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setMailtoUrl(url);
-    setStatus('ready');
-    // Ouvre le client e-mail de l'utilisateur (aucun envoi automatique côté serveur).
-    window.location.href = url;
+
+    // 1) Tentative d'envoi automatique via la route API (Resend).
+    // Le champ « consent » est ignoré côté serveur (schéma de validation dédié).
+    try {
+      const res = await fetch('/api/reservation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(parsed.data),
+      });
+      if (res.ok) {
+        setStatus('sent');
+        return;
+      }
+    } catch {
+      // Réseau indisponible : on bascule sur le repli mailto ci-dessous.
+    }
+
+    // 2) Repli : envoi automatique indisponible → préparation d'un e-mail mailto.
+    fallbackToMailto(parsed.data);
   }
 
   async function copySummary() {
@@ -101,6 +122,27 @@ export function BookingForm() {
     } catch {
       setCopied(false);
     }
+  }
+
+  if (status === 'sent') {
+    return (
+      <div className="rounded-[var(--radius-lg)] border border-ink-900/10 bg-white p-8 text-center shadow-card">
+        <CheckCircle2 className="mx-auto h-12 w-12 text-champagne-dark" aria-hidden strokeWidth={1.5} />
+        <h3 className="mt-4 font-serif text-2xl text-ink-900">Votre demande a bien été envoyée</h3>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-800/75">
+          Merci ! Votre demande de trajet nous a été transmise. Nous revenons vers vous dès que
+          possible pour confirmer les modalités et le tarif. Aucune réservation n’est encore
+          définitive à ce stade.
+        </p>
+        <button
+          type="button"
+          onClick={() => setStatus('idle')}
+          className="mt-6 text-xs text-ink-900/50 underline underline-offset-4 hover:text-ink-900"
+        >
+          Faire une nouvelle demande
+        </button>
+      </div>
+    );
   }
 
   if (status === 'ready') {
@@ -257,8 +299,8 @@ export function BookingForm() {
       </button>
 
       <p id={`${formId}-status`} role="status" className="mt-4 text-xs text-ink-800/60">
-        Le formulaire prépare votre demande par e-mail. Aucun paiement ni réservation automatique
-        n’est effectué, et aucune donnée n’est enregistrée sur le site.
+        Votre demande nous est transmise par e-mail. Aucun paiement n’est demandé et aucune
+        réservation n’est définitive à ce stade : nous vous recontactons pour confirmer.
       </p>
     </form>
   );
