@@ -43,18 +43,31 @@ export default function AboutPage() {
       <section className="bg-cream py-20 sm:py-24">
         <Container>
           <div className="prose-content mx-auto max-w-prose">
-            <h2>Notre approche</h2>
+            <h2>Une histoire de continuité</h2>
             <p>
-              {siteConfig.name} propose un service de taxi premium au départ de Chambourcy et des
-              communes voisines. Notre priorité est simple : vous offrir un transport soigné,
-              ponctuel et discret, que ce soit pour un transfert aéroport, un déplacement
-              professionnel ou un trajet privé.
+              {siteConfig.name} s’inscrit dans la continuité d’une activité de taxi reconnue à
+              Chambourcy et dans les Yvelines, appréciée depuis plus de quinze ans pour sa
+              ponctualité, son sérieux et sa discrétion.
             </p>
             <p>
-              Nous privilégions une relation directe et un échange clair avant chaque trajet, afin
-              que les modalités soient toujours comprises et confirmées. Aucune réservation n’est
-              validée automatiquement : vous êtes recontacté pour valider les détails de votre
-              demande.
+              Cette réputation, c’est Romuald qui l’a bâtie au fil des années, au service des
+              habitants comme des entreprises de la région. C’est aujourd’hui Anes qui reprend cette
+              activité, avec la même exigence et le même état d’esprit : un service premium, humain
+              et fiable.
+            </p>
+            <p>
+              L’essentiel ne change pas : une prise en charge ponctuelle, un véhicule impeccable, une
+              conduite sûre et une attention réelle portée à chaque client, du particulier au
+              professionnel.
+            </p>
+
+            <h2>Notre approche</h2>
+            <p>
+              Que ce soit pour un transfert aéroport, un déplacement professionnel ou un trajet
+              privé, notre priorité est simple : un transport soigné, ponctuel et discret. Nous
+              privilégions une relation directe et un échange clair avant chaque trajet, afin que les
+              modalités soient toujours comprises et confirmées — aucune réservation n’est validée
+              automatiquement.
             </p>
 
             <h2>Zones desservies</h2>
@@ -68,16 +81,15 @@ export default function AboutPage() {
 
           {/* Bloc informations à compléter — E-E-A-T */}
           <div className="mx-auto mt-14 max-w-prose rounded-[var(--radius-lg)] border border-dashed border-ink-900/25 bg-white/60 p-6">
-            <p className="eyebrow text-champagne-dark">Informations à compléter</p>
+            <p className="eyebrow text-champagne-dark">À confirmer avant publication</p>
             <p className="mt-3 text-sm leading-relaxed text-ink-800/70">
-              Pour renforcer la confiance et respecter les bonnes pratiques éditoriales, cette page
-              doit être complétée, avant publication, avec les informations réelles de l’entreprise :
+              Le récit ci-dessus s’appuie sur des éléments publics (avis clients). Merci de le valider
+              et de compléter les points suivants avec les informations réelles :
             </p>
             <ul className="mt-4 space-y-2 text-sm text-ink-800/75">
-              <li>• Identité de l’exploitant et expérience réelle</li>
+              <li>• Détails de la reprise (date, parcours de l’exploitant actuel)</li>
               <li>• Présentation du véhicule réellement exploité (avec photos authentiques)</li>
-              <li>• Engagements de service vérifiables</li>
-              <li>• Coordonnées professionnelles et informations légales (voir mentions légales)</li>
+              <li>• Informations légales : raison sociale, SIRET, licence (voir mentions légales)</li>
             </ul>
             <p className="mt-4 text-xs text-ink-800/55">
               Ces éléments ne doivent jamais être inventés : seules des informations vérifiées
