@@ -49,6 +49,8 @@ export const siteConfig = {
     country: 'France',
     // Adresse réelle (fiche Google).
     street: '5 Place de la Mairie',
+    // Coordonnées géographiques (approximatives — à affiner si besoin).
+    geo: { latitude: 48.898, longitude: 2.043 },
   },
 
   /** Zone principale décrite sur le site (conforme à la réalité de l'exploitation). */

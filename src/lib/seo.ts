@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
+import { googleBusiness } from '@/data/reviews';
 import type { FaqItem } from '@/types';
 
 export const absoluteUrl = (path = ''): string =>
@@ -56,43 +57,96 @@ export function buildMetadata({
 
 /* ---------------------------------------------------------------------------
  * Données structurées (JSON-LD)
+ *
  * Elles doivent toujours refléter le contenu réellement visible.
- * Aucune note, étoile ou avis n'est ajouté tant qu'il n'est pas vérifié.
+ * Entité centrale unique (LocalBusiness) identifiée par @id, référencée par
+ * les autres schémas (provider / publisher) pour former un graphe cohérent.
  * ------------------------------------------------------------------------- */
 
-export function organizationSchema() {
+/** Identifiants stables des entités (ancrés sur l'URL du site). */
+export const BUSINESS_ID = `${siteConfig.url}/#business`;
+export const WEBSITE_ID = `${siteConfig.url}/#website`;
+
+/** Téléphone au format E.164 (ex. +33607296667) à partir du lien tel:. */
+function phoneE164(): string {
+  return siteConfig.contact.phoneHref.replace(/^tel:/, '');
+}
+
+/** Entité principale : l'entreprise locale (taxi). */
+export function localBusinessSchema() {
+  const { address, contact } = siteConfig;
+  const sameAs = [
+    googleBusiness.url,
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
+    siteConfig.social.linkedin,
+  ].filter(Boolean);
+
+  const isRealPhone = contact.phone.length > 0 && !contact.phone.includes('00 00 00');
+
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'LocalBusiness',
+    '@id': BUSINESS_ID,
     name: siteConfig.name,
+    ...(googleBusiness.name && googleBusiness.name !== siteConfig.name
+      ? { alternateName: googleBusiness.name }
+      : {}),
+    description: siteConfig.description,
     url: siteConfig.url,
-    ...(siteConfig.contact.phone.includes('00 00 00')
-      ? {}
-      : { telephone: siteConfig.contact.phone }),
-    email: siteConfig.contact.email,
-    areaServed: siteConfig.serviceArea,
+    image: absoluteUrl(siteConfig.ogImage),
+    ...(isRealPhone ? { telephone: phoneE164() } : {}),
+    ...(contact.email ? { email: contact.email } : {}),
     address: {
       '@type': 'PostalAddress',
-      addressLocality: siteConfig.address.city,
-      postalCode: siteConfig.address.postalCode,
-      addressRegion: siteConfig.address.region,
+      ...(address.street ? { streetAddress: address.street } : {}),
+      addressLocality: address.city,
+      postalCode: address.postalCode,
+      addressRegion: address.region,
       addressCountry: 'FR',
     },
+    ...(address.geo
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: address.geo.latitude,
+            longitude: address.geo.longitude,
+          },
+        }
+      : {}),
+    areaServed: siteConfig.serviceArea,
+    // Note moyenne réelle issue de la fiche Google (reflète le contenu visible).
+    ...(googleBusiness.reviewCount > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: googleBusiness.rating,
+            reviewCount: googleBusiness.reviewCount,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
+    ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }
 
-export function localTaxiServiceSchema() {
+/** Entité site web (nom du site). */
+export function websiteSchema() {
+  return {
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    inLanguage: 'fr-FR',
+    publisher: { '@id': BUSINESS_ID },
+  };
+}
+
+/** Graphe global injecté sur toutes les pages (layout). */
+export function siteGraph() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'TaxiService',
-    name: siteConfig.name,
-    provider: {
-      '@type': 'Organization',
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
-    areaServed: siteConfig.serviceArea,
-    url: siteConfig.url,
+    '@graph': [localBusinessSchema(), websiteSchema()],
   };
 }
 
@@ -105,11 +159,7 @@ export function serviceSchema(args: { name: string; description: string; url: st
     description: args.description,
     url: args.url,
     areaServed: siteConfig.serviceArea,
-    provider: {
-      '@type': 'Organization',
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
+    provider: { '@id': BUSINESS_ID },
   };
 }
 
@@ -143,11 +193,7 @@ export function blogPostingSchema(args: {
     datePublished: args.datePublished,
     dateModified: args.dateModified ?? args.datePublished,
     author: { '@type': 'Person', name: args.author },
-    publisher: {
-      '@type': 'Organization',
-      name: siteConfig.name,
-      url: siteConfig.url,
-    },
+    publisher: { '@id': BUSINESS_ID },
     image: args.image.startsWith('http') ? args.image : absoluteUrl(args.image),
     mainEntityOfPage: { '@type': 'WebPage', '@id': absoluteUrl(args.path) },
   };
