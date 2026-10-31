@@ -216,6 +216,7 @@ export function BookingForm() {
             id={field('depart')}
             name="depart"
             placeholder="Adresse, hôtel, aéroport…"
+            geolocate
           />
         </Field>
         <Field id={field('arrivee')} name="arrivee" label="Destination" error={errors.arrivee}>
