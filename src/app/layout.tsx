@@ -37,7 +37,10 @@ export const metadata: Metadata = {
     'taxi Yvelines',
     'taxi Paris Ouest',
   ],
-  alternates: { canonical: '/' },
+  alternates: {
+    canonical: '/',
+    languages: { 'fr-FR': '/', 'x-default': '/' },
+  },
   openGraph: {
     type: 'website',
     locale: siteConfig.locale,

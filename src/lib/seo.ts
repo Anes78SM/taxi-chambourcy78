@@ -37,7 +37,11 @@ export function buildMetadata({
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      // Site monolingue : auto-référencement fr-FR + x-default (ignoré sur les pages noindex).
+      ...(noindex ? {} : { languages: { 'fr-FR': url, 'x-default': url } }),
+    },
     robots: noindex ? { index: false, follow: false } : undefined,
     openGraph: {
       title,
