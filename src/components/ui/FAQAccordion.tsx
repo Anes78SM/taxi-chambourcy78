@@ -53,13 +53,21 @@ export function FAQAccordion({ items, tone = 'dark' }: FAQAccordionProps) {
               id={panelId}
               role="region"
               aria-labelledby={buttonId}
-              hidden={!isOpen}
               className={cn(
-                'pb-6 pr-8 text-sm leading-relaxed',
-                isDarkBg ? 'text-mist' : 'text-ink-800/75',
+                'grid transition-[grid-template-rows] duration-300 ease-premium',
+                isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
               )}
             >
-              {item.answer}
+              <div className="overflow-hidden">
+                <p
+                  className={cn(
+                    'pb-6 pr-8 text-sm leading-relaxed',
+                    isDarkBg ? 'text-mist' : 'text-ink-800/75',
+                  )}
+                >
+                  {item.answer}
+                </p>
+              </div>
             </div>
           </div>
         );

@@ -7,7 +7,7 @@ import type { Service } from '@/types';
 export function ServiceCard({ service }: { service: Service }) {
   const href = `/services/${service.slug}`;
   return (
-    <article className="group relative min-h-[360px] overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-ink-700">
+    <article className="group relative min-h-[360px] overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-ink-700 transition-all duration-300 ease-premium hover:-translate-y-1 hover:border-champagne/35">
       <Image
         src={service.image}
         alt={service.imageAlt}
