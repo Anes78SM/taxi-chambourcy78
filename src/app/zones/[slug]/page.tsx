@@ -77,6 +77,9 @@ export default async function ZonePage({ params }: Params) {
       {/* Ils nous font confiance */}
       <ClientsSection />
 
+      {/* Réserver un taxi à {ville} */}
+      <BookingSection city={location.name} />
+
       {/* Contexte + besoins */}
       <section className="bg-cream py-20 sm:py-24">
         <Container>
@@ -166,9 +169,6 @@ export default async function ZonePage({ params }: Params) {
           </div>
         </Container>
       </section>
-
-      {/* Réserver un taxi à {ville} */}
-      <BookingSection city={location.name} />
 
       {/* Comment commander */}
       <HowToBookSection city={location.name} />
