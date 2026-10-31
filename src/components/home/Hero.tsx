@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Clock, Gem, UserRound, ShieldCheck, MapPin } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { Marquee } from '@/components/ui/Marquee';
 import { googleBusiness } from '@/data/reviews';
 
 const features = [
@@ -71,13 +72,32 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* Barre de réassurance : dans le flux en mobile, épinglée en bas sur desktop */}
+      {/* Barre de réassurance : bandeau défilant en mobile/tablette, rangée alignée sur desktop */}
       <div className="relative z-10 border-t border-white/12 bg-ink-900/70 backdrop-blur-sm lg:absolute lg:inset-x-0 lg:bottom-0 lg:bg-ink-900/55">
-        <Container>
-          <ul className="grid grid-cols-2 gap-5 py-5 sm:grid-cols-3 lg:flex lg:items-center lg:justify-between lg:gap-8">
+        {/* Mobile & tablette : bandeau défilant (évite tout chevauchement) */}
+        <Marquee className="py-4 lg:hidden" durationSec={28} gap="2.75rem" ariaLabel="Nos atouts">
+          {features.map(({ icon: FeatureIcon, label }) => (
+            <span key={label} className="flex shrink-0 items-center gap-2.5 text-xs text-cream/90">
+              <FeatureIcon
+                className="h-5 w-5 shrink-0 text-champagne"
+                aria-hidden
+                strokeWidth={1.5}
+              />
+              <span className="whitespace-nowrap">{label.replace(/\n/g, ' ')}</span>
+            </span>
+          ))}
+        </Marquee>
+
+        {/* Desktop : rangée alignée */}
+        <Container className="hidden lg:block">
+          <ul className="flex items-center justify-between gap-8 py-5">
             {features.map(({ icon: FeatureIcon, label }) => (
               <li key={label} className="flex items-center gap-3 text-xs leading-tight text-cream/90">
-                <FeatureIcon className="h-5 w-5 shrink-0 text-champagne" aria-hidden strokeWidth={1.5} />
+                <FeatureIcon
+                  className="h-5 w-5 shrink-0 text-champagne"
+                  aria-hidden
+                  strokeWidth={1.5}
+                />
                 <span className="whitespace-pre-line">{label}</span>
               </li>
             ))}
