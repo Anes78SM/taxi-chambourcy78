@@ -88,8 +88,8 @@ export const siteConfig = {
     rcs: '', // À COMPLÉTER
   },
 
-  /** Image Open Graph par défaut (à fournir dans /public). */
-  ogImage: '/images/branding/og-default.jpg',
+  /** Image Open Graph par défaut (aperçu lors du partage de liens). */
+  ogImage: '/images/branding/og-default.webp',
 } as const;
 
 export type SiteConfig = typeof siteConfig;

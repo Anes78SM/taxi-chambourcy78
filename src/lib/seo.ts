@@ -46,7 +46,7 @@ export function buildMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImage, width: 1672, height: 941, alt: title }],
       ...(type === 'article' ? { publishedTime, modifiedTime } : {}),
     },
     twitter: {
