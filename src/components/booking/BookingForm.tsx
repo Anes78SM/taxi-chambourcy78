@@ -271,7 +271,7 @@ export function BookingForm() {
           <input
             type="checkbox"
             name="consent"
-            className="mt-0.5 h-4 w-4 shrink-0 accent-[color:var(--champagne-dark)]"
+            className="mt-0.5 h-5 w-5 shrink-0 accent-[color:var(--champagne-dark)]"
           />
           <span>
             J’accepte que mes informations soient utilisées pour traiter ma demande de trajet.

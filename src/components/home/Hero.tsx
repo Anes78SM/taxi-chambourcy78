@@ -14,7 +14,7 @@ const features = [
 
 export function Hero() {
   return (
-    <section id="accueil" className="relative flex min-h-[760px] items-center overflow-hidden bg-ink-900 pt-[88px] text-white">
+    <section id="accueil" className="relative overflow-hidden bg-ink-900 pt-[88px] text-white lg:flex lg:min-h-[760px] lg:items-center">
       {/* Image de fond */}
       <div className="absolute inset-0" aria-hidden>
         <Image
@@ -38,7 +38,7 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 py-24">
+      <Container className="relative z-10 py-12 sm:py-16 lg:py-24">
         <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
         <h1 className="mt-5 max-w-3xl text-display">Votre taxi premium à Chambourcy</h1>
         <p className="mt-4 text-sm font-semibold tracking-[0.2em] text-champagne/90">
@@ -71,8 +71,8 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* Barre de réassurance */}
-      <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/12 bg-ink-900/55 backdrop-blur-sm">
+      {/* Barre de réassurance : dans le flux en mobile, épinglée en bas sur desktop */}
+      <div className="relative z-10 border-t border-white/12 bg-ink-900/70 backdrop-blur-sm lg:absolute lg:inset-x-0 lg:bottom-0 lg:bg-ink-900/55">
         <Container>
           <ul className="grid grid-cols-2 gap-5 py-5 sm:grid-cols-3 lg:flex lg:items-center lg:justify-between lg:gap-8">
             {features.map(({ icon: FeatureIcon, label }) => (

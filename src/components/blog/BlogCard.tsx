@@ -45,7 +45,7 @@ export function BlogCard({ post, priority = false }: BlogCardProps) {
           </time>
           <Link
             href={href}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-ink-900 transition-colors hover:text-champagne-dark"
+            className="inline-flex items-center gap-1 py-1 text-xs font-semibold text-ink-900 transition-colors hover:text-champagne-dark"
             aria-label={`Lire : ${frontmatter.title}`}
           >
             Lire

@@ -51,7 +51,7 @@ export function ReviewsSection() {
               href={googleBusiness.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 text-sm text-mist transition-colors hover:text-cream"
+              className="group flex items-center gap-3 py-1 text-sm text-mist transition-colors hover:text-cream"
             >
               <Stars rating={googleBusiness.rating} />
               <span>
