@@ -10,7 +10,7 @@ import { siteConfig, hasRealContact } from '@/config/site';
 export const metadata: Metadata = buildMetadata({
   title: 'Contact & réservation',
   description:
-    'Contactez Chambourcy Executive Taxi pour organiser votre trajet : transferts aéroports, déplacements professionnels et trajets privés en Île-de-France.',
+    `Contactez ${siteConfig.name} pour organiser votre trajet : transferts aéroports, déplacements professionnels et trajets privés en Île-de-France.`,
   path: '/contact',
 });
 

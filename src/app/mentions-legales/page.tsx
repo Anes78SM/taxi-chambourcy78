@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Mentions légales',
-  description: 'Mentions légales de Chambourcy Executive Taxi.',
+  description: `Mentions légales de ${siteConfig.name}.`,
   path: '/mentions-legales',
   noindex: true,
 });

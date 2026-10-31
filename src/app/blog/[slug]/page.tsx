@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     type: 'article',
     publishedTime: frontmatter.date,
     modifiedTime: frontmatter.updated ?? frontmatter.date,
+    absoluteTitle: true,
   });
 }
 

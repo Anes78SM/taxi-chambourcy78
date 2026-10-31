@@ -10,7 +10,7 @@ import { siteConfig } from '@/config/site';
 export const metadata: Metadata = buildMetadata({
   title: 'À propos',
   description:
-    'Chambourcy Executive Taxi : un service de transport premium à Chambourcy, pensé autour du confort, de la ponctualité et de la discrétion.',
+    `${siteConfig.name} : un service de transport premium à Chambourcy, pensé autour du confort, de la ponctualité et de la discrétion.`,
   path: '/a-propos',
 });
 

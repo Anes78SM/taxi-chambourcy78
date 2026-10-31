@@ -6,8 +6,8 @@ export type NavItem = {
 /** Navigation principale (header). */
 export const mainNav: NavItem[] = [
   { label: 'Accueil', href: '/' },
-  { label: 'Services', href: '/#services' },
-  { label: 'Destinations', href: '/#destinations' },
+  { label: 'Services', href: '/services' },
+  { label: 'Destinations', href: '/zones' },
   { label: 'Blog', href: '/blog' },
   { label: 'À propos', href: '/a-propos' },
   { label: 'Avis', href: '/#avis' },
@@ -31,7 +31,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { label: 'Taxi Chambourcy', href: '/zones/taxi-chambourcy' },
       { label: 'Taxi Saint-Germain-en-Laye', href: '/zones/taxi-saint-germain-en-laye' },
       { label: 'Taxi Poissy', href: '/zones/taxi-poissy' },
-      { label: 'Toutes les zones', href: '/#destinations' },
+      { label: 'Toutes les zones', href: '/zones' },
     ],
   },
   {

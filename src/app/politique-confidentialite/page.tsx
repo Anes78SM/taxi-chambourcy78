@@ -6,7 +6,7 @@ import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = buildMetadata({
   title: 'Politique de confidentialité',
-  description: 'Politique de confidentialité et traitement des données personnelles de Chambourcy Executive Taxi.',
+  description: `Politique de confidentialité et traitement des données personnelles de ${siteConfig.name}.`,
   path: '/politique-confidentialite',
   noindex: true,
 });

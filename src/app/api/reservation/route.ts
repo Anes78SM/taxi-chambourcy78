@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { bookingServerSchema, type BookingServerInput } from '@/lib/validations';
+import { siteConfig } from '@/config/site';
 
 /**
  * Route API de réservation — envoi automatique par e-mail (Resend).
@@ -47,7 +48,7 @@ function htmlBody(d: BookingServerInput): string {
   return `
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#121719">
     <h2 style="font-size:18px;margin:0 0 4px">Nouvelle demande de trajet</h2>
-    <p style="color:#626768;margin:0 0 20px">Reçue depuis le site Chambourcy Executive Taxi.</p>
+    <p style="color:#626768;margin:0 0 20px">Reçue depuis le site ${siteConfig.name}.</p>
     <table style="border-collapse:collapse;font-size:14px">
       ${row('Départ', d.depart)}
       ${row('Destination', d.arrivee)}

@@ -15,6 +15,8 @@ type BuildMetadataArgs = {
   publishedTime?: string;
   modifiedTime?: string;
   noindex?: boolean;
+  /** true : titre utilisé tel quel (sans le suffixe de marque), utile pour les titres déjà longs. */
+  absoluteTitle?: boolean;
 };
 
 /** Construit un objet Metadata Next.js cohérent pour une page. */
@@ -27,12 +29,13 @@ export function buildMetadata({
   publishedTime,
   modifiedTime,
   noindex,
+  absoluteTitle,
 }: BuildMetadataArgs): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image.startsWith('http') ? image : absoluteUrl(image);
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     robots: noindex ? { index: false, follow: false } : undefined,

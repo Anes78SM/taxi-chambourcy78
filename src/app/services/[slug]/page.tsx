@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!service) return {};
   return buildMetadata({
     title: service.title,
-    description: service.tagline + '. ' + service.cardDescription,
+    description: service.cardDescription,
     path: `/services/${service.slug}`,
     image: service.image,
   });
@@ -51,7 +51,7 @@ export default async function ServicePage({ params }: Params) {
           }),
           breadcrumbSchema([
             { name: 'Accueil', path: '/' },
-            { name: 'Services', path: '/#services' },
+            { name: 'Services', path: '/services' },
             { name: service.name, path },
           ]),
           faqSchema(service.faq),
@@ -64,7 +64,7 @@ export default async function ServicePage({ params }: Params) {
         description={service.tagline}
         crumbs={[
           { name: 'Accueil', path: '/' },
-          { name: 'Services', path: '/#services' },
+          { name: 'Services', path: '/services' },
           { name: service.name, path },
         ]}
       />

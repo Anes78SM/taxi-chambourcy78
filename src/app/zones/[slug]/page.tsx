@@ -49,7 +49,7 @@ export default async function ZonePage({ params }: Params) {
           }),
           breadcrumbSchema([
             { name: 'Accueil', path: '/' },
-            { name: 'Zones desservies', path: '/#destinations' },
+            { name: 'Zones desservies', path: '/zones' },
             { name: location.name, path },
           ]),
           faqSchema(location.faq),
@@ -62,7 +62,7 @@ export default async function ZonePage({ params }: Params) {
         description={location.tagline}
         crumbs={[
           { name: 'Accueil', path: '/' },
-          { name: 'Zones desservies', path: '/#destinations' },
+          { name: 'Zones desservies', path: '/zones' },
           { name: location.name, path },
         ]}
       />
