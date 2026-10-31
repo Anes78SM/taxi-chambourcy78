@@ -8,10 +8,13 @@
  * Ne jamais présenter ces valeurs comme réelles tant qu'elles n'ont pas été confirmées.
  */
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.chambourcy-executive-taxi.fr').replace(
-  /\/$/,
-  '',
-);
+/** Normalise une URL : ajoute https:// si le protocole manque et retire le slash final. */
+function normalizeUrl(value: string): string {
+  const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  return withProtocol.replace(/\/$/, '');
+}
+
+const siteUrl = normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://taxi-chambourcy.com');
 
 export const siteConfig = {
   /** Nom commercial affiché */
