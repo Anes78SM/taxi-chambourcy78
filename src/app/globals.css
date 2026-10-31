@@ -189,6 +189,45 @@
   transform: none;
 }
 
+/* ===========================================================================
+   Bandeau défilant (marquee) — logos & avis, avec fondu sur les côtés
+   =========================================================================== */
+.marquee {
+  --marquee-gap: 2.5rem;
+  --marquee-duration: 40s;
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--marquee-gap);
+  animation: marquee-scroll var(--marquee-duration) linear infinite;
+}
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+.marquee__group {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--marquee-gap);
+  align-items: stretch;
+}
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(calc(-50% - var(--marquee-gap) / 2));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -203,5 +242,14 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  /* Marquee : pas de défilement auto, mais défilement manuel possible */
+  .marquee__track {
+    animation: none;
+  }
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 }

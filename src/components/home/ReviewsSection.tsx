@@ -1,7 +1,7 @@
 import { Star, ExternalLink, PenLine } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Reveal } from '@/components/ui/Reveal';
+import { Marquee } from '@/components/ui/Marquee';
 import { reviews, googleBusiness } from '@/data/reviews';
 import { formatDate, cn } from '@/lib/utils';
 
@@ -37,7 +37,7 @@ export function ReviewsSection() {
   const hasLink = googleBusiness.url !== '';
 
   return (
-    <section id="avis" className="scroll-mt-24 bg-ink-800 py-20 text-white sm:py-24">
+    <section id="avis" className="scroll-mt-24 overflow-hidden bg-ink-800 py-20 text-white sm:py-24">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
@@ -68,43 +68,42 @@ export function ReviewsSection() {
             </div>
           )}
         </div>
+      </Container>
 
-        {/* Avis individuels (sélection) */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review, index) => (
-            <Reveal key={`${review.author}-${index}`} delay={(index % 3) * 90}>
-              <figure className="flex h-full flex-col rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-6">
-                <div className="flex items-center gap-3">
-                  <span className="inline-grid h-10 w-10 place-items-center rounded-full bg-champagne/15 text-sm font-semibold text-champagne">
-                    {initials(review.author)}
-                  </span>
-                  <div>
-                    <figcaption className="text-sm font-semibold text-white">
-                      {review.author}
-                    </figcaption>
-                    <span className="text-xs text-mist">
-                      {review.date
-                        ? formatDate(review.date)
-                        : (review.relativeTime ?? 'Avis Google')}
-                    </span>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <Stars rating={review.rating} />
-                </div>
-                <blockquote className="mt-4 flex-1 whitespace-pre-line text-sm leading-relaxed text-cream/85">
-                  “{review.text}”
-                </blockquote>
-                <span className="mt-5 text-[0.7rem] uppercase tracking-wide text-mist">
-                  Avis publié sur Google
+      {/* Avis en bandeau défilant */}
+      <Marquee className="mt-12" durationSec={70} gap="1.25rem" ariaLabel="Avis clients Google">
+        {reviews.map((review, index) => (
+          <figure
+            key={`${review.author}-${index}`}
+            className="flex w-[290px] shrink-0 flex-col rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-6 sm:w-[330px]"
+          >
+            <div className="flex items-center gap-3">
+              <span className="inline-grid h-10 w-10 place-items-center rounded-full bg-champagne/15 text-sm font-semibold text-champagne">
+                {initials(review.author)}
+              </span>
+              <div>
+                <figcaption className="text-sm font-semibold text-white">{review.author}</figcaption>
+                <span className="text-xs text-mist">
+                  {review.date ? formatDate(review.date) : (review.relativeTime ?? 'Avis Google')}
                 </span>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
+              </div>
+            </div>
+            <div className="mt-4">
+              <Stars rating={review.rating} />
+            </div>
+            <blockquote className="mt-4 line-clamp-5 flex-1 text-sm leading-relaxed text-cream/85">
+              “{review.text}”
+            </blockquote>
+            <span className="mt-5 text-[0.7rem] uppercase tracking-wide text-mist">
+              Avis publié sur Google
+            </span>
+          </figure>
+        ))}
+      </Marquee>
 
-        {/* Fiche Google en direct : carte Maps + note + CTA */}
-        <div className="mt-6 grid gap-5 lg:grid-cols-[1.35fr_0.65fr] lg:items-stretch">
+      {/* Fiche Google en direct : carte Maps + note + CTA */}
+      <Container>
+        <div className="mt-12 grid gap-5 lg:grid-cols-[1.35fr_0.65fr] lg:items-stretch">
           <div className="overflow-hidden rounded-[var(--radius-lg)] border border-white/10">
             <iframe
               src={googleBusiness.mapsEmbedUrl}
