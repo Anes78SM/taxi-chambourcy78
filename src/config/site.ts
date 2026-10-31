@@ -15,8 +15,8 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.chambourcy-exe
 
 export const siteConfig = {
   /** Nom commercial affiché */
-  name: 'Club Business Taxi',
-  shortName: 'Club Business',
+  name: 'Allo Chambourcy Taxi',
+  shortName: 'Allo Chambourcy',
   /** Baseline / slogan */
   tagline: 'Votre taxi premium à Chambourcy',
   description:

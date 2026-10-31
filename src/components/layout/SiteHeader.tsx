@@ -44,8 +44,8 @@ export function SiteHeader() {
             ⌁
           </span>
           <span className="leading-none">
-            <span className="block font-serif text-lg tracking-[0.12em] text-cream">CLUB BUSINESS</span>
-            <span className="mt-1 block text-[0.5rem] tracking-[0.32em] text-champagne/90">
+            <span className="block font-serif text-lg tracking-[0.12em] text-cream">ALLO CHAMBOURCY</span>
+            <span className="mt-1 block text-[0.5rem] tracking-[0.3em] text-champagne/90">
               TAXI
             </span>
           </span>
