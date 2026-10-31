@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
+import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { siteGraph } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="contenu">{children}</main>
         <SiteFooter />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

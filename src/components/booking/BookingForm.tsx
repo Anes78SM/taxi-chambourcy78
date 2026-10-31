@@ -1,10 +1,12 @@
 'use client';
 
-import { cloneElement, isValidElement, useId, useMemo, useState } from 'react';
+import { cloneElement, isValidElement, useId, useMemo, useRef, useState } from 'react';
 import { ArrowRight, CheckCircle2, Copy } from 'lucide-react';
 import { bookingSchema, type BookingInput } from '@/lib/validations';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
+import { WhatsAppIcon, whatsappUrl } from '@/components/ui/WhatsAppIcon';
+import { PaymentMethods } from '@/components/ui/PaymentMethods';
 
 type Errors = Partial<Record<keyof BookingInput, string>>;
 type Status = 'idle' | 'submitting' | 'sent' | 'ready' | 'error';
@@ -47,6 +49,48 @@ export function BookingForm() {
   const minDate = useMemo(todayISO, []);
 
   const field = (name: string) => `${formId}-${name}`;
+  const formRef = useRef<HTMLFormElement>(null);
+
+  /** Valide le formulaire ; renvoie les données ou null (et affiche les erreurs). */
+  function validateForm(form: HTMLFormElement): BookingInput | null {
+    const formData = new FormData(form);
+    const raw = {
+      depart: formData.get('depart'),
+      arrivee: formData.get('arrivee'),
+      date: formData.get('date'),
+      heure: formData.get('heure'),
+      passagers: formData.get('passagers'),
+      nom: formData.get('nom'),
+      telephone: formData.get('telephone'),
+      email: formData.get('email'),
+      message: formData.get('message') ?? '',
+      consent: formData.get('consent') === 'on',
+    };
+    const parsed = bookingSchema.safeParse(raw);
+    if (!parsed.success) {
+      const fieldErrors: Errors = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path[0] as keyof BookingInput;
+        if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      setStatus('error');
+      const firstKey = parsed.error.issues[0]?.path[0];
+      if (firstKey) document.getElementById(field(String(firstKey)))?.focus();
+      return null;
+    }
+    setErrors({});
+    return parsed.data;
+  }
+
+  /** Ouvre WhatsApp avec le récapitulatif du trajet pré-rempli. */
+  function handleWhatsApp() {
+    if (!formRef.current) return;
+    const data = validateForm(formRef.current);
+    if (!data) return;
+    const url = whatsappUrl(siteConfig.contact.whatsapp, buildEmailBody(data));
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
 
   /** Repli : prépare un e-mail via « mailto: » et ouvre la messagerie du visiteur. */
   function fallbackToMailto(data: BookingInput) {
@@ -61,37 +105,11 @@ export function BookingForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (status === 'submitting') return;
+
+    const data = validateForm(event.currentTarget);
+    if (!data) return;
+
     setStatus('submitting');
-
-    const formData = new FormData(event.currentTarget);
-    const raw = {
-      depart: formData.get('depart'),
-      arrivee: formData.get('arrivee'),
-      date: formData.get('date'),
-      heure: formData.get('heure'),
-      passagers: formData.get('passagers'),
-      nom: formData.get('nom'),
-      telephone: formData.get('telephone'),
-      email: formData.get('email'),
-      message: formData.get('message') ?? '',
-      consent: formData.get('consent') === 'on',
-    };
-
-    const parsed = bookingSchema.safeParse(raw);
-    if (!parsed.success) {
-      const fieldErrors: Errors = {};
-      for (const issue of parsed.error.issues) {
-        const key = issue.path[0] as keyof BookingInput;
-        if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
-      }
-      setErrors(fieldErrors);
-      setStatus('error');
-      const firstKey = parsed.error.issues[0]?.path[0];
-      if (firstKey) document.getElementById(field(String(firstKey)))?.focus();
-      return;
-    }
-
-    setErrors({});
 
     // 1) Tentative d'envoi automatique via la route API (Resend).
     // Le champ « consent » est ignoré côté serveur (schéma de validation dédié).
@@ -99,7 +117,7 @@ export function BookingForm() {
       const res = await fetch('/api/reservation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(parsed.data),
+        body: JSON.stringify(data),
       });
       if (res.ok) {
         setStatus('sent');
@@ -110,7 +128,7 @@ export function BookingForm() {
     }
 
     // 2) Repli : envoi automatique indisponible → préparation d'un e-mail mailto.
-    fallbackToMailto(parsed.data);
+    fallbackToMailto(data);
   }
 
   async function copySummary() {
@@ -185,6 +203,7 @@ export function BookingForm() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       noValidate
       aria-describedby={`${formId}-status`}
@@ -289,19 +308,32 @@ export function BookingForm() {
         )}
       </div>
 
-      <button
-        type="submit"
-        disabled={status === 'submitting'}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2.5 rounded-[var(--radius)] bg-ink-900 px-6 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:bg-ink-800 disabled:translate-y-0 disabled:opacity-60 sm:w-auto"
-      >
-        {status === 'submitting' ? 'Préparation…' : 'Demander un devis'}
-        <ArrowRight className="h-4 w-4" aria-hidden />
-      </button>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <button
+          type="submit"
+          disabled={status === 'submitting'}
+          className="inline-flex w-full items-center justify-center gap-2.5 rounded-[var(--radius)] bg-ink-900 px-6 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:bg-ink-800 disabled:translate-y-0 disabled:opacity-60 sm:w-auto"
+        >
+          {status === 'submitting' ? 'Préparation…' : 'Demander un devis'}
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </button>
+        <span className="text-center text-xs text-ink-900/40">ou</span>
+        <button
+          type="button"
+          onClick={handleWhatsApp}
+          className="inline-flex w-full items-center justify-center gap-2.5 rounded-[var(--radius)] bg-[#25D366] px-6 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:bg-[#1fab57] sm:w-auto"
+        >
+          <WhatsAppIcon className="h-5 w-5" />
+          Réserver sur WhatsApp
+        </button>
+      </div>
 
       <p id={`${formId}-status`} role="status" className="mt-4 text-xs text-ink-800/60">
-        Votre demande nous est transmise par e-mail. Aucun paiement n’est demandé et aucune
-        réservation n’est définitive à ce stade : nous vous recontactons pour confirmer.
+        Votre demande nous est transmise par e-mail ou WhatsApp. Aucun paiement n’est demandé et
+        aucune réservation n’est définitive à ce stade : nous vous recontactons pour confirmer.
       </p>
+
+      <PaymentMethods className="mt-5 border-t border-ink-900/8 pt-4" />
     </form>
   );
 }

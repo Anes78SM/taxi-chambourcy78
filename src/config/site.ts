@@ -39,6 +39,9 @@ export const siteConfig = {
     // E-mail de réservation (boîte de réception des demandes).
     email: 'taxichambourcy78@gmail.com',
     emailHref: 'mailto:taxichambourcy78@gmail.com',
+    // WhatsApp : numéro au format international sans "+" (pour les liens wa.me).
+    whatsapp: '33607296667',
+    whatsappHref: 'https://wa.me/33607296667',
   },
 
   /**

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { WhatsAppIcon, whatsappUrl } from '@/components/ui/WhatsAppIcon';
 import { PageHero } from '@/components/layout/PageHero';
 import { BookingForm } from '@/components/booking/BookingForm';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -52,6 +53,25 @@ export default function ContactPage() {
                     )}
                   </div>
                 </li>
+                {siteConfig.contact.whatsapp && (
+                  <li className="flex gap-4">
+                    <WhatsAppIcon className="mt-0.5 h-5 w-5 shrink-0 text-champagne-dark" />
+                    <div>
+                      <p className="font-semibold text-ink-900">WhatsApp</p>
+                      <a
+                        href={whatsappUrl(
+                          siteConfig.contact.whatsapp,
+                          'Bonjour, je souhaite obtenir des informations pour un trajet en taxi à Chambourcy.',
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ink-800/75 hover:text-ink-900"
+                      >
+                        Écrivez-nous sur WhatsApp
+                      </a>
+                    </div>
+                  </li>
+                )}
                 <li className="flex gap-4">
                   <Mail className="h-5 w-5 shrink-0 text-champagne-dark" aria-hidden strokeWidth={1.5} />
                   <div>

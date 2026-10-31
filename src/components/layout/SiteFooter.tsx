@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { WhatsAppIcon, whatsappUrl } from '@/components/ui/WhatsAppIcon';
+import { PaymentMethods } from '@/components/ui/PaymentMethods';
 import { footerNav } from '@/config/navigation';
 import { siteConfig, hasRealContact } from '@/config/site';
 
@@ -53,6 +55,19 @@ export function SiteFooter() {
                       {siteConfig.contact.email}
                     </a>
                   </li>
+                  {siteConfig.contact.whatsapp && (
+                    <li className="flex items-center gap-3">
+                      <WhatsAppIcon className="h-4 w-4 shrink-0 text-champagne" />
+                      <a
+                        href={whatsappUrl(siteConfig.contact.whatsapp)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-champagne"
+                      >
+                        WhatsApp
+                      </a>
+                    </li>
+                  )}
                 </>
               ) : (
                 <li className="flex items-center gap-3 text-mist">
@@ -80,7 +95,9 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
+        <PaymentMethods tone="light" className="mt-12 border-t border-white/10 pt-6" />
+
+        <div className="mt-6 flex flex-col gap-3 text-xs text-mist sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {siteConfig.name}. Tous droits réservés.
           </p>
