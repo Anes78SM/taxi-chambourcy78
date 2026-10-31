@@ -102,7 +102,7 @@ export function SiteFooter() {
             © {year} {siteConfig.name}. Tous droits réservés.
           </p>
           <p className="max-w-md sm:text-right">
-            Édité par {siteConfig.legal.legalName} · {siteConfig.legal.rcs}
+            Édité par {siteConfig.publisher.name} ({siteConfig.publisher.parentEntity})
           </p>
         </div>
       </Container>

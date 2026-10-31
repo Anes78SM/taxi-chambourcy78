@@ -40,7 +40,9 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
       { label: 'Mentions légales', href: '/mentions-legales' },
+      { label: 'CGV', href: '/cgv' },
       { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
+      { label: 'Politique de cookies', href: '/politique-cookies' },
     ],
   },
 ];

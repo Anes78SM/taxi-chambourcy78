@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Marquee } from '@/components/ui/Marquee';
 import { reviews, googleBusiness } from '@/data/reviews';
+import { GoogleMapEmbed } from '@/components/home/GoogleMapEmbed';
 import { formatDate, cn } from '@/lib/utils';
 
 function initials(name: string): string {
@@ -105,14 +106,7 @@ export function ReviewsSection() {
       <Container>
         <div className="mt-12 grid gap-5 lg:grid-cols-[1.35fr_0.65fr] lg:items-stretch">
           <div className="overflow-hidden rounded-[var(--radius-lg)] border border-white/10">
-            <iframe
-              src={googleBusiness.mapsEmbedUrl}
-              title={`Fiche Google — ${googleBusiness.name}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-              className="h-full min-h-[300px] w-full"
-            />
+            <GoogleMapEmbed className="h-full min-h-[300px] w-full" />
           </div>
 
           <div className="flex flex-col items-center justify-center rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-8 text-center">

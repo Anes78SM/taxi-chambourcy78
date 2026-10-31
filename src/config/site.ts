@@ -100,6 +100,21 @@ export const siteConfig = {
     vatNumber: '', // N° de TVA intracommunautaire — À COMPLÉTER le cas échéant
     licenseNumber: '', // Autorisation de stationnement (taxi) — N° ADS À COMPLÉTER
     stationZone: 'Chambourcy', // Commune de rattachement / zone de stationnement du taxi
+    adsAuthority: '', // Autorité ayant délivré l'ADS (commune / préfecture) — À COMPLÉTER
+    adsDate: '', // Date de délivrance de l'ADS — À COMPLÉTER
+    cardNumber: '', // N° de carte professionnelle de conducteur de taxi — À COMPLÉTER (facultatif)
+    cardPrefecture: '', // Préfecture de délivrance de la carte pro — À COMPLÉTER (facultatif)
+    mediatorName: '', // Médiateur de la consommation — nom — À COMPLÉTER
+    mediatorAddress: '', // Médiateur — adresse — À COMPLÉTER
+    mediatorUrl: '', // Médiateur — site internet — À COMPLÉTER
+    lastUpdated: '31 octobre 2026', // Dernière mise à jour des mentions légales
+  },
+
+  /** Éditeur du site (agence web) — distinct de l'exploitant du service de taxi. */
+  publisher: {
+    name: 'SEO Acquisition',
+    parentEntity: 'MeedWise SASU',
+    publicationDirector: 'Anes Smail',
   },
 
   /** Image Open Graph par défaut (aperçu lors du partage de liens). */
