@@ -4,6 +4,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp';
+import { FloatingCall } from '@/components/layout/FloatingCall';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { siteGraph } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="contenu">{children}</main>
         <SiteFooter />
         <FloatingWhatsApp />
+        <FloatingCall />
       </body>
     </html>
   );

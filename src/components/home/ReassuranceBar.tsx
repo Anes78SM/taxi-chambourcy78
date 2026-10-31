@@ -1,4 +1,4 @@
-import { Clock, Gem, UserRound, ShieldCheck, MapPin } from 'lucide-react';
+import { Clock, Gem, UserRound, ShieldCheck, MapPin, Languages } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Marquee } from '@/components/ui/Marquee';
 import { cn } from '@/lib/utils';
@@ -8,6 +8,7 @@ const features = [
   { icon: Gem, label: 'Service\nhaut de gamme' },
   { icon: UserRound, label: 'Chauffeur\nprofessionnel' },
   { icon: ShieldCheck, label: 'Trajets discrets\net sécurisés' },
+  { icon: Languages, label: 'Langues parlées\nFR · EN · ES' },
   { icon: MapPin, label: 'Chambourcy et\nÎle-de-France' },
 ];
 

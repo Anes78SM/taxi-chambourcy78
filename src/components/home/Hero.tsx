@@ -33,21 +33,27 @@ export function Hero() {
 
       <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pt-16">
         <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
-        <h1 className="mt-5 max-w-3xl text-display">
+        <h1
+          className="mt-4 max-w-3xl font-serif leading-[1.08] tracking-[-0.02em]"
+          style={{ fontSize: 'clamp(2rem, 4.6vw, 3.75rem)' }}
+        >
           Taxi Chambourcy <span className="text-champagne">(78)</span>
-          <span className="mt-4 block font-sans text-[clamp(1rem,2vw,1.4rem)] font-medium leading-snug tracking-normal text-cream/85">
+          <span className="mt-3 block font-sans text-[clamp(0.95rem,1.7vw,1.2rem)] font-medium leading-snug tracking-normal text-cream/85">
             Réservation, tarifs et transport 7j/7
           </span>
         </h1>
-        <p className="mt-4 text-sm font-semibold tracking-[0.2em] text-champagne/90">
+        <p className="mt-3 text-xs font-semibold tracking-[0.18em] text-champagne/90 sm:text-sm sm:tracking-[0.2em]">
           CONFORT · PONCTUALITÉ · DISCRÉTION
         </p>
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream/80">
+        <p className="mt-5 max-w-xl text-sm leading-relaxed text-cream/80 sm:max-w-2xl sm:text-[0.95rem]">
           Besoin d’un taxi à Chambourcy ? Anes vous prend en charge à domicile, au bureau ou à
           l’hôtel. Il vous conduit ainsi vers les gares, les aéroports de Paris et vos rendez-vous,
           7j/7. Indiquez simplement votre trajet et votre horaire : nous faisons le reste.
         </p>
-        <p className="mt-5 flex flex-wrap items-center gap-2 text-sm text-cream/90">
+        <a
+          href="#avis"
+          className="group mt-5 inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-cream/90 transition-colors hover:text-white"
+        >
           <span className="text-base tracking-widest text-champagne" aria-hidden>
             ★★★★★
           </span>
@@ -57,8 +63,11 @@ export function Hero() {
             </strong>{' '}
             · {googleBusiness.reviewCount} avis sur Google
           </span>
-        </p>
-        <div className="mt-9 flex flex-wrap gap-3">
+          <span className="font-semibold text-champagne underline underline-offset-2 transition-colors group-hover:text-champagne-light">
+            Voir les avis
+          </span>
+        </a>
+        <div className="mt-7 flex flex-wrap gap-3">
           <Button href="/#reservation" size="lg">
             Réserver votre trajet
             <ArrowRight className="h-4 w-4" aria-hidden />
