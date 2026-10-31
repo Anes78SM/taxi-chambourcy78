@@ -17,7 +17,7 @@ export function BookingSection({ city = 'Chambourcy' }: { city?: string }) {
       : `Commander un taxi à ${city} (78) prend quelques minutes. D’abord, choisissez une course immédiate ou un départ programmé. Ensuite, nous organisons la prise en charge à l’adresse de votre choix : domicile, bureau, hôtel, clinique ou rendez-vous. Ce service couvre ${city} et les communes voisines de l’Ouest parisien.`;
 
   return (
-    <section id="reservation" className="scroll-mt-24 bg-[#f7f4ef] py-20 sm:py-24">
+    <section className="bg-[#f7f4ef] py-20 sm:py-24">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
@@ -41,7 +41,9 @@ export function BookingSection({ city = 'Chambourcy' }: { city?: string }) {
               ))}
             </ul>
           </div>
-          <BookingForm />
+          <div id="reservation" className="scroll-mt-28">
+            <BookingForm />
+          </div>
         </div>
       </Container>
     </section>

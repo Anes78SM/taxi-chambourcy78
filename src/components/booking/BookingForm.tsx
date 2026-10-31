@@ -312,7 +312,7 @@ export function BookingForm() {
           disabled={status === 'submitting'}
           className="inline-flex w-full items-center justify-center gap-2.5 rounded-[var(--radius)] bg-ink-900 px-6 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:-translate-y-0.5 hover:bg-ink-800 disabled:translate-y-0 disabled:opacity-60 sm:w-auto"
         >
-          {status === 'submitting' ? 'Préparation…' : 'Demander un devis'}
+          {status === 'submitting' ? 'Préparation…' : 'Réserver un trajet'}
           <ArrowRight className="h-4 w-4" aria-hidden />
         </button>
         <span className="text-center text-xs text-ink-900/40">ou</span>
