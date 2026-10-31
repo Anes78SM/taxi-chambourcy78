@@ -4,6 +4,7 @@ import { ServicesSection } from '@/components/home/ServicesSection';
 import { WhyChoose } from '@/components/home/WhyChoose';
 import { DestinationsSection } from '@/components/home/DestinationsSection';
 import { AboutSection } from '@/components/home/AboutSection';
+import { ReviewsSection } from '@/components/home/ReviewsSection';
 import { BlogPreview } from '@/components/home/BlogPreview';
 import { FaqSection } from '@/components/home/FaqSection';
 import { CTASection } from '@/components/home/CTASection';
@@ -24,6 +25,7 @@ export default function HomePage() {
       <WhyChoose />
       <DestinationsSection />
       <AboutSection />
+      <ReviewsSection />
       <BlogPreview posts={posts} />
       <FaqSection items={homeFaq} />
       <CTASection />

@@ -19,10 +19,10 @@ export function SiteFooter() {
               </span>
               <span className="leading-none">
                 <span className="block font-serif text-lg tracking-[0.12em] text-cream">
-                  CHAMBOURCY
+                  CLUB BUSINESS
                 </span>
                 <span className="mt-1 block text-[0.5rem] tracking-[0.32em] text-champagne/90">
-                  EXECUTIVE TAXI
+                  TAXI
                 </span>
               </span>
             </Link>

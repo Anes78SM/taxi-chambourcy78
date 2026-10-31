@@ -10,6 +10,7 @@ export const mainNav: NavItem[] = [
   { label: 'Destinations', href: '/#destinations' },
   { label: 'Blog', href: '/blog' },
   { label: 'À propos', href: '/a-propos' },
+  { label: 'Avis', href: '/#avis' },
   { label: 'Contact', href: '/contact' },
 ];
 

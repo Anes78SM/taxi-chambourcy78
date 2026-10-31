@@ -15,8 +15,8 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.chambourcy-exe
 
 export const siteConfig = {
   /** Nom commercial affiché */
-  name: 'Chambourcy Executive Taxi',
-  shortName: 'Chambourcy Executive',
+  name: 'Club Business Taxi',
+  shortName: 'Club Business',
   /** Baseline / slogan */
   tagline: 'Votre taxi premium à Chambourcy',
   description:
@@ -30,12 +30,12 @@ export const siteConfig = {
    * À COMPLÉTER avec les informations réelles avant publication.
    */
   contact: {
-    // Numéro de démonstration — À REMPLACER par le numéro professionnel réel.
-    phone: '+33 6 00 00 00 00',
-    phoneHref: 'tel:+33600000000',
-    // E-mail de démonstration — À REMPLACER.
-    email: 'contact@chambourcy-executive-taxi.fr',
-    emailHref: 'mailto:contact@chambourcy-executive-taxi.fr',
+    // Numéro réel (fiche Google « Allo Chambourcy Taxi »).
+    phone: '06 07 29 66 67',
+    phoneHref: 'tel:+33607296667',
+    // E-mail de réservation (boîte de réception des demandes).
+    email: 'taxichambourcy78@gmail.com',
+    emailHref: 'mailto:taxichambourcy78@gmail.com',
   },
 
   /**
@@ -47,8 +47,8 @@ export const siteConfig = {
     postalCode: '78240',
     region: 'Yvelines',
     country: 'France',
-    // Adresse postale complète — À COMPLÉTER (laisser vide si elle ne doit pas être publiée).
-    street: '',
+    // Adresse réelle (fiche Google).
+    street: '5 Place de la Mairie',
   },
 
   /** Zone principale décrite sur le site (conforme à la réalité de l'exploitation). */
@@ -93,4 +93,4 @@ export const siteConfig = {
 export type SiteConfig = typeof siteConfig;
 
 /** Raccourci : le site est-il prêt à annoncer des coordonnées réelles ? */
-export const hasRealContact = false; // Passer à true une fois les coordonnées réelles renseignées.
+export const hasRealContact = true; // Coordonnées réelles renseignées (fiche Google).
