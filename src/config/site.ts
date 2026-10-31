@@ -115,6 +115,7 @@ export const siteConfig = {
     name: 'SEO Acquisition',
     parentEntity: 'MeedWise SASU',
     publicationDirector: 'Anes Smail',
+    url: 'https://seo-acquisition.com',
   },
 
   /** Image Open Graph par défaut (aperçu lors du partage de liens). */

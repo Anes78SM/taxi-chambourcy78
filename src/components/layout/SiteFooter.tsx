@@ -102,7 +102,16 @@ export function SiteFooter() {
             © {year} {siteConfig.name}. Tous droits réservés.
           </p>
           <p className="max-w-md sm:text-right">
-            Édité par {siteConfig.publisher.name} ({siteConfig.publisher.parentEntity})
+            Édité par{' '}
+            <a
+              href={siteConfig.publisher.url}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="underline underline-offset-2 hover:text-champagne"
+            >
+              {siteConfig.publisher.name}
+            </a>{' '}
+            ({siteConfig.publisher.parentEntity})
           </p>
         </div>
       </Container>

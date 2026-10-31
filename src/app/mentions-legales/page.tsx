@@ -49,7 +49,12 @@ export default function LegalPage() {
                 Ce site, exploité sous le nom commercial «&nbsp;{siteConfig.name}&nbsp;», est édité
                 par :
                 <br />
-                <strong>{publisher.name}</strong> (marque de {publisher.parentEntity}).
+                <strong>
+                  <a href={publisher.url} target="_blank" rel="nofollow noopener noreferrer">
+                    {publisher.name}
+                  </a>
+                </strong>{' '}
+                (marque de {publisher.parentEntity}).
               </p>
               <p>Responsable de la publication : {publisher.publicationDirector}.</p>
 
