@@ -6,21 +6,21 @@ import { Reveal } from '@/components/ui/Reveal';
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 
-const prepare = [
-  'L’adresse de départ à Chambourcy',
-  'La destination',
-  'La date et l’heure souhaitées',
-  'Le nombre de passagers et de bagages',
-  'Vos besoins particuliers (siège enfant, animal…)',
-];
+export function HowToBookSection({ city = 'Chambourcy' }: { city?: string }) {
+  const prepare = [
+    `L’adresse de départ à ${city}`,
+    'La destination',
+    'La date et l’heure souhaitées',
+    'Le nombre de passagers et de bagages',
+    'Vos besoins particuliers (siège enfant, animal…)',
+  ];
 
-export function HowToBookSection() {
   return (
     <section id="reserver" className="scroll-mt-24 bg-ink-900 py-20 text-cream sm:py-24">
       <Container>
         <SectionHeading
           eyebrow="Réserver"
-          title="Comment commander un taxi à Chambourcy ?"
+          title={`Comment commander un taxi à ${city} ?`}
           description="Pour un trajet immédiat comme pour un départ programmé, transmettez-nous vos informations. Ensuite, nous organisons la prise en charge à l’adresse de votre choix. Puis nous revenons vers vous pour confirmer."
           tone="light"
         />

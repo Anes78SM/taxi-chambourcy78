@@ -10,7 +10,12 @@ const types = [
   { icon: Sparkles, label: 'Trajets privés' },
 ];
 
-export function BookingSection() {
+export function BookingSection({ city = 'Chambourcy' }: { city?: string }) {
+  const description =
+    city === 'Chambourcy'
+      ? 'Commander un taxi à Chambourcy (78) prend quelques minutes. D’abord, choisissez une course immédiate ou un départ programmé. Ensuite, nous organisons la prise en charge à l’adresse de votre choix : domicile, bureau, hôtel, clinique ou rendez-vous. Ce service couvre Chambourcy, mais aussi les communes voisines comme Orgeval, Poissy, Saint-Germain-en-Laye, Aigremont, Fourqueux ou Mareil-Marly.'
+      : `Commander un taxi à ${city} (78) prend quelques minutes. D’abord, choisissez une course immédiate ou un départ programmé. Ensuite, nous organisons la prise en charge à l’adresse de votre choix : domicile, bureau, hôtel, clinique ou rendez-vous. Ce service couvre ${city} et les communes voisines de l’Ouest parisien.`;
+
   return (
     <section id="reservation" className="scroll-mt-24 bg-[#f7f4ef] py-20 sm:py-24">
       <Container>
@@ -18,8 +23,8 @@ export function BookingSection() {
           <div className="lg:sticky lg:top-28">
             <SectionHeading
               eyebrow="Réservation"
-              title="Réserver un taxi à Chambourcy (78)"
-              description="Commander un taxi à Chambourcy (78) prend quelques minutes. D’abord, choisissez une course immédiate ou un départ programmé. Ensuite, nous organisons la prise en charge à l’adresse de votre choix : domicile, bureau, hôtel, clinique ou rendez-vous. Ce service couvre Chambourcy, mais aussi les communes voisines comme Orgeval, Poissy, Saint-Germain-en-Laye, Aigremont, Fourqueux ou Mareil-Marly."
+              title={`Réserver un taxi à ${city} (78)`}
+              description={description}
             />
             <p className="mt-5 max-w-prose text-base leading-relaxed text-ink-800/70">
               De plus, nous vous communiquons une estimation du prix dès la réservation. En effet,

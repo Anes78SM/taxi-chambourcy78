@@ -1,17 +1,9 @@
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Clock, Gem, UserRound, ShieldCheck, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
-import { Marquee } from '@/components/ui/Marquee';
+import { ReassuranceBar } from '@/components/home/ReassuranceBar';
 import { googleBusiness } from '@/data/reviews';
-
-const features = [
-  { icon: Clock, label: 'Ponctualité\net sérénité' },
-  { icon: Gem, label: 'Service\nhaut de gamme' },
-  { icon: UserRound, label: 'Chauffeur\nprofessionnel' },
-  { icon: ShieldCheck, label: 'Trajets discrets\net sécurisés' },
-  { icon: MapPin, label: 'Chambourcy et\nÎle-de-France' },
-];
 
 export function Hero() {
   return (
@@ -78,38 +70,8 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* Barre de réassurance : bandeau défilant en mobile/tablette, rangée alignée sur desktop */}
-      <div className="relative z-10 border-t border-white/12 bg-ink-900/70 backdrop-blur-sm lg:mt-auto lg:bg-ink-900/55">
-        {/* Mobile & tablette : bandeau défilant (évite tout chevauchement) */}
-        <Marquee className="py-4 lg:hidden" durationSec={28} gap="2.75rem" ariaLabel="Nos atouts">
-          {features.map(({ icon: FeatureIcon, label }) => (
-            <span key={label} className="flex shrink-0 items-center gap-2.5 text-xs text-cream/90">
-              <FeatureIcon
-                className="h-5 w-5 shrink-0 text-champagne"
-                aria-hidden
-                strokeWidth={1.5}
-              />
-              <span className="whitespace-nowrap">{label.replace(/\n/g, ' ')}</span>
-            </span>
-          ))}
-        </Marquee>
-
-        {/* Desktop : rangée alignée */}
-        <Container className="hidden lg:block">
-          <ul className="flex items-center justify-between gap-8 py-5">
-            {features.map(({ icon: FeatureIcon, label }) => (
-              <li key={label} className="flex items-center gap-3 text-xs leading-tight text-cream/90">
-                <FeatureIcon
-                  className="h-5 w-5 shrink-0 text-champagne"
-                  aria-hidden
-                  strokeWidth={1.5}
-                />
-                <span className="whitespace-pre-line">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </div>
+      {/* Barre de réassurance (translucide, sur l'image, calée en bas sur desktop) */}
+      <ReassuranceBar className="bg-ink-900/70 backdrop-blur-sm lg:mt-auto lg:bg-ink-900/55" />
     </section>
   );
 }

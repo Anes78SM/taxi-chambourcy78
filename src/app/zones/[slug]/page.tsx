@@ -8,6 +8,12 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { FAQAccordion } from '@/components/ui/FAQAccordion';
 import { Button } from '@/components/ui/Button';
 import { CTASection } from '@/components/home/CTASection';
+import { ReassuranceBar } from '@/components/home/ReassuranceBar';
+import { ClientsSection } from '@/components/home/ClientsSection';
+import { BookingSection } from '@/components/home/BookingSection';
+import { HowToBookSection } from '@/components/home/HowToBookSection';
+import { PricingSection } from '@/components/home/PricingSection';
+import { ReviewsSection } from '@/components/home/ReviewsSection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getLocation, getLocationSlugs, locations } from '@/data/locations';
 import { services } from '@/data/services';
@@ -66,6 +72,8 @@ export default async function ZonePage({ params }: Params) {
           { name: location.name, path },
         ]}
       />
+
+      <ReassuranceBar />
 
       {/* Contexte + besoins */}
       <section className="bg-cream py-20 sm:py-24">
@@ -132,7 +140,7 @@ export default async function ZonePage({ params }: Params) {
                 ))}
               </ul>
               <div className="mt-8">
-                <Button href="/#reservation" variant="dark">
+                <Button href="#reservation" variant="dark">
                   Réserver depuis {location.name}
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Button>
@@ -156,6 +164,21 @@ export default async function ZonePage({ params }: Params) {
           </div>
         </Container>
       </section>
+
+      {/* Ils nous font confiance */}
+      <ClientsSection />
+
+      {/* Réserver un taxi à {ville} */}
+      <BookingSection city={location.name} />
+
+      {/* Comment commander */}
+      <HowToBookSection city={location.name} />
+
+      {/* Tarifs */}
+      <PricingSection city={location.name} />
+
+      {/* Avis clients */}
+      <ReviewsSection />
 
       {/* FAQ */}
       {location.faq.length > 0 && (
@@ -188,7 +211,7 @@ export default async function ZonePage({ params }: Params) {
         </Container>
       </section>
 
-      <CTASection />
+      <CTASection primaryHref="#reservation" />
     </>
   );
 }

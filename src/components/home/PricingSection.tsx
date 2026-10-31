@@ -11,13 +11,13 @@ import {
   pricingSource,
 } from '@/data/pricing';
 
-export function PricingSection() {
+export function PricingSection({ city = 'Chambourcy' }: { city?: string }) {
   return (
     <section id="tarifs" className="scroll-mt-24 bg-cream py-20 sm:py-24">
       <Container>
         <SectionHeading
           eyebrow="Tarifs"
-          title={`Tarif taxi à Chambourcy en ${pricingYear}`}
+          title={`Tarif taxi à ${city} en ${pricingYear}`}
           description="Une réglementation encadre le prix d’un taxi, que le taximètre affiche en direct. Concrètement, il additionne trois éléments : une prise en charge, un tarif kilométrique et, parfois, un tarif d’attente. Ce tarif kilométrique varie selon le jour, l’heure et le retour du taxi (en charge ou à vide)."
         />
 
