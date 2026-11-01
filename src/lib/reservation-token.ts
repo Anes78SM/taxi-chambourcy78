@@ -18,6 +18,8 @@ export type ResponderPayload = {
   /** E-mail du client (destinataire de la réponse) */
   to: string;
   nom: string;
+  /** Téléphone du client (pour l'événement agenda) */
+  tel: string;
   depart: string;
   arrivee: string;
   date: string;

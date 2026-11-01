@@ -104,6 +104,7 @@ function htmlBody(d: BookingServerInput): string {
   const actionData = {
     to: d.email,
     nom: d.nom,
+    tel: d.telephone,
     depart: d.depart,
     arrivee: d.arrivee,
     date: d.date,

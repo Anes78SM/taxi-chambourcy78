@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 import { siteConfig } from '@/config/site';
 import { escapeHtml } from '@/lib/utils';
 import { verifyResponderToken, type ResponderPayload } from '@/lib/reservation-token';
+import { buildCalendarEvent, googleCalendarUrl, buildIcs } from '@/lib/calendar';
 
 /**
  * Réponse en un clic depuis l'e-mail de réservation : confirmer ou décliner.
@@ -157,9 +158,10 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ html: fragment('Déjà traité', already, true) });
   }
 
+  const resend = new Resend(apiKey);
   const mail = payload.a === 'confirm' ? confirmEmail(payload) : declineEmail(payload);
   try {
-    const { error } = await new Resend(apiKey).emails.send({
+    const { error } = await resend.emails.send({
       from,
       to: payload.to,
       replyTo: ownerTo ?? undefined,
@@ -178,13 +180,43 @@ export async function POST(request: Request): Promise<NextResponse> {
     processed.add(s);
     if (processed.size > 500) processed.clear();
 
-    const okMsg =
-      payload.a === 'confirm'
-        ? `La confirmation a été envoyée à ${escapeHtml(payload.nom)} (${escapeHtml(payload.to)}).`
-        : `Le client ${escapeHtml(payload.nom)} a été informé avec courtoisie que le trajet ne peut pas être assuré.`;
-    return NextResponse.json({
-      html: fragment(payload.a === 'confirm' ? 'Course confirmée' : 'Réservation déclinée', okMsg, true),
-    });
+    if (payload.a === 'decline') {
+      return NextResponse.json({
+        html: fragment(
+          'Réservation déclinée',
+          `Le client ${escapeHtml(payload.nom)} a été informé avec courtoisie que le trajet ne peut pas être assuré.`,
+          true,
+        ),
+      });
+    }
+
+    // Confirmation : ajout au calendrier (boutons) + invitation agenda à Anes (.ics).
+    const okMsg = `La confirmation a été envoyée à ${escapeHtml(payload.nom)} (${escapeHtml(payload.to)}).`;
+    const event = buildCalendarEvent(payload);
+    let calendarHtml = '';
+    if (event) {
+      const ics = buildIcs(event);
+      const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
+      calendarHtml = `<p style="margin:20px 0 8px;color:#55595b;font-size:14px">Ajouter la course à votre agenda :</p>
+<div><a href="${googleCalendarUrl(event)}" target="_blank" rel="noopener" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#876634;color:#ffffff">Google Agenda</a><a href="${icsHref}" download="course.ics" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#ffffff;color:#121719;border:1px solid #d5d7d8">Télécharger .ics</a></div>`;
+
+      // Invitation agenda envoyée à Anes (best-effort : n'échoue pas la confirmation).
+      if (ownerTo) {
+        try {
+          await resend.emails.send({
+            from,
+            to: ownerTo,
+            subject: `Course confirmée — ${payload.date} à ${payload.heure} (${payload.nom})`,
+            text: `Course confirmée pour ${payload.nom}.\n${event.title}\nLe ${payload.date} à ${payload.heure}.\nÉvénement en pièce jointe (course.ics).`,
+            html: `<p>Course confirmée pour <strong>${escapeHtml(payload.nom)}</strong>.</p><p>${escapeHtml(event.title)} — le ${escapeHtml(payload.date)} à ${escapeHtml(payload.heure)}.</p><p>Événement en pièce jointe (<em>course.ics</em>) à ajouter à votre agenda.</p>`,
+            attachments: [{ filename: 'course.ics', content: Buffer.from(ics) }],
+          });
+        } catch (e) {
+          console.error('Invite agenda failed:', e);
+        }
+      }
+    }
+    return NextResponse.json({ html: fragment('Course confirmée', okMsg, true) + calendarHtml });
   } catch (err) {
     console.error('Responder failed:', err);
     return NextResponse.json(
