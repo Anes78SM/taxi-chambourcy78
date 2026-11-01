@@ -9,9 +9,10 @@
   --ink-900: #080d10;
   --ink-800: #101b24;
   --ink-700: #16242e;
-  --champagne: #d8b98b;
-  --champagne-light: #e7cfa8;
-  --champagne-dark: #876634;
+  /* Accent de marque = vert du logo « Allo Chambourcy Taxi ». */
+  --champagne: #6aa520;
+  --champagne-light: #84c030;
+  --champagne-dark: #355e04;
   --cream: #f4f0e9;
   --mist: #a9adb0;
   --white: #ffffff;

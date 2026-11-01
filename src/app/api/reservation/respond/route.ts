@@ -36,7 +36,7 @@ function htmlShell(inner: string): string {
 <body style="margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f0e9;color:#121719">
 <div id="box" style="max-width:520px;margin:12vh auto;padding:32px 28px;background:#fff;border-radius:12px;text-align:center;box-shadow:0 12px 34px rgba(0,0,0,.07)">
 ${inner}
-<p style="margin-top:24px"><a href="${siteConfig.url}" style="color:#876634;font-weight:600;text-decoration:none">${escapeHtml(siteConfig.name)}</a></p>
+<p style="margin-top:24px"><a href="${siteConfig.url}" style="color:#355e04;font-weight:600;text-decoration:none">${escapeHtml(siteConfig.name)}</a></p>
 </div></body></html>`;
 }
 
@@ -210,7 +210,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       const ics = buildIcs(event);
       const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
       calendarHtml = `<p style="margin:20px 0 8px;color:#55595b;font-size:14px">Ajouter la course à votre agenda :</p>
-<div><a href="${googleCalendarUrl(event)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#876634;color:#ffffff">Google Agenda</a><a href="${icsHref}" download="course.ics" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#ffffff;color:#121719;border:1px solid #d5d7d8">Télécharger .ics</a></div>`;
+<div><a href="${googleCalendarUrl(event)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#355e04;color:#ffffff">Google Agenda</a><a href="${icsHref}" download="course.ics" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#ffffff;color:#121719;border:1px solid #d5d7d8">Télécharger .ics</a></div>`;
 
       // Invitation agenda envoyée à Anes (best-effort : n'échoue pas la confirmation).
       if (ownerTo) {

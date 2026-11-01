@@ -15,12 +15,12 @@ const config: Config = {
           700: '#16242E',
           600: '#1E2E38',
         },
+        // Accent de marque = vert du logo « Allo Chambourcy Taxi ».
+        // (Nom de token conservé pour éviter un renommage global ; les valeurs sont vertes.)
         champagne: {
-          DEFAULT: '#D8B98B',
-          light: '#E7CFA8',
-          // Assombri pour le contraste AA du texte sur fond clair (eyebrows, liens) :
-          // ~4,7:1 sur crème, ~5,3:1 sur blanc.
-          dark: '#876634',
+          DEFAULT: '#6AA520', // vert vif : accent sur fond sombre + fond de bouton
+          light: '#84C030', // survol
+          dark: '#355E04', // vert foncé du logo : texte/liens sur fond clair (AA)
         },
         cream: '#F4F0E9',
         mist: '#A9ADB0',
