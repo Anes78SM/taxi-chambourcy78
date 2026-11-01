@@ -93,10 +93,10 @@ export const siteConfig = {
     headquarters: '111 avenue Victor Hugo, 75016 Paris',
     operatorName: 'Anes Smail', // Représentant légal
     siret: '108 434 416 00013', // SIRET complet (14 chiffres)
-    vatNumber: '', // N° de TVA intracommunautaire — À COMPLÉTER le cas échéant
-    licenseNumber: '', // Autorisation de stationnement (taxi) — N° ADS À COMPLÉTER
+    vatNumber: 'FR 83 108 434 416', // N° de TVA intracommunautaire
+    licenseNumber: '012026', // Autorisation de stationnement (taxi) — N° ADS
     stationZone: 'Chambourcy', // Commune de rattachement / zone de stationnement du taxi
-    adsAuthority: '', // Autorité ayant délivré l'ADS (commune / préfecture) — À COMPLÉTER
+    adsAuthority: 'la Mairie de Chambourcy', // Autorité ayant délivré l'ADS
     adsDate: '', // Date de délivrance de l'ADS — À COMPLÉTER
     cardNumber: '', // N° de carte professionnelle de conducteur de taxi — À COMPLÉTER (facultatif)
     cardPrefecture: 'Yvelines (78)', // Préfecture de délivrance de la carte pro
