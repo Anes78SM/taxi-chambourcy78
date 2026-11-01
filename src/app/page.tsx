@@ -15,16 +15,17 @@ import { CTASection } from '@/components/home/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getAllPosts } from '@/lib/blog';
 import { homeFaq } from '@/data/faq';
-import { faqSchema } from '@/lib/seo';
+import { buildMetadata, faqSchema } from '@/lib/seo';
 
 // Title + meta description propres à l'accueil (mot-clé « taxi à Chambourcy » en début).
-export const metadata: Metadata = {
-  title: {
-    absolute: 'Taxi à Chambourcy (78) — Réservation, tarifs & transport 7j/7',
-  },
+// buildMetadata aligne automatiquement Open Graph et Twitter sur ce titre/description.
+export const metadata: Metadata = buildMetadata({
+  title: 'Taxi à Chambourcy (78) — Réservation, tarifs & transport 7j/7',
   description:
     'Taxi à Chambourcy (78) : réservation 7j/7, transferts gares et aéroports, tarifs réglementés 2026. Réservez à l’avance ou pour une course immédiate.',
-};
+  path: '/',
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
   const posts = getAllPosts();

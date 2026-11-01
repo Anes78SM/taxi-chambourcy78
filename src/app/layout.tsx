@@ -25,7 +25,7 @@ const sans = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Taxi premium à Chambourcy`,
+    default: `${siteConfig.name} — Taxi à Chambourcy (78), 7j/7`,
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Taxi premium à Chambourcy`,
+    title: `${siteConfig.name} — Taxi à Chambourcy (78), 7j/7`,
     description: siteConfig.description,
     images: [{ url: siteConfig.ogImage, width: 1672, height: 941, alt: siteConfig.name }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} — Taxi premium à Chambourcy`,
+    title: `${siteConfig.name} — Taxi à Chambourcy (78), 7j/7`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
