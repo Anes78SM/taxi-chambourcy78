@@ -7,6 +7,7 @@ export type NavItem = {
 export const mainNav: NavItem[] = [
   { label: 'Accueil', href: '/' },
   { label: 'Services', href: '/services' },
+  { label: 'Trajets', href: '/trajets' },
   { label: 'Destinations', href: '/zones' },
   { label: 'Avis', href: '/#avis' },
   { label: 'Contact', href: '/contact' },
@@ -31,6 +32,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { label: 'Taxi Orgeval', href: '/zones/taxi-orgeval' },
       { label: 'Taxi Maisons-Laffitte', href: '/zones/taxi-maisons-laffitte' },
       { label: 'Toutes les zones', href: '/zones' },
+      { label: 'Nos trajets (aéroports, gares…)', href: '/trajets' },
     ],
   },
   {

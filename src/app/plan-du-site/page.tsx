@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { buildMetadata, breadcrumbSchema } from '@/lib/seo';
 import { services } from '@/data/services';
 import { locations } from '@/data/locations';
+import { routes } from '@/data/routes';
 import { getAllPosts } from '@/lib/blog';
 
 export const metadata: Metadata = buildMetadata({
@@ -42,6 +43,13 @@ export default function SitemapPage() {
     {
       title: 'Zones desservies',
       links: locations.map((l) => ({ label: l.title, href: `/zones/${l.slug}` })),
+    },
+    {
+      title: 'Trajets',
+      links: [
+        { label: 'Tous les trajets', href: '/trajets' },
+        ...routes.map((r) => ({ label: `Chambourcy → ${r.shortName}`, href: `/trajets/${r.slug}` })),
+      ],
     },
     ...(posts.length > 0
       ? [
