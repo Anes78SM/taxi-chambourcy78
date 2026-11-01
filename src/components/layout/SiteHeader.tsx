@@ -41,16 +41,14 @@ export function SiteHeader() {
       <div className="mx-auto flex h-[88px] max-w-container items-center justify-between gap-6 px-gutter">
         {/* Logo */}
         <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} — accueil`}>
-          <span className="inline-flex items-center rounded-md bg-white px-1.5 py-1 shadow-sm">
-            <Image
-              src="/images/branding/logo-green.webp"
-              alt={siteConfig.name}
-              width={1754}
-              height={896}
-              priority
-              className="h-9 w-auto sm:h-10"
-            />
-          </span>
+          <Image
+            src="/images/branding/logo-green.webp"
+            alt={siteConfig.name}
+            width={1774}
+            height={887}
+            priority
+            className="h-12 w-auto sm:h-[56px]"
+          />
         </Link>
 
         {/* Navigation desktop */}

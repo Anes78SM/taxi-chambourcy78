@@ -17,15 +17,13 @@ export function SiteFooter() {
           {/* Marque + coordonnées */}
           <div>
             <Link href="/" className="inline-flex items-center" aria-label={`${siteConfig.name} — accueil`}>
-              <span className="inline-flex items-center rounded-md bg-white px-2 py-1.5">
-                <Image
-                  src="/images/branding/logo-green.webp"
-                  alt={siteConfig.name}
-                  width={1754}
-                  height={896}
-                  className="h-12 w-auto"
-                />
-              </span>
+              <Image
+                src="/images/branding/logo-green.webp"
+                alt={siteConfig.name}
+                width={1774}
+                height={887}
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
               Service de taxi premium à Chambourcy. Transferts aéroports, déplacements
