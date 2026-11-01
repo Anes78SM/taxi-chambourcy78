@@ -74,6 +74,11 @@ export const locations: Location[] = [
         answer:
           'Oui. Nous organisons les transferts aéroports au départ de Poissy, avec une heure de prise en charge définie selon votre vol et votre adresse.',
       },
+      {
+        question: 'Assurez-vous les trajets vers l’hôpital de Poissy–Saint-Germain ?',
+        answer:
+          'Oui. Nous assurons les trajets vers le centre hospitalier intercommunal Poissy–Saint-Germain, ainsi que vers les cliniques et cabinets du secteur, sur réservation et à l’adresse de votre choix.',
+      },
     ],
   },
   {
@@ -108,6 +113,11 @@ export const locations: Location[] = [
         question: 'Orgeval est-elle bien desservie par votre service ?',
         answer:
           'Oui. Orgeval fait partie de notre zone de rayonnement autour de Chambourcy. La prise en charge se fait à l’adresse de votre choix, sur réservation.',
+      },
+      {
+        question: 'Desservez-vous la zone commerciale et le village d’Orgeval ?',
+        answer:
+          'Oui. Que vous partiez du village, des quartiers résidentiels ou de la zone commerciale d’Orgeval, nous venons vous chercher à l’adresse de votre choix, sur réservation.',
       },
     ],
   },
@@ -144,6 +154,11 @@ export const locations: Location[] = [
         answer:
           'Oui. Notre service de porte à porte est particulièrement adapté aux trajets avec bagages, en complément ou en alternative aux transports en commun.',
       },
+      {
+        question: 'Partez-vous du Pecq vers la gare du Vésinet–Le Pecq ?',
+        answer:
+          'Oui, comme vers toute autre destination. En pratique, nos clients privilégient souvent un trajet direct de porte à porte depuis Le Pecq, plus confortable avec des bagages qu’un passage par le RER A.',
+      },
     ],
   },
   {
@@ -154,7 +169,7 @@ export const locations: Location[] = [
     tagline: 'Transport premium au Vésinet',
     context: [
       'Le Vésinet, ville-parc réputée pour ses lacs, ses rivières et son urbanisme paysager, est l’une des communes résidentielles les plus prisées de l’Ouest parisien, desservie par le RER A.',
-      'Un cadre élégant qui appelle un service de transport soigné et discret, à l’image de la commune.',
+      'Des abords de ses lacs et de son église Sainte-Marguerite jusqu’aux gares du RER A (Le Vésinet-Centre, Le Vésinet–Le Pecq), ce cadre élégant appelle un service de transport soigné et discret, à l’image de la commune.',
     ],
     needs: [
       'Transferts aéroports au départ du Vésinet.',
@@ -179,6 +194,11 @@ export const locations: Location[] = [
         answer:
           'La discrétion et le soin apporté au service font partie de notre approche. Le transport fonctionne sur réservation, à l’adresse de votre choix.',
       },
+      {
+        question: 'Prenez-vous en charge les trajets depuis les quartiers résidentiels du Vésinet ?',
+        answer:
+          'Oui. Des abords des lacs aux villas et aux gares du RER A, la prise en charge se fait à l’adresse exacte de votre choix, pour un trajet direct et discret.',
+      },
     ],
   },
   {
@@ -188,7 +208,7 @@ export const locations: Location[] = [
     postalCode: '78160',
     tagline: 'Votre taxi premium à Marly-le-Roi',
     context: [
-      'Marly-le-Roi, commune chargée d’histoire aux portes de la forêt domaniale, allie cadre résidentiel et proximité des grands axes de l’Ouest parisien.',
+      'Marly-le-Roi, célèbre pour le Domaine national de Marly et son Abreuvoir, est une commune résidentielle chargée d’histoire aux portes de la forêt domaniale, desservie par la gare de Marly-le-Roi (ligne L du Transilien vers Paris-Saint-Lazare).',
       'Sa situation permet de rejoindre aisément Paris, les aéroports et les communes voisines comme Chambourcy et Saint-Germain-en-Laye.',
     ],
     needs: [
@@ -213,6 +233,11 @@ export const locations: Location[] = [
         question: 'Puis-je réserver un trajet tôt le matin ?',
         answer:
           'Oui. Pour les départs matinaux, notamment vers les aéroports, une réservation anticipée est recommandée afin de garantir la disponibilité.',
+      },
+      {
+        question: 'Proposez-vous une alternative à la gare de Marly-le-Roi ?',
+        answer:
+          'Oui. En complément de la ligne L du Transilien, notre service de porte à porte est utile avec des bagages, en soirée ou pour un trajet direct vers un aéroport, sans correspondance.',
       },
     ],
   },
@@ -248,6 +273,11 @@ export const locations: Location[] = [
         question: 'Desservez-vous Maisons-Laffitte pour les transferts aéroports ?',
         answer:
           'Oui. Nous organisons les transferts aéroports au départ de Maisons-Laffitte, avec une prise en charge de porte à porte sur réservation.',
+      },
+      {
+        question: 'Assurez-vous les trajets lors des réunions à l’hippodrome de Maisons-Laffitte ?',
+        answer:
+          'Oui. Nous organisons vos trajets vers l’hippodrome et lors des événements hippiques, comme vers le château, le parc ou votre domicile, sur réservation.',
       },
     ],
   },
