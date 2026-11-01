@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { bookingServerSchema, type BookingServerInput } from '@/lib/validations';
 import { siteConfig } from '@/config/site';
+import { escapeHtml } from '@/lib/utils';
+import { buildResponderUrl } from '@/lib/reservation-token';
 
 /**
  * Route API de réservation — envoi automatique par e-mail (Resend).
@@ -45,14 +47,6 @@ function rateLimited(ip: string): boolean {
 /** Neutralise les sauts de ligne (défense en profondeur sur l'en-tête Sujet de l'e-mail). */
 function stripNewlines(value: string): string {
   return value.replace(/[\r\n]+/g, ' ');
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
 }
 
 function textBody(d: BookingServerInput): string {
@@ -105,6 +99,35 @@ function confirmMailtoHref(d: BookingServerInput): string {
 function htmlBody(d: BookingServerInput): string {
   const row = (label: string, value: string) =>
     `<tr><td style="padding:6px 16px 6px 0;color:#626768;white-space:nowrap">${label}</td><td style="padding:6px 0;color:#121719;font-weight:600">${escapeHtml(value)}</td></tr>`;
+
+  const signSecret = process.env.RESERVATION_SIGNING_SECRET;
+  const actionData = {
+    to: d.email,
+    nom: d.nom,
+    depart: d.depart,
+    arrivee: d.arrivee,
+    date: d.date,
+    heure: d.heure,
+    passagers: d.passagers,
+  };
+  const btn = (href: string, label: string, extra: string) =>
+    `<a href="${href}" style="display:inline-block;margin:6px 8px 0 0;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600;font-size:14px;${extra}">${label}</a>`;
+  const primaryButtons = signSecret
+    ? btn(
+        buildResponderUrl('confirm', actionData, signSecret, siteConfig.url),
+        'Confirmer la course',
+        'background:#15803d;color:#ffffff',
+      ) +
+      btn(
+        buildResponderUrl('decline', actionData, signSecret, siteConfig.url),
+        'Décliner',
+        'background:#ffffff;color:#b91c1c;border:1px solid #e3c2c2',
+      )
+    : btn(confirmMailtoHref(d), 'Confirmer au client', 'background:#121719;color:#ffffff');
+  const actionNote = signSecret
+    ? 'Un seul clic envoie l’e-mail au client (confirmation ou refus). Vérifiez le trajet avant de cliquer.'
+    : '«&nbsp;Confirmer au client&nbsp;» ouvre un e-mail pré-rempli adressé au client ; relisez-le avant de l’envoyer.';
+
   return `
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#121719">
     <h2 style="font-size:18px;margin:0 0 4px">Nouvelle demande de trajet</h2>
@@ -121,11 +144,13 @@ function htmlBody(d: BookingServerInput): string {
     </table>
     ${d.message ? `<p style="margin:18px 0 4px;color:#626768">Informations complémentaires :</p><p style="margin:0;white-space:pre-wrap">${escapeHtml(d.message)}</p>` : ''}
     <div style="margin-top:24px">
-      <a href="${confirmMailtoHref(d)}" style="display:inline-block;background:#121719;color:#ffffff;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600;font-size:14px">Confirmer au client</a>
-      <a href="tel:${d.telephone.replace(/[^\d+]/g, '')}" style="display:inline-block;margin:6px 0 0 8px;background:#ffffff;color:#121719;text-decoration:none;padding:10px 18px;border:1px solid #d5d7d8;border-radius:8px;font-weight:600;font-size:14px">Appeler</a>
-      <a href="https://wa.me/${toWhatsApp(d.telephone)}" style="display:inline-block;margin:6px 0 0 8px;background:#ffffff;color:#121719;text-decoration:none;padding:10px 18px;border:1px solid #d5d7d8;border-radius:8px;font-weight:600;font-size:14px">WhatsApp</a>
+      ${primaryButtons}
     </div>
-    <p style="color:#8a8f90;font-size:12px;margin-top:10px">«&nbsp;Confirmer au client&nbsp;» ouvre un e-mail pré-rempli adressé au client ; relisez-le avant de l'envoyer.</p>
+    <div style="margin-top:6px">
+      ${btn(`tel:${d.telephone.replace(/[^\d+]/g, '')}`, 'Appeler', 'background:#ffffff;color:#121719;border:1px solid #d5d7d8')}
+      ${btn(`https://wa.me/${toWhatsApp(d.telephone)}`, 'WhatsApp', 'background:#ffffff;color:#121719;border:1px solid #d5d7d8')}
+    </div>
+    <p style="color:#8a8f90;font-size:12px;margin-top:10px">${actionNote}</p>
   </div>`;
 }
 
