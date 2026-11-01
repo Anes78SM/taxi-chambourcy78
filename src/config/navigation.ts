@@ -43,6 +43,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
       { label: 'CGV', href: '/cgv' },
       { label: 'Politique de confidentialité', href: '/politique-confidentialite' },
       { label: 'Politique de cookies', href: '/politique-cookies' },
+      { label: 'Plan du site', href: '/plan-du-site' },
     ],
   },
 ];
