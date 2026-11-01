@@ -17,7 +17,7 @@ export function Hero() {
           priority
           fetchPriority="high"
           sizes="100vw"
-          className="object-cover object-[58%_center] lg:object-contain lg:object-right-bottom"
+          className="object-cover object-[58%_center] lg:object-[62%_center]"
         />
         <div
           className="absolute inset-0"

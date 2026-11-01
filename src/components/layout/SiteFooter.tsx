@@ -22,7 +22,7 @@ export function SiteFooter() {
                 alt={siteConfig.name}
                 width={1774}
                 height={887}
-                className="h-20 w-auto"
+                className="h-24 w-auto"
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
