@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
@@ -15,18 +16,14 @@ export function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           {/* Marque + coordonnées */}
           <div>
-            <Link href="/" className="flex items-center gap-3" aria-label={`${siteConfig.name} — accueil`}>
-              <span className="text-2xl leading-none text-champagne" aria-hidden>
-                ⌁
-              </span>
-              <span className="leading-none">
-                <span className="block font-serif text-lg tracking-[0.12em] text-cream">
-                  ALLO CHAMBOURCY
-                </span>
-                <span className="mt-1 block text-[0.5rem] tracking-[0.3em] text-champagne/90">
-                  TAXI
-                </span>
-              </span>
+            <Link href="/" className="inline-flex items-center" aria-label={`${siteConfig.name} — accueil`}>
+              <Image
+                src="/images/branding/logo.webp"
+                alt={siteConfig.name}
+                width={2000}
+                height={667}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
               Service de taxi premium à Chambourcy. Transferts aéroports, déplacements
