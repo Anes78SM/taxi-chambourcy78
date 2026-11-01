@@ -2,13 +2,18 @@ import 'server-only';
 import crypto from 'node:crypto';
 
 /**
- * Jetons signés (HMAC-SHA256) pour les liens d'action « confirmer / décliner »
- * placés dans l'e-mail de réservation reçu par le chauffeur.
+ * Jetons d'action « confirmer / décliner » placés dans l'e-mail de réservation.
  *
- * Le lien transporte les données de la course (payload base64url) + une signature.
- * Sans la clé secrète (RESERVATION_SIGNING_SECRET), impossible de forger ou d'altérer
- * un lien : on ne peut ni changer le destinataire, ni transformer un refus en confirmation.
+ * Le payload (données de la course, dont des données personnelles du client) est
+ * CHIFFRÉ en AES-256-GCM, pas seulement signé : le lien ne contient donc aucune
+ * donnée lisible en clair (rien n'apparaît en clair dans les logs d'accès/URL).
+ * Le chiffrement authentifié (tag GCM) garantit aussi l'intégrité : un jeton
+ * modifié est rejeté. La clé dérive de RESERVATION_SIGNING_SECRET.
  */
+
+const ALGO = 'aes-256-gcm';
+const IV_LEN = 12;
+const TAG_LEN = 16;
 
 export type ResponderAction = 'confirm' | 'decline';
 
@@ -27,47 +32,47 @@ export type ResponderPayload = {
   passagers: number;
 };
 
-function hmac(data: string, secret: string): string {
-  return crypto.createHmac('sha256', secret).update(data).digest('base64url');
+function keyFrom(secret: string): Buffer {
+  return crypto.createHash('sha256').update(secret).digest(); // 32 octets
 }
 
-/** Signe un payload et renvoie les paramètres `p` (données) et `s` (signature). */
-export function signResponderPayload(
-  payload: ResponderPayload,
-  secret: string,
-): { p: string; s: string } {
-  const p = Buffer.from(JSON.stringify(payload), 'utf8').toString('base64url');
-  return { p, s: hmac(p, secret) };
+/** Chiffre le payload en un jeton opaque (base64url). */
+export function encryptResponderPayload(payload: ResponderPayload, secret: string): string {
+  const iv = crypto.randomBytes(IV_LEN);
+  const cipher = crypto.createCipheriv(ALGO, keyFrom(secret), iv);
+  const data = Buffer.concat([cipher.update(JSON.stringify(payload), 'utf8'), cipher.final()]);
+  const tag = cipher.getAuthTag();
+  return Buffer.concat([iv, tag, data]).toString('base64url');
 }
 
-/** Construit l'URL d'action signée (absolue) pour l'e-mail. */
+/** Construit l'URL d'action chiffrée (absolue) pour l'e-mail. */
 export function buildResponderUrl(
   action: ResponderAction,
   data: Omit<ResponderPayload, 'a'>,
   secret: string,
   baseUrl: string,
 ): string {
-  const { p, s } = signResponderPayload({ a: action, ...data }, secret);
+  const token = encryptResponderPayload({ a: action, ...data }, secret);
   const url = new URL('/api/reservation/respond', baseUrl);
-  url.searchParams.set('p', p);
-  url.searchParams.set('s', s);
+  url.searchParams.set('t', token);
   return url.toString();
 }
 
-/** Vérifie la signature et renvoie le payload, ou `null` si le lien est invalide. */
-export function verifyResponderToken(
-  p: string,
-  s: string,
-  secret: string,
-): ResponderPayload | null {
-  if (!p || !s) return null;
+/** Déchiffre et valide le jeton ; renvoie le payload, ou `null` si invalide/altéré. */
+export function decryptResponderToken(token: string, secret: string): ResponderPayload | null {
+  if (!token) return null;
   try {
-    const expected = hmac(p, secret);
-    const a = Buffer.from(s);
-    const b = Buffer.from(expected);
-    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
+    const raw = Buffer.from(token, 'base64url');
+    if (raw.length < IV_LEN + TAG_LEN + 2) return null;
+    const iv = raw.subarray(0, IV_LEN);
+    const tag = raw.subarray(IV_LEN, IV_LEN + TAG_LEN);
+    const data = raw.subarray(IV_LEN + TAG_LEN);
 
-    const payload = JSON.parse(Buffer.from(p, 'base64url').toString('utf8')) as ResponderPayload;
+    const decipher = crypto.createDecipheriv(ALGO, keyFrom(secret), iv);
+    decipher.setAuthTag(tag);
+    const json = Buffer.concat([decipher.update(data), decipher.final()]).toString('utf8');
+
+    const payload = JSON.parse(json) as ResponderPayload;
     if (
       (payload.a !== 'confirm' && payload.a !== 'decline') ||
       typeof payload.to !== 'string' ||
@@ -77,6 +82,7 @@ export function verifyResponderToken(
     }
     return payload;
   } catch {
+    // Tag d'authentification invalide, altération, ou données corrompues.
     return null;
   }
 }

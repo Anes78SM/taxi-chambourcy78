@@ -2,8 +2,9 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { siteConfig } from '@/config/site';
 import { escapeHtml } from '@/lib/utils';
-import { verifyResponderToken, type ResponderPayload } from '@/lib/reservation-token';
+import { decryptResponderToken, type ResponderPayload } from '@/lib/reservation-token';
 import { buildCalendarEvent, googleCalendarUrl, buildIcs } from '@/lib/calendar';
+import { getClientIp, createRateLimiter } from '@/lib/rate-limit';
 
 /**
  * Réponse en un clic depuis l'e-mail de réservation : confirmer ou décliner.
@@ -18,9 +19,11 @@ import { buildCalendarEvent, googleCalendarUrl, buildIcs } from '@/lib/calendar'
 // le même e-mail si le lien est ré-ouvert. Non partagé entre instances.
 const processed = new Set<string>();
 
-function tokenFromRequest(request: Request): { p: string; s: string } {
-  const { searchParams } = new URL(request.url);
-  return { p: searchParams.get('p') ?? '', s: searchParams.get('s') ?? '' };
+// Au plus 40 réponses / 10 min / IP (défense en profondeur ; l'accès exige déjà un jeton chiffré valide).
+const rateLimited = createRateLimiter(40, 10 * 60 * 1000);
+
+function tokenFromRequest(request: Request): string {
+  return new URL(request.url).searchParams.get('t') ?? '';
 }
 
 /** Fragment affiché dans la page de résultat (inséré par le script après le POST). */
@@ -102,6 +105,9 @@ function declineEmail(d: ResponderPayload) {
 }
 
 export async function GET(request: Request): Promise<NextResponse> {
+  if (rateLimited(getClientIp(request))) {
+    return htmlResponse(fragment('Trop de requêtes', 'Réessayez dans quelques minutes.', false), 429);
+  }
   const secret = process.env.RESERVATION_SIGNING_SECRET;
   if (!secret) {
     return htmlResponse(
@@ -109,8 +115,8 @@ export async function GET(request: Request): Promise<NextResponse> {
       503,
     );
   }
-  const { p, s } = tokenFromRequest(request);
-  const payload = verifyResponderToken(p, s, secret);
+  const token = tokenFromRequest(request);
+  const payload = decryptResponderToken(token, secret);
   if (!payload) {
     return htmlResponse(fragment('Lien invalide', 'Ce lien n’est pas valide.', false), 400);
   }
@@ -130,12 +136,18 @@ export async function GET(request: Request): Promise<NextResponse> {
 }
 
 export async function POST(request: Request): Promise<NextResponse> {
+  if (rateLimited(getClientIp(request))) {
+    return NextResponse.json(
+      { html: fragment('Trop de requêtes', 'Réessayez dans quelques minutes.', false) },
+      { status: 429 },
+    );
+  }
   const secret = process.env.RESERVATION_SIGNING_SECRET;
   if (!secret) {
     return NextResponse.json({ html: fragment('Indisponible', 'Service non configuré.', false) }, { status: 503 });
   }
-  const { p, s } = tokenFromRequest(request);
-  const payload = verifyResponderToken(p, s, secret);
+  const token = tokenFromRequest(request);
+  const payload = decryptResponderToken(token, secret);
   if (!payload) {
     return NextResponse.json({ html: fragment('Lien invalide', 'Ce lien n’est pas valide.', false) }, { status: 400 });
   }
@@ -150,7 +162,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     );
   }
 
-  if (processed.has(s)) {
+  if (processed.has(token)) {
     const already =
       payload.a === 'confirm'
         ? `La confirmation a déjà été envoyée à ${escapeHtml(payload.nom)}.`
@@ -177,7 +189,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       );
     }
 
-    processed.add(s);
+    processed.add(token);
     if (processed.size > 500) processed.clear();
 
     if (payload.a === 'decline') {
@@ -198,7 +210,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       const ics = buildIcs(event);
       const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
       calendarHtml = `<p style="margin:20px 0 8px;color:#55595b;font-size:14px">Ajouter la course à votre agenda :</p>
-<div><a href="${googleCalendarUrl(event)}" target="_blank" rel="noopener" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#876634;color:#ffffff">Google Agenda</a><a href="${icsHref}" download="course.ics" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#ffffff;color:#121719;border:1px solid #d5d7d8">Télécharger .ics</a></div>`;
+<div><a href="${googleCalendarUrl(event)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#876634;color:#ffffff">Google Agenda</a><a href="${icsHref}" download="course.ics" style="display:inline-block;margin:0 8px 8px 0;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600;font-size:14px;background:#ffffff;color:#121719;border:1px solid #d5d7d8">Télécharger .ics</a></div>`;
 
       // Invitation agenda envoyée à Anes (best-effort : n'échoue pas la confirmation).
       if (ownerTo) {

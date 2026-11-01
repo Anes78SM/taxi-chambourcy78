@@ -4,6 +4,7 @@ import { bookingServerSchema, type BookingServerInput } from '@/lib/validations'
 import { siteConfig } from '@/config/site';
 import { escapeHtml } from '@/lib/utils';
 import { buildResponderUrl } from '@/lib/reservation-token';
+import { getClientIp, createRateLimiter } from '@/lib/rate-limit';
 
 /**
  * Route API de réservation — envoi automatique par e-mail (Resend).
@@ -19,30 +20,8 @@ import { buildResponderUrl } from '@/lib/reservation-token';
  * Aucune donnée n'est stockée côté serveur.
  */
 
-/** Récupère l'IP cliente (Cloudflare puis proxy standard). */
-function getClientIp(request: Request): string {
-  const fwd =
-    request.headers.get('CF-Connecting-IP') ?? request.headers.get('x-forwarded-for') ?? '';
-  return fwd.split(',')[0]?.trim() || 'unknown';
-}
-
-// Anti-abus : limite de requêtes en mémoire, par IP (défense en profondeur par-dessus Turnstile).
-// Note : l'état est par instance serverless ; Turnstile reste la protection principale.
-const RATE_WINDOW_MS = 10 * 60 * 1000;
-const RATE_MAX = 5;
-const rateHits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (rateHits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  if (recent.length >= RATE_MAX) {
-    rateHits.set(ip, recent);
-    return true;
-  }
-  recent.push(now);
-  rateHits.set(ip, recent);
-  return false;
-}
+// Anti-abus : au plus 5 demandes / 10 min / IP (défense en profondeur par-dessus Turnstile).
+const rateLimited = createRateLimiter(5, 10 * 60 * 1000);
 
 /** Neutralise les sauts de ligne (défense en profondeur sur l'en-tête Sujet de l'e-mail). */
 function stripNewlines(value: string): string {
