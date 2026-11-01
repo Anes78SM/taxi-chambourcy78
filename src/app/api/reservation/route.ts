@@ -17,6 +17,36 @@ import { siteConfig } from '@/config/site';
  * Aucune donnée n'est stockée côté serveur.
  */
 
+/** Récupère l'IP cliente (Cloudflare puis proxy standard). */
+function getClientIp(request: Request): string {
+  const fwd =
+    request.headers.get('CF-Connecting-IP') ?? request.headers.get('x-forwarded-for') ?? '';
+  return fwd.split(',')[0]?.trim() || 'unknown';
+}
+
+// Anti-abus : limite de requêtes en mémoire, par IP (défense en profondeur par-dessus Turnstile).
+// Note : l'état est par instance serverless ; Turnstile reste la protection principale.
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
+const rateHits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (rateHits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (recent.length >= RATE_MAX) {
+    rateHits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  rateHits.set(ip, recent);
+  return false;
+}
+
+/** Neutralise les sauts de ligne (défense en profondeur sur l'en-tête Sujet de l'e-mail). */
+function stripNewlines(value: string): string {
+  return value.replace(/[\r\n]+/g, ' ');
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -71,9 +101,8 @@ async function verifyTurnstile(token: string, secret: string, request: Request):
   if (!token) return false;
   try {
     const body = new URLSearchParams({ secret, response: token });
-    const ip =
-      request.headers.get('CF-Connecting-IP') ?? request.headers.get('x-forwarded-for') ?? '';
-    if (ip) body.set('remoteip', ip.split(',')[0]!.trim());
+    const ip = getClientIp(request);
+    if (ip !== 'unknown') body.set('remoteip', ip);
 
     const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
@@ -88,6 +117,20 @@ async function verifyTurnstile(token: string, secret: string, request: Request):
 }
 
 export async function POST(request: Request) {
+  // Limite la taille du corps avant de le charger en mémoire (DoS).
+  const contentLength = Number(request.headers.get('content-length') ?? 0);
+  if (contentLength > 10_000) {
+    return NextResponse.json({ error: 'Requête trop volumineuse.' }, { status: 413 });
+  }
+
+  // Limite le nombre de demandes par IP.
+  if (rateLimited(getClientIp(request))) {
+    return NextResponse.json(
+      { error: 'Trop de demandes. Réessayez dans quelques minutes.' },
+      { status: 429 },
+    );
+  }
+
   let payload: unknown;
   try {
     payload = await request.json();
@@ -103,7 +146,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // Anti-spam : vérification Cloudflare Turnstile (seulement si la clé secrète est configurée).
+  // Anti-spam : vérification Cloudflare Turnstile.
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
   if (turnstileSecret) {
     const raw = payload as Record<string, unknown>;
@@ -112,6 +155,10 @@ export async function POST(request: Request) {
     if (!isHuman) {
       return NextResponse.json({ error: 'Vérification anti-spam échouée.' }, { status: 403 });
     }
+  } else if (process.env.NODE_ENV === 'production') {
+    // Fail-closed : jamais d'envoi sans anti-spam en production.
+    console.error('TURNSTILE_SECRET_KEY manquante en production : envoi bloqué.');
+    return NextResponse.json({ error: 'Service temporairement indisponible.' }, { status: 503 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -133,7 +180,7 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: data.email,
-      subject: `Demande de trajet — ${data.depart} → ${data.arrivee}`,
+      subject: `Demande de trajet — ${stripNewlines(data.depart)} → ${stripNewlines(data.arrivee)}`,
       text: textBody(data),
       html: htmlBody(data),
     });

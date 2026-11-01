@@ -56,16 +56,6 @@ export function getFeaturedPost(): BlogPost | null {
   return posts.find((p) => p.frontmatter.featured) ?? posts[0] ?? null;
 }
 
-/** Catégories distinctes présentes dans les articles. */
-export function getCategories(): string[] {
-  return Array.from(new Set(getAllPosts().map((p) => p.frontmatter.category)));
-}
-
-/** Articles d'une catégorie donnée. */
-export function getPostsByCategory(category: string): BlogPost[] {
-  return getAllPosts().filter((p) => p.frontmatter.category === category);
-}
-
 /** Articles associés (même catégorie), hors article courant. */
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
   const current = getPost(slug);

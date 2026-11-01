@@ -19,9 +19,6 @@ const siteUrl = normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://taxi-c
 export const siteConfig = {
   /** Nom commercial affiché */
   name: 'Allo Chambourcy Taxi',
-  shortName: 'Allo Chambourcy',
-  /** Baseline / slogan */
-  tagline: 'Votre taxi premium à Chambourcy',
   description:
     'Service de taxi premium à Chambourcy (78) : transferts aéroports, déplacements professionnels et trajets privés. Un transport soigné, ponctuel et discret.',
 
@@ -52,7 +49,6 @@ export const siteConfig = {
     city: 'Chambourcy',
     postalCode: '78240',
     region: 'Yvelines',
-    country: 'France',
     // Adresse réelle (fiche Google).
     street: '5 Place de la Mairie',
     // Coordonnées géographiques (approximatives — à affiner si besoin).
@@ -121,8 +117,6 @@ export const siteConfig = {
   /** Image Open Graph par défaut (aperçu lors du partage de liens). */
   ogImage: '/images/branding/og-default.webp',
 } as const;
-
-export type SiteConfig = typeof siteConfig;
 
 /** Raccourci : le site est-il prêt à annoncer des coordonnées réelles ? */
 export const hasRealContact = true; // Coordonnées réelles renseignées (fiche Google).
