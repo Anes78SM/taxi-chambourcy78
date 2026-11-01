@@ -72,6 +72,36 @@ function textBody(d: BookingServerInput): string {
   ].join('\n');
 }
 
+/** Numéro français au format international pour un lien wa.me (best-effort). */
+function toWhatsApp(phone: string): string {
+  const digits = phone.replace(/\D/g, '');
+  if (digits.startsWith('33')) return digits;
+  if (digits.startsWith('0')) return `33${digits.slice(1)}`;
+  return digits;
+}
+
+/** Lien mailto pré-rempli pour que le chauffeur confirme la course au client. */
+function confirmMailtoHref(d: BookingServerInput): string {
+  const subject = `Confirmation de votre taxi — ${d.depart} → ${d.arrivee} le ${d.date} à ${d.heure}`;
+  const body = [
+    `Bonjour ${d.nom},`,
+    '',
+    'Je vous confirme votre réservation de taxi :',
+    '',
+    `• Départ : ${d.depart}`,
+    `• Destination : ${d.arrivee}`,
+    `• Date : ${d.date} à ${d.heure}`,
+    `• Passagers : ${d.passagers}`,
+    '',
+    `Je vous prends en charge à l'heure convenue. Pour toute modification, répondez à cet e-mail ou appelez le ${siteConfig.contact.phone}.`,
+    '',
+    'À bientôt,',
+    `Anes — ${siteConfig.name}`,
+    siteConfig.contact.phone,
+  ].join('\n');
+  return `mailto:${d.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 function htmlBody(d: BookingServerInput): string {
   const row = (label: string, value: string) =>
     `<tr><td style="padding:6px 16px 6px 0;color:#626768;white-space:nowrap">${label}</td><td style="padding:6px 0;color:#121719;font-weight:600">${escapeHtml(value)}</td></tr>`;
@@ -90,6 +120,12 @@ function htmlBody(d: BookingServerInput): string {
       ${row('E-mail', d.email)}
     </table>
     ${d.message ? `<p style="margin:18px 0 4px;color:#626768">Informations complémentaires :</p><p style="margin:0;white-space:pre-wrap">${escapeHtml(d.message)}</p>` : ''}
+    <div style="margin-top:24px">
+      <a href="${confirmMailtoHref(d)}" style="display:inline-block;background:#121719;color:#ffffff;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600;font-size:14px">Confirmer au client</a>
+      <a href="tel:${d.telephone.replace(/[^\d+]/g, '')}" style="display:inline-block;margin:6px 0 0 8px;background:#ffffff;color:#121719;text-decoration:none;padding:10px 18px;border:1px solid #d5d7d8;border-radius:8px;font-weight:600;font-size:14px">Appeler</a>
+      <a href="https://wa.me/${toWhatsApp(d.telephone)}" style="display:inline-block;margin:6px 0 0 8px;background:#ffffff;color:#121719;text-decoration:none;padding:10px 18px;border:1px solid #d5d7d8;border-radius:8px;font-weight:600;font-size:14px">WhatsApp</a>
+    </div>
+    <p style="color:#8a8f90;font-size:12px;margin-top:10px">«&nbsp;Confirmer au client&nbsp;» ouvre un e-mail pré-rempli adressé au client ; relisez-le avant de l'envoyer.</p>
   </div>`;
 }
 
