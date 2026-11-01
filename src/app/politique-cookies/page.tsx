@@ -80,6 +80,15 @@ export default function CookiesPage() {
                     <td>Requis</td>
                     <td>Selon Google, au maximum 13 mois</td>
                   </tr>
+                  <tr>
+                    <td>Cloudflare Turnstile (Cloudflare)</td>
+                    <td>
+                      Vérifier que le formulaire de réservation est rempli par une personne
+                      (protection anti-spam du formulaire)
+                    </td>
+                    <td>Non requis (strictement nécessaire à la sécurité)</td>
+                    <td>Cookie technique de courte durée</td>
+                  </tr>
                 </tbody>
               </table>
               <p>
@@ -105,6 +114,25 @@ export default function CookiesPage() {
               <p>
                 Si vous n’affichez pas la carte, aucun cookie Google n’est déposé. Vous pouvez
                 toujours nous contacter et réserver par téléphone ou par e-mail.
+              </p>
+
+              <h2>Cloudflare Turnstile (anti-spam)</h2>
+              <p>
+                Le formulaire de réservation est protégé par Cloudflare Turnstile, un dispositif
+                anti-spam fourni par Cloudflare, Inc. (États-Unis). Il vérifie que le formulaire est
+                rempli par une personne et non par un programme automatisé. À ce titre, il peut
+                déposer un cookie technique de courte durée et traiter des données techniques de
+                votre navigateur.
+              </p>
+              <p>
+                Ce dispositif est <strong>strictement nécessaire à la sécurité</strong> du service
+                que vous demandez (l’envoi de votre réservation) : il est donc exempté de
+                consentement. Turnstile est conçu pour préserver la vie privée et n’est pas utilisé à
+                des fins publicitaires ou de suivi. Pour en savoir plus :{' '}
+                <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer nofollow">
+                  politique de confidentialité de Cloudflare
+                </a>
+                .
               </p>
 
               <h2>Comment gérer vos choix</h2>

@@ -103,7 +103,7 @@ export const siteConfig = {
     mediatorName: '', // Médiateur de la consommation — nom — À COMPLÉTER
     mediatorAddress: '', // Médiateur — adresse — À COMPLÉTER
     mediatorUrl: '', // Médiateur — site internet — À COMPLÉTER
-    lastUpdated: '31 octobre 2026', // Dernière mise à jour des mentions légales
+    lastUpdated: '1er novembre 2026', // Dernière mise à jour des mentions légales
   },
 
   /** Éditeur du site (agence web) — distinct de l'exploitant du service de taxi. */

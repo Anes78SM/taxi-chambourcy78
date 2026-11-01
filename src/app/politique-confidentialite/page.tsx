@@ -82,6 +82,12 @@ export default function PrivacyPage() {
                   consultées et horodatage, collectés par l’hébergeur dans les journaux techniques du
                   site.
                 </li>
+                <li>
+                  <strong>Données de localisation (facultatif)</strong> : si vous utilisez le bouton
+                  «&nbsp;Ma position&nbsp;» du formulaire, vos coordonnées GPS sont transmises à
+                  l’API Base Adresse Nationale afin de retrouver votre adresse de départ. Cette
+                  fonction ne s’active qu’à votre demande.
+                </li>
               </ul>
               <p>
                 Nous ne vous demandons pas de données sensibles. Si vous nous en communiquez
@@ -159,6 +165,16 @@ export default function PrivacyPage() {
                   l’envoi automatique de la demande est activé ;
                 </li>
                 <li>
+                  <strong>Cloudflare, Inc.</strong> (États-Unis), qui fournit le dispositif anti-spam
+                  «&nbsp;Turnstile&nbsp;» protégeant le formulaire de réservation (données techniques
+                  nécessaires à la vérification de sécurité) ;
+                </li>
+                <li>
+                  l’<strong>API Base Adresse Nationale</strong> (service public français,
+                  api-adresse.data.gouv.fr), pour proposer des adresses pendant la saisie et, si vous
+                  utilisez «&nbsp;Ma position&nbsp;», convertir vos coordonnées en adresse ;
+                </li>
+                <li>
                   notre <strong>expert-comptable</strong>, pour la facturation et les obligations
                   comptables, le cas échéant ;
                 </li>
@@ -169,8 +185,8 @@ export default function PrivacyPage() {
 
               <h2>Transferts hors de l’Union européenne</h2>
               <p>
-                Certains de nos prestataires (Vercel Inc., Google) sont établis aux États-Unis ou y
-                traitent des données. Ces transferts sont encadrés par les garanties prévues par le
+                Certains de nos prestataires (Vercel Inc., Google, Cloudflare, Inc.) sont établis aux
+                États-Unis ou y traitent des données. Ces transferts sont encadrés par les garanties prévues par le
                 RGPD, notamment la décision d’adéquation relative au Data Privacy Framework ou les
                 clauses contractuelles types de la Commission européenne.
               </p>
