@@ -98,8 +98,6 @@ export const siteConfig = {
     stationZone: 'Chambourcy', // Commune de rattachement / zone de stationnement du taxi
     adsAuthority: 'la Mairie de Chambourcy', // Autorité ayant délivré l'ADS
     adsDate: '', // Date de délivrance de l'ADS — À COMPLÉTER
-    cardNumber: '', // N° de carte professionnelle de conducteur de taxi — À COMPLÉTER (facultatif)
-    cardPrefecture: 'Yvelines (78)', // Préfecture de délivrance de la carte pro
     mediatorName: '', // Médiateur de la consommation — nom — À COMPLÉTER
     mediatorAddress: '', // Médiateur — adresse — À COMPLÉTER
     mediatorUrl: '', // Médiateur — site internet — À COMPLÉTER

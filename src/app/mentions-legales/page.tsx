@@ -103,12 +103,6 @@ export default function LegalPage() {
                   <Value value={legal.adsDate} placeholder="date" /> — zone de stationnement :{' '}
                   {legal.stationZone}
                 </li>
-                <li>
-                  Carte professionnelle de conducteur de taxi : n°{' '}
-                  <Value value={legal.cardNumber} placeholder="numéro" />, délivrée par la
-                  préfecture{' '}
-                  <Value value={legal.cardPrefecture} placeholder="préfecture" />
-                </li>
               </ul>
               <p className="text-sm text-ink-800/65">
                 Activité réglementée par le code des transports (livre Ier, titre III, chapitre
