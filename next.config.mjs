@@ -35,6 +35,12 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        // Zone « Paris Ouest » repositionnée en hub régional « Yvelines (78) ».
+        source: '/zones/taxi-paris-ouest',
+        destination: '/zones/taxi-yvelines',
+        permanent: true,
+      },
     ];
   },
 };

@@ -9,10 +9,12 @@ type ZoneHeroProps = {
   city: string;
   title: string;
   crumbs: Crumb[];
+  /** Intro personnalisée (sinon : intro « taxi à {ville} » par défaut). */
+  lede?: string;
 };
 
 /** Hero d'une page zone : photo de fond, requête cible « Taxi à {ville} » et CTA. */
-export function ZoneHero({ city, title, crumbs }: ZoneHeroProps) {
+export function ZoneHero({ city, title, crumbs, lede }: ZoneHeroProps) {
   return (
     <section className="relative overflow-hidden bg-ink-900 pb-16 pt-[136px] text-white sm:pb-20 lg:min-h-[72vh] lg:pb-24">
       {/* Image de fond */}
@@ -48,9 +50,14 @@ export function ZoneHero({ city, title, crumbs }: ZoneHeroProps) {
           {title}
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream/85">
-          Besoin d’un taxi à {city} ? Nous assurons vos transferts vers les gares et les aéroports,
-          mais aussi vos déplacements professionnels et vos trajets privés. Le tout au départ de{' '}
-          {city} et des communes voisines, 7j/7, à l’avance comme en course immédiate.
+          {lede ?? (
+            <>
+              Besoin d’un taxi à {city} ? Nous assurons vos transferts vers les gares et les
+              aéroports, mais aussi vos déplacements professionnels et vos trajets privés. Le tout
+              au départ de {city} et des communes voisines, 7j/7, à l’avance comme en course
+              immédiate.
+            </>
+          )}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button href="#reservation" size="lg">

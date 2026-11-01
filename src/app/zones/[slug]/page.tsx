@@ -51,7 +51,7 @@ export default async function ZonePage({ params }: Params) {
       <JsonLd
         data={[
           serviceSchema({
-            name: `Taxi à ${location.name}`,
+            name: location.title,
             description: location.tagline,
             url: absoluteUrl(path),
           }),
@@ -67,6 +67,7 @@ export default async function ZonePage({ params }: Params) {
       <ZoneHero
         city={location.name}
         title={location.title}
+        lede={location.heroLede}
         crumbs={[
           { name: 'Accueil', path: '/' },
           { name: 'Zones desservies', path: '/zones' },
@@ -80,14 +81,14 @@ export default async function ZonePage({ params }: Params) {
       <ClientsSection />
 
       {/* Réserver un taxi à {ville} */}
-      <BookingSection city={location.name} />
+      <BookingSection city={location.bookingCity ?? location.name} />
 
       {/* Contexte + besoins */}
       <section className="bg-cream py-20 sm:py-24">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16">
             <Reveal>
-              <p className="eyebrow text-champagne-dark">Taxi à {location.name}</p>
+              <p className="eyebrow text-champagne-dark">{location.title}</p>
               <h2 className="mt-4 text-h2 text-ink-900">Un transport premium à {location.name}</h2>
               <div className="prose-content mt-6 max-w-none">
                 {location.context.map((paragraph, i) => (
@@ -193,10 +194,10 @@ export default async function ZonePage({ params }: Params) {
       </section>
 
       {/* Comment commander */}
-      <HowToBookSection city={location.name} />
+      <HowToBookSection city={location.bookingCity ?? location.name} />
 
       {/* Tarifs */}
-      <PricingSection city={location.name} />
+      <PricingSection city={location.bookingCity ?? location.name} />
 
       {/* Avis clients */}
       <ReviewsSection />
@@ -208,8 +209,8 @@ export default async function ZonePage({ params }: Params) {
             <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
               <SectionHeading
                 eyebrow="Questions fréquentes"
-                title={`Taxi à ${location.name}`}
-                description={`Les réponses aux questions les plus fréquentes sur le taxi à ${location.name}.`}
+                title={location.title}
+                description="Les réponses aux questions les plus fréquentes avant votre trajet."
               />
               <FAQAccordion items={location.faq} />
             </div>

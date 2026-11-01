@@ -7,8 +7,7 @@ import { locations } from '@/data/locations';
 
 /**
  * Trajets mis en avant — liens internes vers des pages qui existent réellement
- * (zones / services). Les pages Paris / La Défense dédiées n'existant pas,
- * ces trajets pointent vers la page zone « Paris Ouest ».
+ * (zones / trajets / services).
  */
 const featuredRoutes = [
   {
@@ -24,7 +23,7 @@ const featuredRoutes = [
   {
     title: 'Paris & La Défense',
     description: 'Déplacements professionnels ou privés ; réservation conseillée aux heures de pointe.',
-    href: '/zones/taxi-paris-ouest',
+    href: '/trajets/taxi-chambourcy-la-defense',
   },
   {
     title: 'Aéroports de Paris',

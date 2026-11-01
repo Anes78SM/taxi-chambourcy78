@@ -402,37 +402,45 @@ export const locations: Location[] = [
     ],
   },
   {
-    slug: 'taxi-paris-ouest',
-    name: 'Paris Ouest',
-    title: 'Taxi Paris Ouest et Île-de-France',
-    postalCode: '',
-    tagline: 'Un service premium sur tout l’Ouest parisien',
+    slug: 'taxi-yvelines',
+    name: 'Yvelines (78)',
+    title: 'Taxi dans les Yvelines (78)',
+    postalCode: '78',
+    tagline: 'Un service premium dans tout l’Ouest des Yvelines',
+    bookingCity: 'Chambourcy',
+    heroLede:
+      'Besoin d’un taxi dans les Yvelines ? Basés à Chambourcy, nous rayonnons sur tout l’Ouest du département — de Saint-Germain-en-Laye à Maisons-Laffitte — et vers Paris, La Défense et les aéroports franciliens, 7j/7, à l’avance comme en course immédiate.',
     context: [
-      'Paris Ouest regroupe les communes dynamiques situées entre la capitale et les Yvelines : un secteur résidentiel et économique majeur de l’Île-de-France.',
-      'Depuis Chambourcy, nous rayonnons sur l’ensemble de cette zone et au-delà, pour vos trajets professionnels, privés et vos transferts aéroports.',
+      'Basés à Chambourcy, au cœur des Yvelines (78), nous assurons un service de taxi premium dans tout l’Ouest du département : Saint-Germain-en-Laye, Poissy, Orgeval, Marly-le-Roi, Maisons-Laffitte, Le Vésinet et les communes voisines.',
+      'Cette page régionale regroupe nos zones desservies. Retrouvez plus bas la liste des communes où nous assurons une prise en charge de porte à porte, ainsi que nos liaisons vers Paris, La Défense et les aéroports.',
     ],
     needs: [
-      'Transferts vers l’ensemble des aéroports franciliens.',
+      'Transferts vers tous les aéroports franciliens (Roissy, Orly, Le Bourget, Beauvais).',
       'Déplacements professionnels vers Paris, La Défense et les pôles d’affaires.',
-      'Trajets privés dans tout l’Ouest parisien.',
-      'Liaisons entre communes et vers les gares.',
+      'Trajets privés et sorties dans tout l’Ouest des Yvelines.',
+      'Liaisons entre communes et vers les gares du département (RER A, Transilien).',
     ],
     destinations: [
-      { label: 'Aéroports franciliens', detail: 'Roissy CDG, Orly, Le Bourget.' },
-      { label: 'La Défense', detail: 'Premier quartier d’affaires européen.' },
-      { label: 'Paris intra-muros', detail: 'Tous arrondissements.' },
-      { label: 'Yvelines & Hauts-de-Seine', detail: 'Liaisons inter-communes.' },
+      { label: 'Aéroports franciliens', detail: 'Roissy CDG, Orly, Le Bourget, Beauvais.' },
+      { label: 'La Défense & Paris', detail: 'Déplacements professionnels et privés.' },
+      { label: 'Communes des Yvelines', detail: 'Saint-Germain, Poissy, Marly, Maisons-Laffitte…' },
+      { label: 'Gares du département', detail: 'RER A et Transilien (lignes L, J).' },
     ],
     practical: [
-      'Zone de service : Chambourcy, Paris Ouest et Île-de-France.',
-      'Trajets de porte à porte sur réservation.',
-      'Modalités et estimations communiquées lors de la demande.',
+      'Zone de service : Chambourcy, l’Ouest des Yvelines et l’Île-de-France.',
+      'Trajets de porte à porte sur réservation, 7j/7.',
+      'Estimations et modalités communiquées lors de la demande.',
     ],
     faq: [
       {
+        question: 'Quelles communes des Yvelines desservez-vous ?',
+        answer:
+          'Depuis Chambourcy, nous desservons notamment Saint-Germain-en-Laye, Poissy, Orgeval, Le Pecq, Le Vésinet, Marly-le-Roi, Maisons-Laffitte, Aigremont, Fourqueux et Mareil-Marly, ainsi que les communes voisines. Votre commune n’y figure pas ? Contactez-nous pour confirmation.',
+      },
+      {
         question: 'Quelle est votre zone de service exacte ?',
         answer:
-          'Nous rayonnons depuis Chambourcy sur l’ensemble de Paris Ouest et de l’Île-de-France. N’hésitez pas à nous préciser votre trajet lors de votre demande.',
+          'Nous rayonnons depuis Chambourcy sur l’Ouest des Yvelines et l’Île-de-France. N’hésitez pas à nous préciser votre trajet lors de votre demande.',
       },
     ],
   },

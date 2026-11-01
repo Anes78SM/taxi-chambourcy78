@@ -50,6 +50,10 @@ export type Location = {
   practical: string[];
   /** FAQ locale */
   faq: FaqItem[];
+  /** Intro personnalisée du hero (sinon : intro « taxi à {ville} » par défaut). Utile pour un hub régional. */
+  heroLede?: string;
+  /** Ville utilisée par les sections réservation / tarifs (sinon : `name`). */
+  bookingCity?: string;
 };
 
 export type PostFrontmatter = {
