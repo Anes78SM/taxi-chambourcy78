@@ -65,9 +65,9 @@ export function SiteHeader() {
             <a
               href={siteConfig.contact.phoneHref}
               aria-label={`Appeler le ${siteConfig.contact.phone}`}
-              className="hidden items-center gap-2 text-base font-bold tracking-wide text-cream transition-colors hover:text-champagne md:flex"
+              className="flex items-center gap-1.5 text-[0.9rem] font-bold text-cream transition-colors hover:text-champagne md:gap-2 md:text-base md:tracking-wide"
             >
-              <Phone className="h-[18px] w-[18px] text-champagne" aria-hidden strokeWidth={2.25} />
+              <Phone className="h-4 w-4 text-champagne md:h-[18px] md:w-[18px]" aria-hidden strokeWidth={2.25} />
               {siteConfig.contact.phone}
             </a>
           )}

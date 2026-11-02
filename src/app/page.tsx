@@ -8,6 +8,7 @@ import { ClientsSection } from '@/components/home/ClientsSection';
 import { DestinationsSection } from '@/components/home/DestinationsSection';
 import { PricingSection } from '@/components/home/PricingSection';
 import { AboutSection } from '@/components/home/AboutSection';
+import { EngagementsSection } from '@/components/home/EngagementsSection';
 import { ReviewsSection } from '@/components/home/ReviewsSection';
 import { BlogPreview } from '@/components/home/BlogPreview';
 import { FaqSection } from '@/components/home/FaqSection';
@@ -42,6 +43,7 @@ export default function HomePage() {
       <DestinationsSection />
       <PricingSection />
       <AboutSection />
+      <EngagementsSection />
       <ReviewsSection />
       <BlogPreview posts={posts} />
       <FaqSection items={homeFaq} />
