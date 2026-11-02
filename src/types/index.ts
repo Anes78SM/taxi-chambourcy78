@@ -40,6 +40,8 @@ export type Location = {
   h1?: string;
   /** Titre SEO (<title>) + Open Graph / Twitter, < 60 car., utilisé tel quel sans suffixe de marque. Défaut : `title` + suffixe. */
   metaTitle?: string;
+  /** Meta description SEO (~155 car.). Défaut : phrase construite à partir de `tagline` + `name`. */
+  metaDescription?: string;
   /** Code postal (vide pour une zone large) */
   postalCode: string;
   /** Accroche courte */

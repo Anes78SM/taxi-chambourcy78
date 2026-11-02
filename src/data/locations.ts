@@ -12,6 +12,8 @@ export const locations: Location[] = [
     title: 'Taxi à Saint-Germain-en-Laye',
     h1: 'Taxi à Saint-Germain-en-Laye : gare, château, aéroports',
     metaTitle: 'Taxi Saint-Germain-en-Laye | Gare RER A et Aéroports',
+    metaDescription:
+      'Taxi à Saint-Germain-en-Laye 24h/24 : gare RER A, château, aéroports Orly et Roissy. Réservez en ligne ou par téléphone, confirmation rapide.',
     postalCode: '78100',
     tagline: 'Transport premium depuis Saint-Germain-en-Laye',
     context: [
@@ -49,6 +51,8 @@ export const locations: Location[] = [
     title: 'Taxi à Poissy',
     h1: 'Taxi à Poissy : gare, hôpital et aéroports',
     metaTitle: 'Taxi Poissy | Gare, Hôpital et Aéroports 24h/24',
+    metaDescription:
+      'Taxi à Poissy 24h/24 : gare, hôpital, aéroports Orly et Roissy. Réservez en ligne ou par téléphone, tarif annoncé à l’avance.',
     postalCode: '78300',
     tagline: 'Votre taxi premium à Poissy et alentours',
     context: [
@@ -91,6 +95,8 @@ export const locations: Location[] = [
     title: 'Taxi à Orgeval',
     h1: 'Taxi à Orgeval : départ à domicile, jour et nuit',
     metaTitle: 'Taxi Orgeval | Prise en Charge à Domicile 24h/24',
+    metaDescription:
+      'Taxi à Orgeval 24h/24 : prise en charge à domicile, gares et aéroports. Réservez en ligne ou par téléphone, réponse rapide.',
     postalCode: '78630',
     tagline: 'Transport soigné depuis Orgeval',
     context: [
@@ -133,6 +139,8 @@ export const locations: Location[] = [
     title: 'Taxi au Pecq',
     h1: 'Taxi au Pecq : gare RER A et bords de Seine',
     metaTitle: 'Taxi Le Pecq | Gare RER A et Aéroports',
+    metaDescription:
+      'Taxi au Pecq 24h/24 : gare RER A, bords de Seine, aéroports. Réservez en ligne ou par téléphone, chauffeur ponctuel.',
     postalCode: '78230',
     tagline: 'Votre taxi premium au Pecq, au bord de Seine',
     context: [
@@ -175,6 +183,8 @@ export const locations: Location[] = [
     title: 'Taxi au Vésinet',
     h1: 'Taxi au Vésinet : gares RER A et transferts aéroports',
     metaTitle: 'Taxi Le Vésinet | Gare RER A, Orly et Roissy',
+    metaDescription:
+      'Taxi au Vésinet 24h/24 : gares RER A, Orly, Roissy CDG. Réservez en ligne ou par téléphone, tarif annoncé avant le départ.',
     postalCode: '78110',
     tagline: 'Transport premium au Vésinet',
     context: [
@@ -217,6 +227,8 @@ export const locations: Location[] = [
     title: 'Taxi à Marly-le-Roi',
     h1: 'Taxi à Marly-le-Roi : trajets locaux et longue distance',
     metaTitle: 'Taxi Marly-le-Roi | Trajets Locaux et Aéroports',
+    metaDescription:
+      'Taxi à Marly-le-Roi 24h/24 : trajets locaux, gares et aéroports. Réservez en ligne ou par téléphone, chauffeur professionnel.',
     postalCode: '78160',
     tagline: 'Votre taxi premium à Marly-le-Roi',
     context: [
@@ -259,6 +271,8 @@ export const locations: Location[] = [
     title: 'Taxi à Maisons-Laffitte',
     h1: 'Taxi à Maisons-Laffitte : gare, hippodrome, aéroports',
     metaTitle: 'Taxi Maisons-Laffitte | Gare RER A et Aéroports',
+    metaDescription:
+      'Taxi à Maisons-Laffitte 24h/24 : gare RER A, hippodrome, aéroports. Réservez en ligne ou par téléphone, confirmation rapide.',
     postalCode: '78600',
     tagline: 'Transport premium à Maisons-Laffitte',
     context: [
@@ -301,6 +315,8 @@ export const locations: Location[] = [
     title: 'Taxi à Aigremont',
     h1: 'Taxi à Aigremont : prise en charge à domicile',
     metaTitle: 'Taxi Aigremont | Départ à Domicile 24h/24',
+    metaDescription:
+      'Taxi à Aigremont 24h/24 : départ à domicile, gares, aéroports. Réservez en ligne ou par téléphone, tarif clair.',
     postalCode: '78240',
     tagline: 'Votre taxi premium à Aigremont, au calme des Yvelines',
     context: [
@@ -343,6 +359,8 @@ export const locations: Location[] = [
     title: 'Taxi à Fourqueux',
     h1: 'Taxi à Fourqueux : courses locales et longues distances',
     metaTitle: 'Taxi Fourqueux | Course Locale ou Longue Distance',
+    metaDescription:
+      'Taxi à Fourqueux 24h/24 : courses locales et longues distances, aéroports. Réservez en ligne ou par téléphone.',
     postalCode: '78112',
     tagline: 'Transport premium à Fourqueux, aux portes de Saint-Germain',
     context: [
@@ -385,6 +403,8 @@ export const locations: Location[] = [
     title: 'Taxi à Mareil-Marly',
     h1: 'Taxi à Mareil-Marly : gares, aéroports et rendez-vous',
     metaTitle: 'Taxi Mareil-Marly | Gare, Aéroports, Rendez-vous',
+    metaDescription:
+      'Taxi à Mareil-Marly 24h/24 : gares, aéroports, rendez-vous. Réservez en ligne ou par téléphone, chauffeur ponctuel.',
     postalCode: '78750',
     tagline: 'Votre taxi premium à Mareil-Marly',
     context: [
