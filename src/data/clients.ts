@@ -15,6 +15,8 @@ export type Client = {
   logo?: string;
   /** Lien vers le site du client — facultatif */
   url?: string;
+  /** Logo blanc sur fond sombre : affiché dans une pastille sombre pour rester lisible sur la section claire. */
+  darkBg?: boolean;
 };
 
 export const clients: Client[] = [
@@ -27,4 +29,11 @@ export const clients: Client[] = [
   { name: 'LSM — Leading Sport Management', logo: '/images/clients/lsm.png' },
   { name: 'A-ROSA', logo: '/images/clients/arosa.png' },
   { name: 'SNCF', logo: '/images/clients/sncf.png' },
+  { name: 'VINCI', logo: '/images/clients/vinci.png' },
+  { name: 'Safran', logo: '/images/clients/safran.png', darkBg: true },
+  { name: 'Société Générale', logo: '/images/clients/societe-generale.png' },
+  { name: 'TotalEnergies', logo: '/images/clients/totalenergies.png' },
+  { name: 'Framatome', logo: '/images/clients/framatome.png' },
+  { name: 'Areva', logo: '/images/clients/areva.png' },
+  { name: 'Dolce & Gabbana', logo: '/images/clients/dolce-gabbana.png' },
 ];

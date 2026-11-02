@@ -31,7 +31,12 @@ export function ClientsSection() {
                 src={client.logo}
                 alt={client.name}
                 loading="lazy"
-                className="h-8 w-auto max-w-[150px] object-contain opacity-85 transition-opacity duration-300 hover:opacity-100 sm:h-10"
+                className={
+                  client.darkBg
+                    ? // Logo blanc sur fond sombre intégré : coins arrondis pour en faire une tuile nette sur la section claire.
+                      'h-11 w-auto max-w-[180px] rounded-lg object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 sm:h-[52px]'
+                    : 'h-8 w-auto max-w-[150px] object-contain opacity-85 transition-opacity duration-300 hover:opacity-100 sm:h-10'
+                }
               />
             ) : (
               <span className="whitespace-nowrap font-serif text-xl text-ink-900/55">
