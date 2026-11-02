@@ -12,6 +12,7 @@ export function FaqSection({ items }: { items: FaqItem[] }) {
             eyebrow="Questions fréquentes"
             title="Tout savoir avant de réserver"
             description="Une question sur nos services ou votre trajet ? Les réponses aux demandes les plus courantes."
+            stacked
           />
           <FAQAccordion items={items} />
         </div>
