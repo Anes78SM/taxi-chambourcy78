@@ -15,7 +15,7 @@ import { CTASection } from '@/components/home/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { getAllPosts } from '@/lib/blog';
 import { homeFaq } from '@/data/faq';
-import { buildMetadata, faqSchema } from '@/lib/seo';
+import { buildMetadata, homePageGraph } from '@/lib/seo';
 
 // Title + meta description propres à l'accueil (mot-clé « taxi à Chambourcy » en début).
 // buildMetadata aligne automatiquement Open Graph et Twitter sur ce titre/description.
@@ -32,7 +32,7 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={faqSchema(homeFaq)} />
+      <JsonLd data={homePageGraph(homeFaq)} />
       <Hero />
       <ClientsSection />
       <BookingSection />

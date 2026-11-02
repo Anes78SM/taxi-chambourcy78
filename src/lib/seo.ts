@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { googleBusiness } from '@/data/reviews';
+import { locations } from '@/data/locations';
+import { services } from '@/data/services';
 import type { FaqItem } from '@/types';
 
 export const absoluteUrl = (path = ''): string =>
@@ -92,7 +94,8 @@ export function localBusinessSchema() {
   const isRealPhone = contact.phone.length > 0 && !contact.phone.includes('00 00 00');
 
   return {
-    '@type': 'LocalBusiness',
+    // Entreprise locale ET service de taxi (double typage valide schema.org).
+    '@type': ['TaxiService', 'LocalBusiness'],
     '@id': BUSINESS_ID,
     name: siteConfig.name,
     ...(siteConfig.legal.legalName ? { legalName: siteConfig.legal.legalName } : {}),
@@ -102,6 +105,10 @@ export function localBusinessSchema() {
     description: siteConfig.description,
     url: siteConfig.url,
     image: absoluteUrl(siteConfig.ogImage),
+    logo: absoluteUrl('/images/branding/logo-green.webp'),
+    priceRange: '€€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Espèces, Carte bancaire (Visa, Mastercard)',
     ...(isRealPhone ? { telephone: phoneE164() } : {}),
     ...(contact.email ? { email: contact.email } : {}),
     address: {
@@ -121,7 +128,36 @@ export function localBusinessSchema() {
           },
         }
       : {}),
-    areaServed: siteConfig.serviceArea,
+    // Service disponible 24h/24, 7j/7 (sur réservation).
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '00:00',
+        closes: '23:59',
+      },
+    ],
+    // Zones desservies structurées : Chambourcy + les communes (pages /zones) + le département.
+    areaServed: [
+      { '@type': 'City', name: siteConfig.address.city },
+      ...locations
+        .filter((l) => l.postalCode.length === 5)
+        .map((l) => ({ '@type': 'City', name: l.name })),
+      { '@type': 'AdministrativeArea', name: 'Yvelines' },
+    ],
+    // Catalogue de prestations relié aux pages services.
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Prestations de taxi',
+      itemListElement: services.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: s.name,
+          url: absoluteUrl(`/services/${s.slug}`),
+        },
+      })),
+    },
     // Note moyenne réelle issue de la fiche Google (reflète le contenu visible).
     ...(googleBusiness.reviewCount > 0
       ? {
@@ -216,5 +252,33 @@ export function faqSchema(items: FaqItem[]) {
       name: item.question,
       acceptedAnswer: { '@type': 'Answer', text: item.answer },
     })),
+  };
+}
+
+/**
+ * Graphe de la page d'accueil : nœud de page (FAQPage) relié par @id au WebSite
+ * (isPartOf) et à l'entreprise (about) déclarés dans le graphe global du layout.
+ * Connecte ainsi la FAQ au reste des données structurées plutôt qu'un bloc isolé.
+ */
+export function homePageGraph(items: FaqItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        '@id': `${siteConfig.url}/#webpage`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        inLanguage: 'fr-FR',
+        isPartOf: { '@id': WEBSITE_ID },
+        about: { '@id': BUSINESS_ID },
+        primaryImageOfPage: absoluteUrl(siteConfig.ogImage),
+        mainEntity: items.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: { '@type': 'Answer', text: item.answer },
+        })),
+      },
+    ],
   };
 }
