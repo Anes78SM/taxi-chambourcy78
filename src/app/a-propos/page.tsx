@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ShieldCheck, Gem, Clock, MapPin, UserRound } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { Reveal } from '@/components/ui/Reveal';
 import { PageHero } from '@/components/layout/PageHero';
 import { CTASection } from '@/components/home/CTASection';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -20,6 +21,12 @@ const commitments = [
   { icon: Gem, title: 'Confort et discrétion', text: 'Un service soigné, respectueux de votre confidentialité.' },
   { icon: Clock, title: 'Ponctualité', text: 'Une organisation anticipée pour aborder vos trajets sereinement.' },
   { icon: MapPin, title: 'Connaissance locale', text: 'Chambourcy, Paris Ouest et l’ensemble de l’Île-de-France.' },
+];
+
+const vehicleGallery = [
+  { src: '/images/vehicule/profil-g7.webp', alt: 'Break BMW noir de profil, siglé G7 — taxi à Chambourcy' },
+  { src: '/images/vehicule/avant.webp', alt: 'Break BMW noir, vue avant trois-quarts — taxi à Chambourcy' },
+  { src: '/images/vehicule/interieur.webp', alt: 'Habitacle cuir clair de la BMW, portière ouverte — taxi à Chambourcy' },
 ];
 
 export default function AboutPage() {
@@ -84,17 +91,48 @@ export default function AboutPage() {
             <figure className="lg:sticky lg:top-28">
               <div className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-lg)] shadow-card">
                 <Image
-                  src="/images/hero/hero-chauffeur.webp"
-                  alt="Anes Smail, chauffeur de taxi à Chambourcy, devant sa BMW taxi"
+                  src="/images/hero/hero-chauffeur-portrait.webp"
+                  alt="Anes Smail, chauffeur de taxi à Chambourcy, en costume devant sa BMW taxi"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-[62%_center]"
+                  className="object-cover object-center"
                 />
               </div>
               <figcaption className="mt-3 text-center text-sm text-ink-800/65">
                 Anes Smail, votre chauffeur de taxi à Chambourcy.
               </figcaption>
             </figure>
+          </div>
+        </Container>
+      </section>
+
+      {/* Le véhicule */}
+      <section className="bg-white py-20 sm:py-24">
+        <Container>
+          <Reveal>
+            <p className="eyebrow text-champagne-dark">Le véhicule</p>
+            <h2 className="mt-3 max-w-2xl text-h2 text-ink-900">
+              Un break BMW spacieux et confortable
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-800/75">
+              Un break BMW récent et soigneusement entretenu : finitions premium, habitacle
+              spacieux au cuir clair et coffre généreux pour vos bagages et transferts aéroport.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {vehicleGallery.map((photo, i) => (
+              <Reveal key={photo.src} delay={i * 90}>
+                <div className="relative aspect-video overflow-hidden rounded-[var(--radius-lg)] shadow-card">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </section>

@@ -36,8 +36,8 @@ export function AboutSection() {
           <Reveal delay={120}>
             <div className="relative aspect-video overflow-hidden rounded-[var(--radius-lg)] shadow-card">
               <Image
-                src="/images/BMW_bleu_aux_details_raffines.webp"
-                alt="Taxi à Chambourcy : le break BMW bleu nuit — extérieur, habitacle, poste de conduite et coffre"
+                src="/images/vehicule/profil-g7.webp"
+                alt="Taxi à Chambourcy : le break BMW noir, de profil, siglé G7"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
