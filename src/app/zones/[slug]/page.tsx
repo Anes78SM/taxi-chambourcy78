@@ -32,9 +32,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const location = getLocation(slug);
   if (!location) return {};
   return buildMetadata({
-    title: location.title,
+    title: location.metaTitle ?? location.title,
     description: `${location.tagline}. Transferts aéroports, déplacements professionnels et trajets privés au départ de ${location.name}.`,
     path: `/zones/${location.slug}`,
+    // Titre SEO fourni tel quel (< 60 car.) : pas de suffixe de marque ajouté par le template.
+    absoluteTitle: Boolean(location.metaTitle),
   });
 }
 
@@ -66,7 +68,7 @@ export default async function ZonePage({ params }: Params) {
 
       <ZoneHero
         city={location.name}
-        title={location.title}
+        title={location.h1 ?? location.title}
         lede={location.heroLede}
         crumbs={[
           { name: 'Accueil', path: '/' },

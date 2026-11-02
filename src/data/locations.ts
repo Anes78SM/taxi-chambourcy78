@@ -10,6 +10,8 @@ export const locations: Location[] = [
     slug: 'taxi-saint-germain-en-laye',
     name: 'Saint-Germain-en-Laye',
     title: 'Taxi à Saint-Germain-en-Laye',
+    h1: 'Taxi à Saint-Germain-en-Laye : gare, château, aéroports',
+    metaTitle: 'Taxi Saint-Germain-en-Laye | Gare RER A et Aéroports',
     postalCode: '78100',
     tagline: 'Transport premium depuis Saint-Germain-en-Laye',
     context: [
@@ -45,6 +47,8 @@ export const locations: Location[] = [
     slug: 'taxi-poissy',
     name: 'Poissy',
     title: 'Taxi à Poissy',
+    h1: 'Taxi à Poissy : gare, hôpital et aéroports',
+    metaTitle: 'Taxi Poissy | Gare, Hôpital et Aéroports 24h/24',
     postalCode: '78300',
     tagline: 'Votre taxi premium à Poissy et alentours',
     context: [
@@ -85,6 +89,8 @@ export const locations: Location[] = [
     slug: 'taxi-orgeval',
     name: 'Orgeval',
     title: 'Taxi à Orgeval',
+    h1: 'Taxi à Orgeval : départ à domicile, jour et nuit',
+    metaTitle: 'Taxi Orgeval | Prise en Charge à Domicile 24h/24',
     postalCode: '78630',
     tagline: 'Transport soigné depuis Orgeval',
     context: [
@@ -125,6 +131,8 @@ export const locations: Location[] = [
     slug: 'taxi-le-pecq',
     name: 'Le Pecq',
     title: 'Taxi au Pecq',
+    h1: 'Taxi au Pecq : gare RER A et bords de Seine',
+    metaTitle: 'Taxi Le Pecq | Gare RER A et Aéroports',
     postalCode: '78230',
     tagline: 'Votre taxi premium au Pecq, au bord de Seine',
     context: [
@@ -165,6 +173,8 @@ export const locations: Location[] = [
     slug: 'taxi-le-vesinet',
     name: 'Le Vésinet',
     title: 'Taxi au Vésinet',
+    h1: 'Taxi au Vésinet : gares RER A et transferts aéroports',
+    metaTitle: 'Taxi Le Vésinet | Gare RER A, Orly et Roissy',
     postalCode: '78110',
     tagline: 'Transport premium au Vésinet',
     context: [
@@ -205,6 +215,8 @@ export const locations: Location[] = [
     slug: 'taxi-marly-le-roi',
     name: 'Marly-le-Roi',
     title: 'Taxi à Marly-le-Roi',
+    h1: 'Taxi à Marly-le-Roi : trajets locaux et longue distance',
+    metaTitle: 'Taxi Marly-le-Roi | Trajets Locaux et Aéroports',
     postalCode: '78160',
     tagline: 'Votre taxi premium à Marly-le-Roi',
     context: [
@@ -245,6 +257,8 @@ export const locations: Location[] = [
     slug: 'taxi-maisons-laffitte',
     name: 'Maisons-Laffitte',
     title: 'Taxi à Maisons-Laffitte',
+    h1: 'Taxi à Maisons-Laffitte : gare, hippodrome, aéroports',
+    metaTitle: 'Taxi Maisons-Laffitte | Gare RER A et Aéroports',
     postalCode: '78600',
     tagline: 'Transport premium à Maisons-Laffitte',
     context: [
@@ -285,6 +299,8 @@ export const locations: Location[] = [
     slug: 'taxi-aigremont',
     name: 'Aigremont',
     title: 'Taxi à Aigremont',
+    h1: 'Taxi à Aigremont : prise en charge à domicile',
+    metaTitle: 'Taxi Aigremont | Départ à Domicile 24h/24',
     postalCode: '78240',
     tagline: 'Votre taxi premium à Aigremont, au calme des Yvelines',
     context: [
@@ -325,6 +341,8 @@ export const locations: Location[] = [
     slug: 'taxi-fourqueux',
     name: 'Fourqueux',
     title: 'Taxi à Fourqueux',
+    h1: 'Taxi à Fourqueux : courses locales et longues distances',
+    metaTitle: 'Taxi Fourqueux | Course Locale ou Longue Distance',
     postalCode: '78112',
     tagline: 'Transport premium à Fourqueux, aux portes de Saint-Germain',
     context: [
@@ -365,6 +383,8 @@ export const locations: Location[] = [
     slug: 'taxi-mareil-marly',
     name: 'Mareil-Marly',
     title: 'Taxi à Mareil-Marly',
+    h1: 'Taxi à Mareil-Marly : gares, aéroports et rendez-vous',
+    metaTitle: 'Taxi Mareil-Marly | Gare, Aéroports, Rendez-vous',
     postalCode: '78750',
     tagline: 'Votre taxi premium à Mareil-Marly',
     context: [

@@ -34,8 +34,12 @@ export type Location = {
   slug: string;
   /** Nom de la commune / zone */
   name: string;
-  /** Titre de page / H1 */
+  /** Libellé court « Taxi à {ville} » : eyebrow, titre FAQ, liens plan du site / llms.txt, schema Service. */
   title: string;
+  /** H1 visible du hero (descriptif, orienté requête). Défaut : `title`. */
+  h1?: string;
+  /** Titre SEO (<title>) + Open Graph / Twitter, < 60 car., utilisé tel quel sans suffixe de marque. Défaut : `title` + suffixe. */
+  metaTitle?: string;
   /** Code postal (vide pour une zone large) */
   postalCode: string;
   /** Accroche courte */
