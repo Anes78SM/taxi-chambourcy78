@@ -158,6 +158,17 @@ export function localBusinessSchema() {
         },
       })),
     },
+    // Thématiques d'expertise (aide la compréhension sémantique / moteurs IA).
+    knowsAbout: [
+      'Transferts aéroports (Roissy CDG, Orly, Le Bourget)',
+      'Transferts gares',
+      'Transport de personnes par taxi',
+      'Déplacements professionnels',
+      'Trajets privés et sorties',
+      'Mise à disposition de taxi avec chauffeur',
+      'Transport vers rendez-vous médicaux',
+      'Tarifs taxi réglementés des Yvelines',
+    ],
     // Note moyenne réelle issue de la fiche Google (reflète le contenu visible).
     ...(googleBusiness.reviewCount > 0
       ? {
