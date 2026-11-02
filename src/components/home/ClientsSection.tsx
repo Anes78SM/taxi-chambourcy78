@@ -11,7 +11,7 @@ export function ClientsSection() {
       <Container>
         <Reveal>
           <p className="eyebrow text-center text-champagne-dark">Ils nous font confiance</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-center font-serif text-2xl text-ink-900">
+          <h2 className="mx-auto mt-3 max-w-2xl text-center font-serif text-2xl text-ink-900 lg:max-w-none lg:whitespace-nowrap">
             Des entreprises et établissements exigeants nous confient leurs trajets
           </h2>
         </Reveal>

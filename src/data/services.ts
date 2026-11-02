@@ -181,7 +181,7 @@ export const services: Service[] = [
       'À l’heure, à la demi-journée ou sur plusieurs rendez-vous. Un véhicule et un chauffeur dédiés à votre programme.',
     icon: 'Clock',
     image: '/images/taxi_chambourcy_01_exterieur.webp',
-    imageAlt: 'Break BMW bleu nuit à disposition à Chambourcy, portière arrière ouverte',
+    imageAlt: 'Break BMW noir à disposition à Chambourcy, portière arrière ouverte',
     intro: [
       'Lorsque votre journée comporte plusieurs étapes, la mise à disposition est la solution la plus souple. Un véhicule et un chauffeur restent dédiés à votre programme : rendez-vous successifs, visites, événement sur une journée ou déplacement comportant des temps d’attente.',
       'Vous définissez les grandes lignes de votre journée, nous adaptons le déroulé au fil de vos besoins.',
