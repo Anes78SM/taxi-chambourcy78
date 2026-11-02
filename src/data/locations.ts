@@ -449,7 +449,7 @@ export const locations: Location[] = [
     tagline: 'Un service premium dans tout l’Ouest des Yvelines',
     bookingCity: 'Chambourcy',
     heroLede:
-      'Besoin d’un taxi dans les Yvelines ? Basés à Chambourcy, nous rayonnons sur tout l’Ouest du département — de Saint-Germain-en-Laye à Maisons-Laffitte — et vers Paris, La Défense et les aéroports franciliens, 7j/7, à l’avance comme en course immédiate.',
+      'Besoin d’un taxi dans les Yvelines ? Basés à Chambourcy, nous rayonnons sur tout l’Ouest du département, de Saint-Germain-en-Laye à Maisons-Laffitte, et vers Paris, La Défense et les aéroports franciliens, 7j/7, à l’avance comme en course immédiate.',
     context: [
       'Basés à Chambourcy, au cœur des Yvelines (78), nous assurons un service de taxi premium dans tout l’Ouest du département : Saint-Germain-en-Laye, Poissy, Orgeval, Marly-le-Roi, Maisons-Laffitte, Le Vésinet et les communes voisines.',
       'Cette page régionale regroupe nos zones desservies. Retrouvez plus bas la liste des communes où nous assurons une prise en charge de porte à porte, ainsi que nos liaisons vers Paris, La Défense et les aéroports.',

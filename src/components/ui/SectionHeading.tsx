@@ -20,42 +20,55 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   const isDarkBg = tone === 'light'; // texte clair sur fond sombre
+  // Intro alignée à gauche AVEC description : deux colonnes sur desktop
+  // (titre à gauche, description à droite) pour exploiter toute la largeur.
+  const twoCol = align === 'left' && Boolean(description);
+
+  const descriptionEl = description ? (
+    <p
+      className={cn(
+        'text-base leading-relaxed',
+        twoCol ? 'mt-5 max-w-prose lg:mt-0' : 'mt-5',
+        isDarkBg ? 'text-mist' : 'text-ink-800/70',
+      )}
+    >
+      {description}
+    </p>
+  ) : null;
+
   return (
     <div
       className={cn(
-        'max-w-prose',
-        align === 'center' && 'mx-auto text-center',
+        align === 'center' && 'mx-auto max-w-prose text-center',
+        align === 'left' && !twoCol && 'max-w-prose',
+        twoCol && 'lg:grid lg:grid-cols-2 lg:items-end lg:gap-x-12',
         className,
       )}
     >
-      {eyebrow && (
-        <p
-          className={cn(
-            'eyebrow mb-4',
-            isDarkBg ? 'text-champagne' : 'text-champagne-dark',
-          )}
-        >
-          {eyebrow}
-        </p>
-      )}
-      <Tag
-        className={cn(
-          'text-h2 text-balance',
-          isDarkBg ? 'text-white' : 'text-ink-900',
+      <div className={cn(twoCol && 'max-w-xl')}>
+        {eyebrow && (
+          <p
+            className={cn(
+              'eyebrow mb-4',
+              isDarkBg ? 'text-champagne' : 'text-champagne-dark',
+            )}
+          >
+            {eyebrow}
+          </p>
         )}
-      >
-        {title}
-      </Tag>
-      {description && (
-        <p
+        <Tag
           className={cn(
-            'mt-5 text-base leading-relaxed',
-            isDarkBg ? 'text-mist' : 'text-ink-800/70',
+            'text-h2 text-balance',
+            isDarkBg ? 'text-white' : 'text-ink-900',
           )}
         >
-          {description}
-        </p>
-      )}
+          {title}
+        </Tag>
+        {/* Description empilée sous le titre quand on n'est pas en deux colonnes. */}
+        {!twoCol && descriptionEl}
+      </div>
+      {/* Description en colonne de droite sur desktop. */}
+      {twoCol && descriptionEl}
     </div>
   );
 }

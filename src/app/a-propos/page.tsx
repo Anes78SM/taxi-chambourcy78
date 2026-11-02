@@ -59,7 +59,7 @@ export default function AboutPage() {
                 sérieux et sa discrétion.
               </p>
               <p>
-                Depuis <strong>septembre 2026</strong>, cette activité est reprise par{' '}
+                Depuis <strong>octobre 2026</strong>, cette activité est reprise par{' '}
                 <strong>Anes Smail</strong>, qui a racheté la licence de taxi de l’ancien
                 propriétaire, parti à la retraite.
               </p>
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 Que ce soit pour un transfert aéroport, un déplacement professionnel ou un trajet
                 privé, notre priorité est simple : un transport soigné, ponctuel et discret. Nous
                 privilégions une relation directe et un échange clair avant chaque trajet, afin que
-                les modalités soient toujours comprises et confirmées — aucune réservation n’est
+                les modalités soient toujours comprises et confirmées : aucune réservation n’est
                 validée automatiquement.
               </p>
 

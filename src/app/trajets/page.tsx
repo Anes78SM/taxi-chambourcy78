@@ -81,7 +81,7 @@ export default function TrajetsPage() {
           <p className="mt-12 max-w-2xl text-sm leading-relaxed text-ink-800/60">
             Prix estimés selon le tarif réglementé des Yvelines (jour) ; plus élevés la nuit, le
             dimanche et les jours fériés. Un forfait à prix fixe est possible vers les aéroports. Le
-            taximètre fait foi — <Link href="/#tarifs" className="text-champagne-dark underline underline-offset-2">voir la grille tarifaire</Link>.
+            taximètre fait foi : <Link href="/#tarifs" className="text-champagne-dark underline underline-offset-2">voir la grille tarifaire</Link>.
           </p>
         </Container>
       </section>

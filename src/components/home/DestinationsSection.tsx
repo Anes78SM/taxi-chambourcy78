@@ -72,15 +72,17 @@ export function DestinationsSection() {
 
         {/* Toutes les communes desservies */}
         <div className="mt-16">
-          <h3 className="font-serif text-xl text-ink-900">
-            Taxi à Chambourcy et dans les communes voisines
-          </h3>
-          <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink-800/70">
-            Nous intervenons à Chambourcy, mais aussi dans les communes proches : Orgeval, Poissy,
-            Saint-Germain-en-Laye, Aigremont, Fourqueux ou Mareil-Marly. Par ailleurs, nous
-            assurons les départs vers les gares, les aéroports et Paris. Votre commune n’apparaît
-            pas dans la liste ? Contactez-nous pour confirmation.
-          </p>
+          <div className="lg:grid lg:grid-cols-2 lg:items-end lg:gap-x-12">
+            <h3 className="max-w-xl font-serif text-xl text-ink-900">
+              Taxi à Chambourcy et dans les communes voisines
+            </h3>
+            <p className="mt-3 max-w-prose text-sm leading-relaxed text-ink-800/70 lg:mt-0">
+              Nous intervenons à Chambourcy, mais aussi dans les communes proches : Orgeval, Poissy,
+              Saint-Germain-en-Laye, Aigremont, Fourqueux ou Mareil-Marly. Par ailleurs, nous
+              assurons les départs vers les gares, les aéroports et Paris. Votre commune n’apparaît
+              pas dans la liste ? Contactez-nous pour confirmation.
+            </p>
+          </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {locations.map((location, index) => (
               <Reveal key={location.slug} delay={(index % 3) * 70}>
