@@ -64,9 +64,10 @@ export function SiteHeader() {
           {hasRealContact && (
             <a
               href={siteConfig.contact.phoneHref}
-              className="hidden items-center gap-2 text-[0.8rem] text-cream transition-colors hover:text-champagne md:flex"
+              aria-label={`Appeler le ${siteConfig.contact.phone}`}
+              className="hidden items-center gap-2 text-base font-bold tracking-wide text-cream transition-colors hover:text-champagne md:flex"
             >
-              <Phone className="h-4 w-4 text-champagne" aria-hidden />
+              <Phone className="h-[18px] w-[18px] text-champagne" aria-hidden strokeWidth={2.25} />
               {siteConfig.contact.phone}
             </a>
           )}
