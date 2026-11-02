@@ -16,6 +16,7 @@ export function BlogPreview({ posts }: { posts: BlogPost[] }) {
             eyebrow="Le journal"
             title="Conseils et actualités"
             description="Nos articles pour préparer vos trajets et mieux connaître nos services."
+            stacked
           />
           <Button href="/blog" variant="ghost" className="shrink-0">
             Tous les articles →

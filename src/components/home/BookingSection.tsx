@@ -13,8 +13,8 @@ const types = [
 export function BookingSection({ city = 'Chambourcy' }: { city?: string }) {
   const description =
     city === 'Chambourcy'
-      ? 'Commander un taxi à Chambourcy (78) prend quelques minutes : choisissez une course immédiate ou un départ programmé, et nous organisons la prise en charge à l’adresse de votre choix (domicile, bureau, hôtel, clinique ou rendez-vous). Le service couvre Chambourcy et les communes voisines : Orgeval, Poissy, Saint-Germain-en-Laye, Aigremont, Fourqueux ou Mareil-Marly.'
-      : `Commander un taxi à ${city} (78) prend quelques minutes : choisissez une course immédiate ou un départ programmé, et nous organisons la prise en charge à l’adresse de votre choix (domicile, bureau, hôtel, clinique ou rendez-vous). Le service couvre ${city} et les communes voisines de l’Ouest parisien.`;
+      ? 'Réserver un taxi à Chambourcy (78) ne prend que quelques minutes. Choisissez une course immédiate ou un départ programmé : nous venons vous chercher à l’adresse de votre choix, que ce soit votre domicile, votre bureau, un hôtel, une clinique ou un lieu de rendez-vous. Notre service couvre Chambourcy et les communes voisines : Orgeval, Poissy, Saint-Germain-en-Laye, Aigremont, Fourqueux et Mareil-Marly.'
+      : `Réserver un taxi à ${city} (78) ne prend que quelques minutes. Choisissez une course immédiate ou un départ programmé : nous venons vous chercher à l’adresse de votre choix, que ce soit votre domicile, votre bureau, un hôtel, une clinique ou un lieu de rendez-vous. Notre service couvre ${city} et les communes voisines de l’Ouest parisien.`;
 
   return (
     <section className="bg-[#f7f4ef] py-20 sm:py-24">
@@ -25,11 +25,12 @@ export function BookingSection({ city = 'Chambourcy' }: { city?: string }) {
               eyebrow="Réservation"
               title={`Réserver un taxi à ${city} (78)`}
               description={description}
+              stacked
             />
             <p className="mt-5 max-w-prose text-base leading-relaxed text-ink-800/70">
-              Vous recevez une estimation du prix dès la réservation : les tarifs des taxis sont
-              réglementés dans les Yvelines, et le taximètre affiche le montant final. Une
-              confirmation vous parvient ensuite par e-mail avant le départ.
+              Vous recevez une estimation du prix dès la réservation : les tarifs sont réglementés
+              dans les Yvelines et le taximètre affiche le montant exact. Une confirmation vous est
+              ensuite envoyée par e-mail avant le départ.
             </p>
             <ul className="mt-8 grid grid-cols-2 gap-4">
               {types.map(({ icon: TypeIcon, label }) => (

@@ -50,7 +50,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: 'Quels moyens de paiement acceptez-vous ?',
     answer:
-      'Vous réglez votre course par carte bancaire (Visa, Mastercard) ou en espèces. Vous pouvez aussi préciser votre moyen de paiement dès la réservation.',
+      'Vous réglez votre course par carte bancaire (Visa, Mastercard, American Express) ou en espèces. Vous pouvez aussi préciser votre moyen de paiement dès la réservation.',
   },
   {
     question: 'Puis-je voyager avec des bagages ?',

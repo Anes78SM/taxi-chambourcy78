@@ -31,7 +31,7 @@ export function PaymentMethods({ tone = 'dark', className }: PaymentMethodsProps
       </span>
       <span className="inline-flex items-center gap-1.5">
         <CreditCard className="h-4 w-4 text-champagne" aria-hidden strokeWidth={1.5} />
-        Carte bancaire · Visa · Mastercard
+        Carte bancaire · Visa · Mastercard · American Express
       </span>
       <span className="inline-flex items-center gap-1.5">
         <Banknote className="h-4 w-4 text-champagne" aria-hidden strokeWidth={1.5} />

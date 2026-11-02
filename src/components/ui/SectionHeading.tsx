@@ -7,6 +7,9 @@ type SectionHeadingProps = {
   align?: 'left' | 'center';
   tone?: 'light' | 'dark';
   as?: 'h1' | 'h2';
+  /** Force la disposition empilée (eyebrow → titre → description) même avec description,
+   *  utile quand l'en-tête est déjà dans une colonne étroite (ex. à côté d'un formulaire). */
+  stacked?: boolean;
   className?: string;
 };
 
@@ -17,12 +20,14 @@ export function SectionHeading({
   align = 'left',
   tone = 'dark',
   as: Tag = 'h2',
+  stacked = false,
   className,
 }: SectionHeadingProps) {
   const isDarkBg = tone === 'light'; // texte clair sur fond sombre
   // Intro alignée à gauche AVEC description : deux colonnes sur desktop
   // (titre à gauche, description à droite) pour exploiter toute la largeur.
-  const twoCol = align === 'left' && Boolean(description);
+  // `stacked` désactive ce comportement pour les en-têtes imbriqués.
+  const twoCol = align === 'left' && Boolean(description) && !stacked;
 
   const descriptionEl = description ? (
     <p

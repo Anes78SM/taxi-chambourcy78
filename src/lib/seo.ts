@@ -108,7 +108,7 @@ export function localBusinessSchema() {
     logo: absoluteUrl('/images/branding/logo-green.webp'),
     priceRange: '€€',
     currenciesAccepted: 'EUR',
-    paymentAccepted: 'Espèces, Carte bancaire (Visa, Mastercard)',
+    paymentAccepted: 'Espèces, Carte bancaire (Visa, Mastercard, American Express)',
     ...(isRealPhone ? { telephone: phoneE164() } : {}),
     ...(contact.email ? { email: contact.email } : {}),
     address: {

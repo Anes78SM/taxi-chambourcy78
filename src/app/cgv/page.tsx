@@ -87,8 +87,8 @@ export default function CgvPage() {
 
               <h2>4. Paiement</h2>
               <p>
-                Le paiement s’effectue à l’issue de la course, par carte bancaire (Visa, Mastercard)
-                ou en espèces. Une facture est délivrée sur demande ; les clients professionnels
+                Le paiement s’effectue à l’issue de la course, par carte bancaire (Visa, Mastercard,
+                American Express) ou en espèces. Une facture est délivrée sur demande ; les clients professionnels
                 peuvent demander une facture à leur raison sociale. Le client est invité à signaler le
                 moyen de paiement choisi lors de la réservation.
               </p>
