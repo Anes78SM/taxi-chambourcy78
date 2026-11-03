@@ -28,7 +28,15 @@ function stripNewlines(value: string): string {
   return value.replace(/[\r\n]+/g, ' ');
 }
 
+/** Libellé de l'heure de vol / train (ex. « arrive à 18:40 »), ou chaîne vide si non renseignée. */
+function volTrainLabel(d: BookingServerInput): string {
+  if (!d.volTrainHeure) return '';
+  const sens = d.volTrainSens === 'arrivee' ? 'arrive à' : 'part à';
+  return `${sens} ${d.volTrainHeure}`;
+}
+
 function textBody(d: BookingServerInput): string {
+  const vol = volTrainLabel(d);
   return [
     'Nouvelle demande de trajet',
     '',
@@ -36,6 +44,7 @@ function textBody(d: BookingServerInput): string {
     `Destination : ${d.arrivee}`,
     `Date : ${d.date}`,
     `Heure : ${d.heure}`,
+    ...(vol ? [`Vol / train : ${vol}`] : []),
     `Passagers : ${d.passagers}`,
     '',
     `Nom : ${d.nom}`,
@@ -117,6 +126,7 @@ function htmlBody(d: BookingServerInput): string {
       ${row('Destination', d.arrivee)}
       ${row('Date', d.date)}
       ${row('Heure', d.heure)}
+      ${volTrainLabel(d) ? row('Vol / train', volTrainLabel(d)) : ''}
       ${row('Passagers', String(d.passagers))}
       ${row('Nom', d.nom)}
       ${row('Téléphone', d.telephone)}

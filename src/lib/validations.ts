@@ -31,6 +31,9 @@ export const bookingSchema = z.object({
     .max(30, 'Numéro trop long.')
     .regex(/^[+0-9 ().-]+$/, 'Numéro de téléphone invalide.'),
   email: z.string().trim().email('Adresse e-mail invalide.'),
+  // Trajet aéroport / gare (facultatif) : heure du vol ou du train et son sens.
+  volTrainSens: z.enum(['depart', 'arrivee']).optional().or(z.literal('')),
+  volTrainHeure: z.string().trim().max(5, 'Heure invalide.').optional().or(z.literal('')),
   message: z.string().trim().max(1000, 'Message trop long.').optional().or(z.literal('')),
   consent: z.literal(true, {
     errorMap: () => ({ message: 'Votre consentement est nécessaire pour traiter la demande.' }),

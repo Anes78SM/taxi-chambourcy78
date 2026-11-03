@@ -9,6 +9,11 @@ import { WhatsAppIcon, whatsappUrl } from '@/components/ui/WhatsAppIcon';
 import { PaymentMethods } from '@/components/ui/PaymentMethods';
 import { AddressAutocomplete } from '@/components/booking/AddressAutocomplete';
 import { Turnstile, turnstileEnabled } from '@/components/booking/Turnstile';
+import { isTransitHub } from '@/data/transitHubs';
+
+/** Classe commune des contrôles de formulaire (hors erreur). */
+const controlBase =
+  'w-full rounded-[var(--radius)] border border-ink-900/15 bg-transparent px-3.5 py-3 text-sm text-ink-900 outline-none transition-colors placeholder:text-ink-900/35 focus:border-champagne-dark';
 
 type Errors = Partial<Record<keyof BookingInput, string>>;
 type Status = 'idle' | 'submitting' | 'sent' | 'ready' | 'error';
@@ -29,6 +34,9 @@ function buildEmailBody(data: BookingInput): string {
     `• Destination : ${data.arrivee}`,
     `• Date : ${data.date}`,
     `• Heure : ${data.heure}`,
+    ...(data.volTrainHeure
+      ? [`• Vol / train : ${data.volTrainSens === 'arrivee' ? 'arrive à' : 'part à'} ${data.volTrainHeure}`]
+      : []),
     `• Passagers : ${data.passagers}`,
     '',
     `Nom : ${data.nom}`,
@@ -53,6 +61,12 @@ export function BookingForm() {
   const [formError, setFormError] = useState('');
   const minDate = useMemo(todayISO, []);
 
+  // Valeurs des champs adresse (miroir) pour détecter un aéroport / une gare.
+  const [departValue, setDepartValue] = useState('');
+  const [arriveeValue, setArriveeValue] = useState('');
+  // Champ facultatif « heure de vol / train » affiché dès qu'un aéroport ou une gare est en jeu.
+  const showVolTrain = isTransitHub(departValue) || isTransitHub(arriveeValue);
+
   const field = (name: string) => `${formId}-${name}`;
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -64,6 +78,8 @@ export function BookingForm() {
       arrivee: formData.get('arrivee'),
       date: formData.get('date'),
       heure: formData.get('heure'),
+      volTrainSens: formData.get('volTrainSens') ?? '',
+      volTrainHeure: formData.get('volTrainHeure') ?? '',
       passagers: formData.get('passagers'),
       nom: formData.get('nom'),
       telephone: formData.get('telephone'),
@@ -235,15 +251,17 @@ export function BookingForm() {
           <AddressAutocomplete
             id={field('depart')}
             name="depart"
-            placeholder="Adresse, hôtel, aéroport…"
+            placeholder="Adresse, gare, aéroport…"
             geolocate
+            onValueChange={setDepartValue}
           />
         </Field>
         <Field id={field('arrivee')} name="arrivee" label="Destination" error={errors.arrivee}>
           <AddressAutocomplete
             id={field('arrivee')}
             name="arrivee"
-            placeholder="Adresse, hôtel, aéroport…"
+            placeholder="Adresse, gare, aéroport…"
+            onValueChange={setArriveeValue}
           />
         </Field>
 
@@ -253,6 +271,39 @@ export function BookingForm() {
         <Field id={field('heure')} name="heure" label="Heure" error={errors.heure}>
           <input id={field('heure')} name="heure" type="time" />
         </Field>
+
+        {/* Heure de vol / train : affichée dès qu'un aéroport ou une gare est sélectionné. */}
+        {showVolTrain && (
+          <div className="sm:col-span-2">
+            <label
+              htmlFor={field('volTrainHeure')}
+              className="mb-2 block text-xs font-semibold text-ink-900"
+            >
+              Heure de votre vol ou train <span className="font-normal text-ink-900/50">(facultatif)</span>
+            </label>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <select
+                name="volTrainSens"
+                defaultValue="depart"
+                aria-label="Sens du vol ou du train"
+                className={cn(controlBase, 'sm:max-w-[16rem]')}
+              >
+                <option value="depart">Mon vol / train part à</option>
+                <option value="arrivee">Mon vol / train arrive à</option>
+              </select>
+              <input
+                id={field('volTrainHeure')}
+                name="volTrainHeure"
+                type="time"
+                className={cn(controlBase, 'sm:max-w-[10rem]')}
+              />
+            </div>
+            <p className="mt-1.5 text-xs text-ink-800/60">
+              Nous calons la prise en charge sur votre horaire de vol ou de train, avec la marge
+              nécessaire.
+            </p>
+          </div>
+        )}
 
         <Field id={field('passagers')} name="passagers" label="Passagers" error={errors.passagers}>
           <select id={field('passagers')} name="passagers" defaultValue="1">
