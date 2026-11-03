@@ -34,6 +34,9 @@ function buildEmailBody(data: BookingInput): string {
     `• Destination : ${data.arrivee}`,
     `• Date : ${data.date}`,
     `• Heure : ${data.heure}`,
+    ...(data.arriveeSouhaitee
+      ? [`• Arrivée souhaitée sur place : ${data.arriveeSouhaitee}`]
+      : []),
     ...(data.volTrainHeure
       ? [`• Vol / train : ${data.volTrainSens === 'arrivee' ? 'arrive à' : 'part à'} ${data.volTrainHeure}`]
       : []),
@@ -78,6 +81,7 @@ export function BookingForm() {
       arrivee: formData.get('arrivee'),
       date: formData.get('date'),
       heure: formData.get('heure'),
+      arriveeSouhaitee: formData.get('arriveeSouhaitee') ?? '',
       volTrainSens: formData.get('volTrainSens') ?? '',
       volTrainHeure: formData.get('volTrainHeure') ?? '',
       passagers: formData.get('passagers'),
@@ -272,36 +276,56 @@ export function BookingForm() {
           <input id={field('heure')} name="heure" type="time" />
         </Field>
 
-        {/* Heure de vol / train : affichée dès qu'un aéroport ou une gare est sélectionné. */}
+        {/* Bloc gare / aéroport : affiché dès qu'un aéroport ou une gare est sélectionné. */}
         {showVolTrain && (
-          <div className="sm:col-span-2">
-            <label
-              htmlFor={field('volTrainHeure')}
-              className="mb-2 block text-xs font-semibold text-ink-900"
-            >
-              Heure de votre vol ou train <span className="font-normal text-ink-900/50">(facultatif)</span>
-            </label>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <select
-                name="volTrainSens"
-                defaultValue="depart"
-                aria-label="Sens du vol ou du train"
-                className={cn(controlBase, 'sm:max-w-[16rem]')}
+          <div className="grid gap-5 sm:col-span-2 sm:grid-cols-2">
+            <div>
+              <label
+                htmlFor={field('arriveeSouhaitee')}
+                className="mb-2 block text-xs font-semibold text-ink-900"
               >
-                <option value="depart">Mon vol / train part à</option>
-                <option value="arrivee">Mon vol / train arrive à</option>
-              </select>
+                Heure d’arrivée souhaitée{' '}
+                <span className="font-normal text-ink-900/50">(gare / aéroport, facultatif)</span>
+              </label>
               <input
-                id={field('volTrainHeure')}
-                name="volTrainHeure"
+                id={field('arriveeSouhaitee')}
+                name="arriveeSouhaitee"
                 type="time"
                 className={cn(controlBase, 'sm:max-w-[10rem]')}
               />
+              <p className="mt-1.5 text-xs text-ink-800/60">
+                L’heure à laquelle vous souhaitez être déposé sur place.
+              </p>
             </div>
-            <p className="mt-1.5 text-xs text-ink-800/60">
-              Nous calons la prise en charge sur votre horaire de vol ou de train, avec la marge
-              nécessaire.
-            </p>
+            <div>
+              <label
+                htmlFor={field('volTrainHeure')}
+                className="mb-2 block text-xs font-semibold text-ink-900"
+              >
+                Heure de votre vol ou train{' '}
+                <span className="font-normal text-ink-900/50">(facultatif)</span>
+              </label>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <select
+                  name="volTrainSens"
+                  defaultValue="depart"
+                  aria-label="Sens du vol ou du train"
+                  className={cn(controlBase, 'sm:max-w-[13rem]')}
+                >
+                  <option value="depart">Vol / train qui part</option>
+                  <option value="arrivee">Vol / train qui arrive</option>
+                </select>
+                <input
+                  id={field('volTrainHeure')}
+                  name="volTrainHeure"
+                  type="time"
+                  className={cn(controlBase, 'sm:max-w-[9rem]')}
+                />
+              </div>
+              <p className="mt-1.5 text-xs text-ink-800/60">
+                Nous calons la prise en charge avec la marge nécessaire.
+              </p>
+            </div>
           </div>
         )}
 

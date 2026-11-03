@@ -44,6 +44,7 @@ function textBody(d: BookingServerInput): string {
     `Destination : ${d.arrivee}`,
     `Date : ${d.date}`,
     `Heure : ${d.heure}`,
+    ...(d.arriveeSouhaitee ? [`Arrivée souhaitée sur place : ${d.arriveeSouhaitee}`] : []),
     ...(vol ? [`Vol / train : ${vol}`] : []),
     `Passagers : ${d.passagers}`,
     '',
@@ -126,6 +127,7 @@ function htmlBody(d: BookingServerInput): string {
       ${row('Destination', d.arrivee)}
       ${row('Date', d.date)}
       ${row('Heure', d.heure)}
+      ${d.arriveeSouhaitee ? row('Arrivée souhaitée sur place', d.arriveeSouhaitee) : ''}
       ${volTrainLabel(d) ? row('Vol / train', volTrainLabel(d)) : ''}
       ${row('Passagers', String(d.passagers))}
       ${row('Nom', d.nom)}
