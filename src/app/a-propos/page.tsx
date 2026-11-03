@@ -27,6 +27,14 @@ const vehicleGallery = [
   { src: '/images/vehicule/profil-g7.webp', alt: 'Break BMW noir de profil, siglé G7 — taxi à Chambourcy' },
   { src: '/images/vehicule/avant.webp', alt: 'Break BMW noir, vue avant trois-quarts — taxi à Chambourcy' },
   { src: '/images/vehicule/interieur.webp', alt: 'Habitacle cuir clair de la BMW, portière ouverte — taxi à Chambourcy' },
+  {
+    src: '/images/vehicule/vehicule-sieges-enfants-arriere.webp',
+    alt: 'Places arrière en cuir clair avec siège auto enfant et rehausseur installés — taxi familial à Chambourcy',
+  },
+  {
+    src: '/images/vehicule/vehicule-siege-enfant.webp',
+    alt: 'Siège auto enfant et rehausseur à bord du break BMW — taxi avec siège enfant à Chambourcy',
+  },
 ];
 
 export default function AboutPage() {
@@ -112,11 +120,13 @@ export default function AboutPage() {
           <Reveal>
             <p className="eyebrow text-champagne-dark">Le véhicule</p>
             <h2 className="mt-3 max-w-2xl text-h2 text-ink-900">
-              Un break BMW spacieux et confortable
+              Un break BMW spacieux, confortable et familial
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-800/75">
               Un break BMW récent et soigneusement entretenu : finitions premium, habitacle
-              spacieux au cuir clair et coffre généreux pour vos bagages et transferts aéroport.
+              spacieux au cuir clair, toit panoramique et coffre généreux pour vos bagages et
+              transferts aéroport. Pour voyager en famille, un siège auto enfant ou un rehausseur
+              peut être installé sur demande.
             </p>
           </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
