@@ -44,9 +44,10 @@ export function SiteHeader() {
           <Image
             src="/images/branding/logo-green.webp"
             alt={siteConfig.name}
-            width={1774}
-            height={887}
+            width={600}
+            height={300}
             priority
+            sizes="(max-width: 640px) 128px, 150px"
             className="h-16 w-auto sm:h-[72px]"
           />
         </Link>

@@ -20,8 +20,9 @@ export function SiteFooter() {
               <Image
                 src="/images/branding/logo-green.webp"
                 alt={siteConfig.name}
-                width={1774}
-                height={887}
+                width={600}
+                height={300}
+                sizes="200px"
                 className="h-24 w-auto"
               />
             </Link>

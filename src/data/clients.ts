@@ -27,7 +27,7 @@ export const clients: Client[] = [
   { name: 'Jetex', logo: '/images/clients/jetex.png' },
   { name: 'Robin & Co', logo: '/images/clients/robin-co.png' },
   { name: 'LSM — Leading Sport Management', logo: '/images/clients/lsm.png' },
-  { name: 'A-ROSA', logo: '/images/clients/arosa.png' },
+  { name: 'A-ROSA', logo: '/images/clients/arosa.webp' },
   { name: 'SNCF', logo: '/images/clients/sncf.png' },
   { name: 'VINCI', logo: '/images/clients/vinci.png' },
   { name: 'Safran', logo: '/images/clients/safran.png', darkBg: true },
