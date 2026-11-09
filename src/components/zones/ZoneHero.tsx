@@ -21,7 +21,7 @@ export function ZoneHero({ city, title, crumbs, lede }: ZoneHeroProps) {
       <div className="absolute inset-0" aria-hidden>
         <Image
           src="/images/hero/hero.webp"
-          alt=""
+          alt={`Taxi à ${city} — break BMW noir`}
           fill
           priority
           sizes="100vw"

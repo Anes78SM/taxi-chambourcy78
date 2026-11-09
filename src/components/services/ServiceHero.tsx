@@ -15,7 +15,7 @@ export function ServiceHero({ service, crumbs }: { service: Service; crumbs: Cru
       <div className="absolute inset-0" aria-hidden>
         <Image
           src={service.image}
-          alt=""
+          alt={service.imageAlt}
           fill
           priority
           sizes="100vw"

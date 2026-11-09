@@ -72,7 +72,7 @@ export default async function RoutePage({ params }: Params) {
         <div className="absolute inset-0" aria-hidden>
           <Image
             src="/images/hero/hero.webp"
-            alt=""
+            alt={`Taxi de Chambourcy à ${route.destination} — break BMW noir`}
             fill
             priority
             sizes="100vw"
