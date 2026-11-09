@@ -144,6 +144,10 @@ export function localBusinessSchema() {
         .filter((l) => l.postalCode.length === 5)
         .map((l) => ({ '@type': 'City', name: l.name })),
       { '@type': 'AdministrativeArea', name: 'Yvelines' },
+      // Aéroports desservis : les transferts aéroport sont une prestation clé.
+      { '@type': 'Place', name: 'Aéroport Paris-Charles de Gaulle (Roissy CDG)' },
+      { '@type': 'Place', name: 'Aéroport Paris-Orly' },
+      { '@type': 'Place', name: 'Aéroport de Paris-Le Bourget' },
     ],
     // Catalogue de prestations relié aux pages services.
     hasOfferCatalog: {
