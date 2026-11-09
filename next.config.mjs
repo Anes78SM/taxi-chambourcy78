@@ -41,6 +41,13 @@ const nextConfig = {
         destination: '/zones/taxi-yvelines',
         permanent: true,
       },
+      {
+        // URL orpheline (ancien lien externe / site précédent) : redirigée vers l'accueil
+        // pour effacer le 404 remonté dans la Search Console.
+        source: '/5',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
 };
