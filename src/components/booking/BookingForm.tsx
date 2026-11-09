@@ -430,8 +430,10 @@ export function BookingForm() {
       )}
 
       <p id={`${formId}-status`} role="status" className="mt-4 text-xs text-ink-800/60">
-        Votre demande nous est transmise par e-mail ou WhatsApp. Aucun paiement n’est demandé et
-        aucune réservation n’est définitive à ce stade : nous vous recontactons pour confirmer.
+        Votre demande nous est transmise par e-mail ou WhatsApp.{' '}
+        <strong className="font-semibold text-ink-900/80">Aucun prépaiement</strong> : vous ne réglez
+        rien en réservant, le paiement se fait à la fin de la course, directement dans le taxi. Aucune
+        réservation n’est définitive à ce stade : nous vous recontactons pour confirmer.
       </p>
 
       <PaymentMethods className="mt-5 border-t border-ink-900/8 pt-4" />
