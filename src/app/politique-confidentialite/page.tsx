@@ -9,9 +9,7 @@ export const metadata: Metadata = {
     title: 'Politique de confidentialité',
     description: `Politique de confidentialité de ${siteConfig.name} : données collectées, finalités, durées de conservation, destinataires et exercice de vos droits.`,
     path: '/politique-confidentialite',
-    noindex: true,
   }),
-  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {

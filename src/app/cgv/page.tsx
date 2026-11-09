@@ -9,9 +9,7 @@ export const metadata: Metadata = {
     title: 'Conditions générales de vente',
     description: `Conditions générales de vente de ${siteConfig.name} : réservation, tarifs réglementés, annulation, attente, paiement et litiges.`,
     path: '/cgv',
-    noindex: true,
   }),
-  robots: { index: false, follow: true },
 };
 
 function Value({ value, placeholder }: { value: string; placeholder: string }) {

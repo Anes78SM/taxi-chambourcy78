@@ -9,9 +9,7 @@ export const metadata: Metadata = {
     title: 'Politique de cookies',
     description: `Politique de cookies de ${siteConfig.name} : cookies utilisés, Google Maps, consentement et gestion de vos choix.`,
     path: '/politique-cookies',
-    noindex: true,
   }),
-  robots: { index: false, follow: true },
 };
 
 export default function CookiesPage() {

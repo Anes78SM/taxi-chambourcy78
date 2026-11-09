@@ -9,9 +9,7 @@ export const metadata: Metadata = {
     title: 'Mentions légales',
     description: `Mentions légales du site ${siteConfig.name} : éditeur, informations professionnelles, hébergeur, propriété intellectuelle et responsabilité.`,
     path: '/mentions-legales',
-    noindex: true,
   }),
-  robots: { index: false, follow: true },
 };
 
 /** Affiche une valeur, ou un repère « [à compléter] » si elle est vide. */
