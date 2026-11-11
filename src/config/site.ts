@@ -98,9 +98,11 @@ export const siteConfig = {
     stationZone: 'Chambourcy', // Commune de rattachement / zone de stationnement du taxi
     adsAuthority: 'la Mairie de Chambourcy', // Autorité ayant délivré l'ADS
     adsDate: '', // Date de délivrance de l'ADS — À COMPLÉTER
-    mediatorName: '', // Médiateur de la consommation — nom — À COMPLÉTER
-    mediatorAddress: '', // Médiateur — adresse — À COMPLÉTER
-    mediatorUrl: '', // Médiateur — site internet — À COMPLÉTER
+    // Médiateur de la consommation : CM2C (coordonnées officielles — cm2c.net).
+    mediatorName: 'CM2C, Centre de la Médiation de la Consommation de Conciliateurs de Justice',
+    mediatorAddress: '49 rue de Ponthieu, 75008 Paris',
+    mediatorPhone: '01 89 47 00 14',
+    mediatorUrl: 'https://www.cm2c.net',
     lastUpdated: '1er novembre 2026', // Dernière mise à jour des mentions légales
   },
 

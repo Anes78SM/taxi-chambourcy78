@@ -24,16 +24,16 @@ const commitments = [
 ];
 
 const vehicleGallery = [
-  { src: '/images/vehicule/profil-g7.webp', alt: 'Break BMW noir de profil, siglé G7 — taxi à Chambourcy' },
-  { src: '/images/vehicule/avant.webp', alt: 'Break BMW noir, vue avant trois-quarts — taxi à Chambourcy' },
-  { src: '/images/vehicule/interieur.webp', alt: 'Habitacle cuir clair de la BMW, portière ouverte — taxi à Chambourcy' },
+  { src: '/images/vehicule/profil-g7.webp', alt: 'Break BMW noir de profil, siglé G7, taxi à Chambourcy' },
+  { src: '/images/vehicule/avant.webp', alt: 'Break BMW noir, vue avant trois-quarts, taxi à Chambourcy' },
+  { src: '/images/vehicule/interieur.webp', alt: 'Habitacle cuir clair de la BMW, portière ouverte, taxi à Chambourcy' },
   {
     src: '/images/vehicule/vehicule-sieges-enfants-arriere.webp',
-    alt: 'Places arrière en cuir clair avec siège auto enfant et rehausseur installés — taxi familial à Chambourcy',
+    alt: 'Places arrière en cuir clair avec siège auto enfant et rehausseur installés, taxi familial à Chambourcy',
   },
   {
     src: '/images/vehicule/vehicule-siege-enfant.webp',
-    alt: 'Siège auto enfant et rehausseur à bord du break BMW — taxi avec siège enfant à Chambourcy',
+    alt: 'Siège auto enfant et rehausseur à bord du break BMW, taxi avec siège enfant à Chambourcy',
   },
 ];
 
@@ -167,12 +167,12 @@ export default function AboutPage() {
               <a
                 href={siteConfig.officialListing.mairieChambourcyUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow noopener noreferrer"
                 className="font-medium text-white underline underline-offset-2 hover:text-champagne"
               >
                 annuaire officiel des entreprises de la Ville de Chambourcy
               </a>
-              {' '}— une présence locale reconnue par la commune.
+              , une présence locale reconnue par la commune.
             </span>
           </p>
           <p className="mt-4 flex items-center gap-2 text-xs text-mist">

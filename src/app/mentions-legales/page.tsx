@@ -82,7 +82,7 @@ export default function LegalPage() {
                 <li>Immatriculation : {legal.rcs}</li>
                 <li>SIREN : {legal.siren}</li>
                 <li>
-                  SIRET : <Value value={legal.siret} placeholder="SIRET complet — 14 chiffres" />
+                  SIRET : <Value value={legal.siret} placeholder="SIRET complet (14 chiffres)" />
                 </li>
                 <li>Identifiant européen (EUID) : {legal.euid}</li>
                 <li>Date d’immatriculation : {legal.registrationDate}</li>
@@ -98,7 +98,7 @@ export default function LegalPage() {
                   Autorisation de stationnement (taxi) : n°{' '}
                   <Value value={legal.licenseNumber} placeholder="numéro" />, délivrée par{' '}
                   <Value value={legal.adsAuthority} placeholder="commune ou autorité" /> le{' '}
-                  <Value value={legal.adsDate} placeholder="date" /> — zone de stationnement :{' '}
+                  <Value value={legal.adsDate} placeholder="date" />, zone de stationnement :{' '}
                   {legal.stationZone}
                 </li>
               </ul>
@@ -114,11 +114,26 @@ export default function LegalPage() {
                 litige non résolu avec notre service, vous pouvez recourir gratuitement à un
                 médiateur de la consommation :
                 <br />
-                <Value value={legal.mediatorName} placeholder="Nom du médiateur" />
+                <strong>
+                  <Value value={legal.mediatorName} placeholder="Nom du médiateur" />
+                </strong>
                 <br />
                 Adresse : <Value value={legal.mediatorAddress} placeholder="adresse" />
+                {legal.mediatorPhone ? (
+                  <>
+                    <br />
+                    Téléphone : {legal.mediatorPhone}
+                  </>
+                ) : null}
                 <br />
-                Site internet : <Value value={legal.mediatorUrl} placeholder="URL" />
+                Site internet :{' '}
+                {legal.mediatorUrl ? (
+                  <a href={legal.mediatorUrl} target="_blank" rel="noopener noreferrer nofollow">
+                    {legal.mediatorUrl.replace(/^https?:\/\//, '')}
+                  </a>
+                ) : (
+                  <Value value="" placeholder="URL" />
+                )}
               </p>
               <p>
                 Vous pouvez également utiliser la plateforme européenne de règlement en ligne des

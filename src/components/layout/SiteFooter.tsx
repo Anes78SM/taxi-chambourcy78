@@ -16,7 +16,7 @@ export function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           {/* Marque + coordonnées */}
           <div>
-            <Link href="/" className="inline-flex items-center" aria-label={`${siteConfig.name} — accueil`}>
+            <Link href="/" className="inline-flex items-center" aria-label={`${siteConfig.name}, accueil`}>
               <Image
                 src="/images/branding/logo-green.webp"
                 alt={siteConfig.name}
@@ -85,7 +85,7 @@ export function SiteFooter() {
             <a
               href={siteConfig.officialListing.mairieChambourcyUrl}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="mt-6 inline-flex items-start gap-2.5 rounded-[var(--radius)] border border-champagne/30 bg-champagne/[0.08] px-3.5 py-2.5 text-xs leading-snug text-cream transition-colors hover:border-champagne/60"
             >
               <Landmark className="mt-0.5 h-4 w-4 shrink-0 text-champagne" aria-hidden strokeWidth={1.5} />
