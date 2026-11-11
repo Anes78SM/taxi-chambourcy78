@@ -34,7 +34,7 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pl-[204px] lg:pt-16 xl:pl-[232px]">
+      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pl-[216px] lg:pt-16 xl:pl-[266px]">
         <a
           href={siteConfig.officialListing.mairieChambourcyUrl}
           target="_blank"
@@ -103,19 +103,23 @@ export function Hero() {
       </Container>
 
       {/* Vignettes véhicule (desktop) : 3 photos empilées à droite */}
-      <div className="pointer-events-none absolute left-5 top-1/2 z-20 hidden w-[170px] -translate-y-1/2 flex-col gap-2.5 lg:flex xl:left-8 xl:w-[198px]">
+      <div className="pointer-events-none absolute left-6 top-1/2 z-20 hidden w-[176px] -translate-y-1/2 flex-col gap-3 lg:flex xl:left-10 xl:w-[204px]">
         {['profil-g7', 'interieur', 'avant'].map((name) => (
           <div
             key={name}
-            className="relative aspect-[16/10] overflow-hidden rounded-lg shadow-card ring-1 ring-white/20"
+            className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-lg)] shadow-card ring-1 ring-champagne/25"
           >
             <Image
               src={`/images/vehicule/${name}.webp`}
               alt=""
               fill
-              sizes="200px"
-              className="object-cover"
+              sizes="210px"
+              className="object-cover transition-transform duration-500 ease-premium"
               aria-hidden
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(180deg, rgba(8,13,16,0) 55%, rgba(8,13,16,0.45) 100%)' }}
             />
           </div>
         ))}
