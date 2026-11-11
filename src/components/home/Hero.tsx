@@ -39,9 +39,13 @@ export function Hero() {
           href={siteConfig.officialListing.mairieChambourcyUrl}
           target="_blank"
           rel="nofollow noopener noreferrer"
-          className="mb-5 inline-flex max-w-full items-center gap-2 self-start rounded-full border border-champagne/35 bg-champagne/10 px-3.5 py-1.5 text-xs font-medium text-cream backdrop-blur-sm transition-colors hover:border-champagne/60 hover:bg-champagne/15"
+          className="absolute left-gutter top-2 z-20 inline-flex items-center gap-1.5 rounded-full border border-champagne/40 bg-ink-900/70 px-2.5 py-1 text-[11px] font-medium text-cream backdrop-blur-sm transition-colors hover:border-champagne/60 lg:static lg:left-auto lg:top-auto lg:z-auto lg:mb-5 lg:gap-2 lg:self-start lg:bg-champagne/10 lg:px-3.5 lg:py-1.5 lg:text-xs lg:hover:bg-champagne/15"
         >
-          <Landmark className="h-3.5 w-3.5 shrink-0 text-champagne" aria-hidden strokeWidth={1.75} />
+          <Landmark
+            className="h-3 w-3 shrink-0 text-champagne lg:h-3.5 lg:w-3.5"
+            aria-hidden
+            strokeWidth={1.75}
+          />
           Référencé à l’annuaire officiel de la mairie
         </a>
         <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
