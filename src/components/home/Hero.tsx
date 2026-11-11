@@ -12,14 +12,14 @@ export function Hero() {
       {/* Image de fond */}
       <div className="absolute inset-0" aria-hidden>
         <Image
-          src="/images/hero/hero-chauffeur.webp"
-          alt="Chauffeur de taxi à Chambourcy en costume, adossé à sa BMW noire siglée Taxi Chambourcy 78"
+          src="/images/hero/hero-chauffeur-panneau.webp"
+          alt="Chauffeur de taxi à Chambourcy en costume devant sa BMW, panneau lumineux « Taxi Chambourcy »"
           fill
           priority
           fetchPriority="high"
-          quality={72}
+          quality={74}
           sizes="100vw"
-          className="object-cover object-[50%_20%] lg:object-[32%_22%]"
+          className="object-cover object-[46%_28%] lg:object-[40%_30%]"
         />
         <div
           className="absolute inset-0"
