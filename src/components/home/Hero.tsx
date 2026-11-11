@@ -8,9 +8,13 @@ import { siteConfig } from '@/config/site';
 
 export function Hero() {
   return (
-    <section id="accueil" className="relative overflow-hidden bg-ink-900 pt-[88px] text-white lg:flex lg:min-h-[100svh] lg:flex-col">
-      {/* Image de fond */}
+    <section
+      id="accueil"
+      className="relative overflow-hidden bg-ink-900 pt-[88px] text-white lg:flex lg:min-h-[100svh] lg:flex-col"
+    >
+      {/* Fond : photos en background */}
       <div className="absolute inset-0" aria-hidden>
+        {/* Mobile : photo unique du chauffeur */}
         <Image
           src="/images/hero/hero-chauffeur.webp"
           alt="Chauffeur de taxi à Chambourcy en costume, adossé à sa BMW noire siglée Taxi Chambourcy 78"
@@ -19,18 +23,70 @@ export function Hero() {
           fetchPriority="high"
           quality={72}
           sizes="100vw"
-          className="object-cover object-[50%_20%] lg:object-[35%_22%]"
+          className="object-cover object-[50%_20%] lg:hidden"
         />
+
+        {/* Desktop : chauffeur à droite (pleine hauteur) + 2 voitures en haut à gauche */}
+        <div className="absolute inset-0 hidden lg:block">
+          <div className="absolute inset-y-0 right-0 w-[55%] overflow-hidden">
+            <Image
+              src="/images/hero/hero-chauffeur.webp"
+              alt=""
+              fill
+              priority
+              fetchPriority="high"
+              quality={74}
+              sizes="55vw"
+              className="object-cover object-[48%_20%]"
+            />
+          </div>
+          <div className="absolute left-0 top-0 grid h-[46%] w-[48%] grid-rows-2 gap-1.5 p-1.5">
+            <div className="relative overflow-hidden rounded-[var(--radius)]">
+              <Image
+                src="/images/vehicule/profil-g7.webp"
+                alt=""
+                fill
+                quality={74}
+                sizes="48vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-[var(--radius)]">
+              <Image
+                src="/images/vehicule/interieur.webp"
+                alt=""
+                fill
+                quality={74}
+                sizes="48vw"
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Dégradé mobile (plein) */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 lg:hidden"
           style={{
             background:
               'linear-gradient(90deg, #080d10 0%, rgba(8,13,16,0.94) 24%, rgba(8,13,16,0.6) 52%, rgba(8,13,16,0.1) 100%)',
           }}
         />
+        {/* Desktop : léger fondu à gauche du chauffeur (texte lisible) */}
         <div
-          className="absolute inset-x-0 bottom-0 h-40"
-          style={{ background: 'linear-gradient(transparent, rgba(8,13,16,0.85))' }}
+          className="absolute inset-y-0 left-0 hidden w-[62%] lg:block"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(8,13,16,0.45) 0%, rgba(8,13,16,0.15) 55%, rgba(8,13,16,0) 100%)',
+          }}
+        />
+        {/* Voile bas pour le texte (plus haut sur desktop) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-40 lg:h-[56%]"
+          style={{
+            background:
+              'linear-gradient(transparent 0%, rgba(8,13,16,0.45) 32%, rgba(8,13,16,0.94) 100%)',
+          }}
         />
       </div>
 
