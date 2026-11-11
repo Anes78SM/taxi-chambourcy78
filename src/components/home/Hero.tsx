@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Landmark, MapPin, BadgeCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Landmark, MapPin } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { ReassuranceBar } from '@/components/home/ReassuranceBar';
@@ -12,14 +12,14 @@ export function Hero() {
       {/* Image de fond */}
       <div className="absolute inset-0" aria-hidden>
         <Image
-          src="/images/hero/hero-chauffeur-panneau.webp"
+          src="/images/hero/hero-chauffeur.webp"
           alt="Chauffeur de taxi à Chambourcy en costume devant sa BMW, panneau lumineux « Taxi Chambourcy »"
           fill
           priority
           fetchPriority="high"
           quality={74}
           sizes="100vw"
-          className="object-cover object-[46%_28%] lg:object-[40%_30%]"
+          className="object-cover object-[50%_20%] lg:object-[36%_22%]"
         />
         <div
           className="absolute inset-0"
@@ -34,7 +34,7 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pt-16">
+      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pl-[204px] lg:pt-16 xl:pl-[232px]">
         <a
           href={siteConfig.officialListing.mairieChambourcyUrl}
           target="_blank"
@@ -102,10 +102,23 @@ export function Hero() {
         </div>
       </Container>
 
-      {/* Légende : panneau taxi officiel (desktop) */}
-      <div className="pointer-events-none absolute left-[39%] top-[132px] z-20 hidden items-center gap-1.5 rounded-full bg-ink-900/80 px-3 py-1.5 text-[11px] font-medium text-cream ring-1 ring-champagne/45 backdrop-blur-sm lg:inline-flex">
-        <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-champagne" aria-hidden strokeWidth={2} />
-        Panneau taxi officiel
+      {/* Vignettes véhicule (desktop) : 3 photos empilées à droite */}
+      <div className="pointer-events-none absolute left-5 top-1/2 z-20 hidden w-[170px] -translate-y-1/2 flex-col gap-2.5 lg:flex xl:left-8 xl:w-[198px]">
+        {['profil-g7', 'interieur', 'avant'].map((name) => (
+          <div
+            key={name}
+            className="relative aspect-[16/10] overflow-hidden rounded-lg shadow-card ring-1 ring-white/20"
+          >
+            <Image
+              src={`/images/vehicule/${name}.webp`}
+              alt=""
+              fill
+              sizes="200px"
+              className="object-cover"
+              aria-hidden
+            />
+          </div>
+        ))}
       </div>
 
       {/* Barre de réassurance (translucide, sur l'image, calée en bas sur desktop) */}
