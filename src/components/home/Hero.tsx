@@ -30,7 +30,7 @@ export function Hero() {
           fetchPriority="high"
           quality={76}
           sizes="100vw"
-          className="object-cover object-[50%_20%] lg:object-[34%_24%]"
+          className="object-cover object-[50%_20%] lg:object-[12%_24%]"
         />
         {/* Dégradé progressif gauche → droite pour la lisibilité du texte */}
         <div
