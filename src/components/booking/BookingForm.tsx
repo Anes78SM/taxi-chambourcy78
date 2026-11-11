@@ -120,7 +120,7 @@ export function BookingForm() {
   /** Repli : prépare un e-mail via « mailto: » et ouvre la messagerie du visiteur. */
   function fallbackToMailto(data: BookingInput) {
     const body = buildEmailBody(data);
-    const subject = `Demande de devis — ${data.depart} → ${data.arrivee}`;
+    const subject = `Demande de devis : ${data.depart} → ${data.arrivee}`;
     const url = `${siteConfig.contact.emailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setMailtoUrl(url);
     setStatus('ready');

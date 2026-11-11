@@ -71,7 +71,7 @@ export const services: Service[] = [
       'Rendez-vous, gares et déplacements d’affaires. Un service discret et soigné pour vos trajets professionnels.',
     icon: 'Briefcase',
     image: '/images/taxi_chambourcy_03_poste_conduite.webp',
-    imageAlt: 'Poste de conduite épuré du break BMW — taxi professionnel à Chambourcy',
+    imageAlt: 'Poste de conduite épuré du break BMW, taxi professionnel à Chambourcy',
     intro: [
       'Pour vos rendez-vous et déplacements d’affaires, la régularité et la discrétion comptent autant que le confort. Nous proposons un transport pensé pour les professionnels : un cadre calme pour préparer une réunion, passer un appel ou simplement souffler entre deux étapes.',
       'Les trajets récurrents peuvent être organisés à l’avance afin de fluidifier votre agenda, depuis Chambourcy et les communes voisines vers Paris, les quartiers d’affaires et les principales gares.',

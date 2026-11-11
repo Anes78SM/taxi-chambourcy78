@@ -34,7 +34,7 @@ export function GoogleMapEmbed({ className }: { className?: string }) {
     return (
       <iframe
         src={googleBusiness.mapsEmbedUrl}
-        title={`Fiche Google — ${googleBusiness.name}`}
+        title={`Fiche Google : ${googleBusiness.name}`}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         allowFullScreen

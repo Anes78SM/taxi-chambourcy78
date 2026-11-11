@@ -51,7 +51,7 @@ const row = (label: string, value: string) =>
   `<tr><td style="padding:6px 16px 6px 0;color:#626768;white-space:nowrap">${label}</td><td style="padding:6px 0;color:#121719;font-weight:600">${escapeHtml(value)}</td></tr>`;
 
 function confirmEmail(d: ResponderPayload) {
-  const subject = `Votre taxi est confirmé — ${d.date} à ${d.heure}`;
+  const subject = `Votre taxi est confirmé : ${d.date} à ${d.heure}`;
   const text = [
     `Bonjour ${d.nom},`,
     '',
@@ -65,7 +65,7 @@ function confirmEmail(d: ResponderPayload) {
     `Je vous prends en charge à l'heure convenue. Pour toute modification, appelez le ${siteConfig.contact.phone}.`,
     '',
     'À bientôt,',
-    `Anes — ${siteConfig.name}`,
+    `Anes, ${siteConfig.name}`,
     siteConfig.contact.phone,
   ].join('\n');
   const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#121719">
@@ -75,7 +75,7 @@ function confirmEmail(d: ResponderPayload) {
       ${row('Départ', d.depart)}${row('Destination', d.arrivee)}${row('Date', `${d.date} à ${d.heure}`)}${row('Passagers', String(d.passagers))}
     </table>
     <p style="margin:18px 0 0">Je vous prends en charge à l'heure convenue. Pour toute modification, appelez le <a href="${siteConfig.contact.phoneHref}">${escapeHtml(siteConfig.contact.phone)}</a>.</p>
-    <p style="margin:16px 0 0;color:#626768">Anes — ${escapeHtml(siteConfig.name)}</p>
+    <p style="margin:16px 0 0;color:#626768">Anes, ${escapeHtml(siteConfig.name)}</p>
   </div>`;
   return { subject, text, html };
 }
@@ -90,7 +90,7 @@ function declineEmail(d: ResponderPayload) {
     `Je suis malheureusement indisponible pour ce trajet. Je vous invite à me rappeler au ${siteConfig.contact.phone} afin d'envisager un autre horaire ou une solution adaptée.`,
     '',
     'Avec toutes mes excuses pour la gêne occasionnée,',
-    `Anes — ${siteConfig.name}`,
+    `Anes, ${siteConfig.name}`,
     siteConfig.contact.phone,
   ].join('\n');
   const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#121719">
@@ -99,7 +99,7 @@ function declineEmail(d: ResponderPayload) {
     <p style="margin:0 0 12px">Merci pour votre demande de taxi (${escapeHtml(d.depart)} → ${escapeHtml(d.arrivee)}, le ${escapeHtml(d.date)} à ${escapeHtml(d.heure)}).</p>
     <p style="margin:0 0 12px">Je suis malheureusement indisponible pour ce trajet. Je vous invite à me rappeler au <a href="${siteConfig.contact.phoneHref}">${escapeHtml(siteConfig.contact.phone)}</a> afin d'envisager un autre horaire ou une solution adaptée.</p>
     <p style="margin:0 0 12px">Avec toutes mes excuses pour la gêne occasionnée,</p>
-    <p style="margin:0;color:#626768">Anes — ${escapeHtml(siteConfig.name)}</p>
+    <p style="margin:0;color:#626768">Anes, ${escapeHtml(siteConfig.name)}</p>
   </div>`;
   return { subject, text, html };
 }
@@ -218,9 +218,9 @@ export async function POST(request: Request): Promise<NextResponse> {
           await resend.emails.send({
             from,
             to: ownerTo,
-            subject: `Course confirmée — ${payload.date} à ${payload.heure} (${payload.nom})`,
+            subject: `Course confirmée : ${payload.date} à ${payload.heure} (${payload.nom})`,
             text: `Course confirmée pour ${payload.nom}.\n${event.title}\nLe ${payload.date} à ${payload.heure}.\nÉvénement en pièce jointe (course.ics).`,
-            html: `<p>Course confirmée pour <strong>${escapeHtml(payload.nom)}</strong>.</p><p>${escapeHtml(event.title)} — le ${escapeHtml(payload.date)} à ${escapeHtml(payload.heure)}.</p><p>Événement en pièce jointe (<em>course.ics</em>) à ajouter à votre agenda.</p>`,
+            html: `<p>Course confirmée pour <strong>${escapeHtml(payload.nom)}</strong>.</p><p>${escapeHtml(event.title)}, le ${escapeHtml(payload.date)} à ${escapeHtml(payload.heure)}.</p><p>Événement en pièce jointe (<em>course.ics</em>) à ajouter à votre agenda.</p>`,
             attachments: [{ filename: 'course.ics', content: Buffer.from(ics) }],
           });
         } catch (e) {

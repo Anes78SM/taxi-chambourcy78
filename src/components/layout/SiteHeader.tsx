@@ -40,7 +40,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-[88px] max-w-container items-center justify-between gap-6 px-gutter">
         {/* Logo */}
-        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} — accueil`}>
+        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name}, accueil`}>
           <Image
             src="/images/branding/logo-green.webp"
             alt={siteConfig.name}

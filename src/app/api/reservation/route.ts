@@ -65,7 +65,7 @@ function toWhatsApp(phone: string): string {
 
 /** Lien mailto pré-rempli pour que le chauffeur confirme la course au client. */
 function confirmMailtoHref(d: BookingServerInput): string {
-  const subject = `Confirmation de votre taxi — ${d.depart} → ${d.arrivee} le ${d.date} à ${d.heure}`;
+  const subject = `Confirmation de votre taxi : ${d.depart} → ${d.arrivee} le ${d.date} à ${d.heure}`;
   const body = [
     `Bonjour ${d.nom},`,
     '',
@@ -79,7 +79,7 @@ function confirmMailtoHref(d: BookingServerInput): string {
     `Je vous prends en charge à l'heure convenue. Pour toute modification, répondez à cet e-mail ou appelez le ${siteConfig.contact.phone}.`,
     '',
     'À bientôt,',
-    `Anes — ${siteConfig.name}`,
+    `Anes, ${siteConfig.name}`,
     siteConfig.contact.phone,
   ].join('\n');
   return `mailto:${d.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -233,7 +233,7 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: data.email,
-      subject: `Demande de trajet — ${stripNewlines(data.depart)} → ${stripNewlines(data.arrivee)}`,
+      subject: `Demande de trajet : ${stripNewlines(data.depart)} → ${stripNewlines(data.arrivee)}`,
       text: textBody(data),
       html: htmlBody(data),
     });

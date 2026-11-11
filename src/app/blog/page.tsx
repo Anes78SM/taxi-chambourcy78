@@ -12,7 +12,7 @@ import { formatDate } from '@/lib/utils';
 import { buildMetadata, breadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Blog — Conseils et actualités',
+  title: 'Blog : conseils et actualités',
   description:
     'Conseils pratiques pour vos trajets en taxi à Chambourcy : transferts aéroports, déplacements professionnels, préparation de vos déplacements.',
   path: '/blog',

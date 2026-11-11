@@ -19,10 +19,10 @@ export const pricingHighlights = [
 /** Grille tarifaire réglementée (tarifs maximums). */
 export const pricingRows = [
   { label: 'Prise en charge', value: '3,00 €' },
-  { label: 'Tarif A — jour (lun.–sam.), retour en charge', value: '1,00 € / km' },
-  { label: 'Tarif B — nuit, dimanche et jours fériés, retour en charge', value: '1,50 € / km' },
-  { label: 'Tarif C — jour, retour à vide', value: '2,00 € / km' },
-  { label: 'Tarif D — nuit, dimanche et jours fériés, retour à vide', value: '3,00 € / km' },
+  { label: 'Tarif A : jour (lun.–sam.), retour en charge', value: '1,00 € / km' },
+  { label: 'Tarif B : nuit, dimanche et jours fériés, retour en charge', value: '1,50 € / km' },
+  { label: 'Tarif C : jour, retour à vide', value: '2,00 € / km' },
+  { label: 'Tarif D : nuit, dimanche et jours fériés, retour à vide', value: '3,00 € / km' },
   { label: 'Heure d’attente ou de marche lente', value: '41,56 €' },
   { label: 'Minimum de course', value: '8,00 €' },
   { label: 'Bagage encombrant', value: '2,00 € / bagage' },

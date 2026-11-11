@@ -83,7 +83,7 @@ export default async function ServicePage({ params }: Params) {
               <div className="relative aspect-video overflow-hidden rounded-[var(--radius-lg)] shadow-card">
                 <Image
                   src="/images/bmw-break-vues.webp"
-                  alt="Le véhicule du service — break BMW noir : extérieur, habitacle, poste de conduite et coffre"
+                  alt="Le véhicule du service, break BMW noir : extérieur, habitacle, poste de conduite et coffre"
                   fill
                   sizes="(max-width: 1024px) 100vw, 48vw"
                   className="object-cover"
