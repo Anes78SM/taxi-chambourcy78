@@ -48,7 +48,9 @@ export function Hero() {
           />
           Référencé à l’annuaire officiel de la mairie
         </a>
-        <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
+        <p className="eyebrow text-champagne tracking-[0.1em] sm:tracking-[0.3em]">
+          Service de taxi premium • Chambourcy
+        </p>
         <h1
           className="mt-4 max-w-3xl font-serif leading-[1.08] tracking-[-0.02em]"
           style={{ fontSize: 'clamp(2rem, 4.6vw, 3.75rem)' }}
@@ -58,13 +60,17 @@ export function Hero() {
             Réservation, tarifs et transport 7j/7
           </span>
         </h1>
-        <p className="mt-3 text-xs font-semibold tracking-[0.18em] text-champagne/90 sm:text-sm sm:tracking-[0.2em]">
+        <p className="mt-3 hidden text-xs font-semibold tracking-[0.18em] text-champagne/90 sm:block sm:text-sm sm:tracking-[0.2em]">
           CONFORT · PONCTUALITÉ · DISCRÉTION
         </p>
         <p className="mt-5 max-w-xl text-sm leading-relaxed text-cream/80 sm:max-w-2xl sm:text-[0.95rem]">
           Besoin d’un taxi à Chambourcy ? Anes vous prend en charge à domicile, au bureau ou à
           l’hôtel. Il vous conduit ainsi vers les gares, les aéroports de Paris et vos rendez-vous,
-          7j/7. Indiquez simplement votre trajet et votre horaire : nous faisons le reste.
+          7j/7.
+          <span className="hidden sm:inline">
+            {' '}
+            Indiquez simplement votre trajet et votre horaire : nous faisons le reste.
+          </span>
         </p>
         <a
           href="#avis"
