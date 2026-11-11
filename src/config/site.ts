@@ -104,6 +104,15 @@ export const siteConfig = {
     lastUpdated: '1er novembre 2026', // Dernière mise à jour des mentions légales
   },
 
+  /**
+   * Référencements officiels / tiers de confiance vérifiables (signaux de crédibilité).
+   */
+  officialListing: {
+    // Fiche dans l'annuaire officiel des entreprises de la Ville de Chambourcy.
+    mairieChambourcyUrl:
+      'https://www.chambourcy.fr/35-508/solidarite-et-economie/acteurs-economiques/les-entreprises-du-territoire/ficheAnnu/allo-taxi-chambourcy.htm',
+  },
+
   /** Éditeur du site (agence web) — distinct de l'exploitant du service de taxi. */
   publisher: {
     name: 'SEO Acquisition',

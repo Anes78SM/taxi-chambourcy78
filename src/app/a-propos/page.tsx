@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { ShieldCheck, Gem, Clock, MapPin, UserRound } from 'lucide-react';
+import { ShieldCheck, Gem, Clock, MapPin, UserRound, Landmark } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Reveal } from '@/components/ui/Reveal';
 import { PageHero } from '@/components/layout/PageHero';
@@ -160,7 +160,22 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-          <p className="mt-10 flex items-center gap-2 text-xs text-mist">
+          <p className="mt-10 flex items-start gap-2.5 text-sm text-mist">
+            <Landmark className="mt-0.5 h-5 w-5 shrink-0 text-champagne" aria-hidden strokeWidth={1.5} />
+            <span>
+              Entreprise référencée à l’
+              <a
+                href={siteConfig.officialListing.mairieChambourcyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white underline underline-offset-2 hover:text-champagne"
+              >
+                annuaire officiel des entreprises de la Ville de Chambourcy
+              </a>
+              {' '}— une présence locale reconnue par la commune.
+            </span>
+          </p>
+          <p className="mt-4 flex items-center gap-2 text-xs text-mist">
             <ShieldCheck className="h-4 w-4 text-champagne" aria-hidden strokeWidth={1.5} />
             Nous n’affichons aucun avis, note ou garantie non vérifiés.
           </p>
