@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Landmark } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { ReassuranceBar } from '@/components/home/ReassuranceBar';
 import { googleBusiness } from '@/data/reviews';
+import { siteConfig } from '@/config/site';
 
 export function Hero() {
   return (
@@ -34,6 +35,15 @@ export function Hero() {
       </div>
 
       <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-12 lg:pt-16">
+        <a
+          href={siteConfig.officialListing.mairieChambourcyUrl}
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          className="mb-5 inline-flex max-w-full items-center gap-2 self-start rounded-full border border-champagne/35 bg-champagne/10 px-3.5 py-1.5 text-xs font-medium text-cream backdrop-blur-sm transition-colors hover:border-champagne/60 hover:bg-champagne/15"
+        >
+          <Landmark className="h-3.5 w-3.5 shrink-0 text-champagne" aria-hidden strokeWidth={1.75} />
+          Référencé à l’annuaire officiel de la mairie
+        </a>
         <p className="eyebrow text-champagne">Service de taxi premium • Chambourcy</p>
         <h1
           className="mt-4 max-w-3xl font-serif leading-[1.08] tracking-[-0.02em]"
