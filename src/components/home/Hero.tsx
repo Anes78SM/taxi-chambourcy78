@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Landmark } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Landmark, MapPin, BadgeCheck } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { ReassuranceBar } from '@/components/home/ReassuranceBar';
@@ -48,8 +48,9 @@ export function Hero() {
           />
           Référencé à l’annuaire officiel de la mairie
         </a>
-        <p className="eyebrow text-champagne tracking-[0.1em] sm:tracking-[0.3em]">
-          Service de taxi premium • Chambourcy
+        <p className="eyebrow inline-flex w-fit items-center gap-1.5 text-champagne tracking-[0.1em] sm:tracking-[0.3em]">
+          <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden strokeWidth={2.25} />
+          Taxi local à Chambourcy (78)
         </p>
         <h1
           className="mt-4 max-w-3xl font-serif leading-[1.08] tracking-[-0.02em]"
@@ -57,7 +58,7 @@ export function Hero() {
         >
           Taxi Chambourcy <span className="text-champagne">(78)</span>
           <span className="mt-3 block font-sans text-[clamp(0.95rem,1.7vw,1.2rem)] font-medium leading-snug tracking-normal text-cream/85">
-            Réservation, tarifs et transport 7j/7
+            Un vrai taxi de Chambourcy, disponible 7j/7
           </span>
         </h1>
         <p className="mt-3 hidden text-xs font-semibold tracking-[0.18em] text-champagne/90 sm:block sm:text-sm sm:tracking-[0.2em]">
@@ -100,6 +101,12 @@ export function Hero() {
           </Button>
         </div>
       </Container>
+
+      {/* Légende : panneau taxi officiel (desktop) */}
+      <div className="pointer-events-none absolute left-[39%] top-[132px] z-20 hidden items-center gap-1.5 rounded-full bg-ink-900/80 px-3 py-1.5 text-[11px] font-medium text-cream ring-1 ring-champagne/45 backdrop-blur-sm lg:inline-flex">
+        <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-champagne" aria-hidden strokeWidth={2} />
+        Panneau taxi officiel
+      </div>
 
       {/* Barre de réassurance (translucide, sur l'image, calée en bas sur desktop) */}
       <ReassuranceBar className="bg-ink-900/70 backdrop-blur-sm lg:mt-auto lg:bg-ink-900/55" />
