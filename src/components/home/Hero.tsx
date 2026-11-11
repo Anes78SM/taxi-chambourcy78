@@ -111,7 +111,7 @@ export function Hero() {
               ))}
             </Reveal>
 
-            <Reveal delay={170} className="lg:max-w-[620px]">
+            <Reveal delay={170} className="lg:max-w-[720px]">
               <p className="mt-6 max-w-xl text-sm leading-relaxed text-cream/80 sm:text-[0.95rem]">
                 Besoin d’un taxi à Chambourcy ? Anes vous prend en charge pour vos trajets privés,
                 professionnels, ou vers les gares et aéroports en région parisienne. Anes vous conduit
@@ -134,9 +134,9 @@ export function Hero() {
                   Voir les avis
                 </span>
               </a>
-              {/* CTA alignés (même largeur) */}
-              <div className="mt-7 flex w-full max-w-[340px] flex-col gap-3">
-                <Button href="/#reservation" size="lg" className="group w-full justify-center">
+              {/* CTA : empilés pleine largeur en mobile, sur une même ligne en desktop */}
+              <div className="mt-7 flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:items-center">
+                <Button href="/#reservation" size="lg" className="group w-full justify-center lg:w-auto">
                   <CalendarCheck className="h-4 w-4" aria-hidden strokeWidth={2} />
                   Réserver mon taxi
                   <ArrowRight
@@ -144,7 +144,7 @@ export function Hero() {
                     aria-hidden
                   />
                 </Button>
-                <Button href="/#services" variant="outline" size="lg" className="w-full justify-center">
+                <Button href="/#services" variant="outline" size="lg" className="w-full justify-center lg:w-auto">
                   <CarFront className="h-4 w-4" aria-hidden strokeWidth={2} />
                   Découvrir nos services
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
@@ -152,6 +152,15 @@ export function Hero() {
               </div>
             </Reveal>
           </div>
+
+          {/* Panneau lumineux « Taxi » (desktop) */}
+          <Image
+            src="/images/hero/panneau-taxi.webp"
+            alt="Panneau lumineux de taxi Chambourcy"
+            width={1774}
+            height={887}
+            className="pointer-events-none absolute bottom-6 right-6 z-20 hidden w-[180px] drop-shadow-[0_14px_30px_rgba(0,0,0,0.55)] lg:block xl:bottom-8 xl:right-10 xl:w-[216px]"
+          />
         </div>
       </div>
 
