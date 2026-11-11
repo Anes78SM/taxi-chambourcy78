@@ -34,11 +34,17 @@ export function ReassuranceBar({ className }: { className?: string }) {
         ))}
       </Marquee>
 
-      {/* Desktop : rangée alignée */}
+      {/* Desktop : rangée alignée avec séparateurs subtils */}
       <Container className="hidden lg:block">
-        <ul className="flex items-center justify-between gap-8 py-5">
-          {features.map(({ icon: FeatureIcon, label }) => (
-            <li key={label} className="flex items-center gap-3 text-xs leading-tight text-cream/90">
+        <ul className="flex items-stretch py-5">
+          {features.map(({ icon: FeatureIcon, label }, index) => (
+            <li
+              key={label}
+              className={cn(
+                'flex flex-1 items-center justify-center gap-3 px-5 text-xs leading-tight text-cream/90',
+                index > 0 && 'border-l border-white/10',
+              )}
+            >
               <FeatureIcon className="h-5 w-5 shrink-0 text-champagne" aria-hidden strokeWidth={1.5} />
               <span className="whitespace-pre-line">{label}</span>
             </li>
