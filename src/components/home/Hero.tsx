@@ -1,12 +1,18 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Landmark, MapPin, Images } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CalendarCheck, CarFront, Clock, Landmark, MapPin, ShieldCheck } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
+import { HeroVehicleRail } from '@/components/home/HeroVehicleRail';
 import { ReassuranceBar } from '@/components/home/ReassuranceBar';
 import { googleBusiness } from '@/data/reviews';
 import { siteConfig } from '@/config/site';
+
+const pills = [
+  { icon: CarFront, strong: 'Confort', rest: '& ponctualité' },
+  { icon: ShieldCheck, strong: 'Sécurité', rest: '& discrétion' },
+  { icon: Clock, strong: 'Disponible', rest: '7j/7' },
+];
 
 export function Hero() {
   return (
@@ -40,7 +46,22 @@ export function Hero() {
         />
       </div>
 
-      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-14 lg:pt-16">
+      {/* Accents décoratifs verts (coins) */}
+      <div
+        className="pointer-events-none absolute -left-28 -top-24 z-[1] h-80 w-80 rounded-full opacity-70"
+        style={{ background: 'radial-gradient(circle, rgba(106,165,32,0.18), transparent 70%)' }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-32 -right-20 z-[1] h-96 w-96 rounded-full opacity-50"
+        style={{ background: 'radial-gradient(circle, rgba(106,165,32,0.14), transparent 70%)' }}
+        aria-hidden
+      />
+
+      {/* Rail de vignettes véhicule (desktop) */}
+      <HeroVehicleRail />
+
+      <Container className="relative z-10 py-12 sm:py-16 lg:flex lg:flex-1 lg:flex-col lg:justify-end lg:pb-14 lg:pl-[196px] lg:pt-16 xl:pl-[240px]">
         {/* Badge de confiance — annuaire mairie */}
         <a
           href={siteConfig.officialListing.mairieChambourcyUrl}
@@ -56,7 +77,7 @@ export function Hero() {
           Référencé à l’annuaire officiel de la mairie
         </a>
 
-        <Reveal className="lg:max-w-[600px]">
+        <Reveal className="lg:max-w-[620px]">
           <p className="eyebrow inline-flex w-fit items-center gap-1.5 text-champagne tracking-[0.1em] sm:tracking-[0.3em]">
             <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden strokeWidth={2.25} />
             Taxi local à Chambourcy (78)
@@ -72,10 +93,26 @@ export function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal delay={130} className="lg:max-w-[600px]">
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-cream/80 sm:text-[0.95rem]">
-            Transferts gares et aéroports, déplacements privés et professionnels. Voyagez
-            confortablement, en toute sérénité.
+        {/* Pavés de confiance */}
+        <Reveal delay={90} className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 lg:max-w-[620px]">
+          {pills.map(({ icon: PillIcon, strong, rest }) => (
+            <div key={strong} className="flex items-center gap-2.5">
+              <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-full border border-champagne/30 bg-champagne/10 text-champagne">
+                <PillIcon className="h-5 w-5" aria-hidden strokeWidth={1.75} />
+              </span>
+              <span className="text-xs leading-tight text-cream/80">
+                <span className="block font-semibold text-white">{strong}</span>
+                {rest}
+              </span>
+            </div>
+          ))}
+        </Reveal>
+
+        <Reveal delay={170} className="lg:max-w-[620px]">
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-cream/80 sm:text-[0.95rem]">
+            Besoin d’un taxi à Chambourcy ? Anes vous prend en charge pour vos trajets privés,
+            professionnels, ou vers les gares et aéroports en région parisienne. Anes vous conduit
+            avec sérieux, ponctualité et confort, partout où vous allez.
           </p>
           <a
             href="#avis"
@@ -96,6 +133,7 @@ export function Hero() {
           </a>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button href="/#reservation" size="lg" className="group">
+              <CalendarCheck className="h-4 w-4" aria-hidden strokeWidth={2} />
               Réserver mon taxi
               <ArrowRight
                 className="h-4 w-4 transition-transform duration-200 ease-premium group-hover:translate-x-0.5"
@@ -103,30 +141,13 @@ export function Hero() {
               />
             </Button>
             <Button href="/#services" variant="outline" size="lg">
+              <CarFront className="h-4 w-4" aria-hidden strokeWidth={2} />
               Découvrir nos services
               <ArrowUpRight className="h-4 w-4" aria-hidden />
             </Button>
           </div>
         </Reveal>
       </Container>
-
-      {/* Carte discrète « Découvrir le véhicule » (desktop) */}
-      <Link
-        href="/a-propos"
-        className="group absolute bottom-[150px] right-6 z-20 hidden items-center gap-3 rounded-[var(--radius-lg)] border border-white/15 bg-ink-900/55 px-4 py-3 text-cream backdrop-blur-sm transition-colors hover:border-champagne/50 hover:bg-ink-900/70 lg:inline-flex xl:right-10"
-      >
-        <span className="inline-grid h-9 w-9 place-items-center rounded-full bg-champagne/15 text-champagne">
-          <Images className="h-4 w-4" aria-hidden strokeWidth={1.75} />
-        </span>
-        <span className="leading-tight">
-          <span className="block text-[13px] font-semibold">Découvrir le véhicule</span>
-          <span className="block text-[11px] text-cream/65">Break BMW, intérieur et coffre</span>
-        </span>
-        <ArrowUpRight
-          className="h-4 w-4 text-champagne transition-transform duration-200 ease-premium group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          aria-hidden
-        />
-      </Link>
 
       {/* Bandeau de réassurance */}
       <ReassuranceBar className="bg-ink-900/70 backdrop-blur-sm lg:mt-auto lg:bg-ink-900/55" />
