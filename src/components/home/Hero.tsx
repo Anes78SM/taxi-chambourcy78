@@ -18,7 +18,7 @@ export function Hero() {
           fetchPriority="high"
           quality={72}
           sizes="100vw"
-          className="object-cover object-[64%_22%] lg:object-[68%_20%]"
+          className="object-cover object-[50%_20%] lg:object-[40%_22%]"
         />
         <div
           className="absolute inset-0"
