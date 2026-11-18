@@ -12,7 +12,7 @@ const pillars = [
   {
     icon: Gem,
     title: 'Confort et discrétion',
-    description: 'Véhicule BMW spacieux, bouteille d’eau offerte et trajets discrets, pour voyager au calme.',
+    description: 'Véhicule BMW 100% électrique et spacieux, bouteille d’eau offerte et trajets discrets, pour voyager au calme.',
   },
   {
     icon: Clock,

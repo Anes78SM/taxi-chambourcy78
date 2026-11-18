@@ -6,9 +6,9 @@ import { Reveal } from '@/components/ui/Reveal';
 const engagements = [
   {
     icon: Leaf,
-    title: 'Véhicule hybride : un transport plus écoresponsable',
+    title: 'Véhicule 100% électrique : un transport plus écoresponsable',
     description:
-      'Voyagez à bord d’un véhicule hybride moderne, confortable et respectueux de l’environnement. Grâce à une consommation de carburant optimisée et des émissions réduites, profitez d’un trajet agréable tout en privilégiant une mobilité plus responsable.',
+      'Voyagez à bord d’une BMW 100% électrique, moderne et confortable. Zéro émission à l’usage et habitacle silencieux : profitez d’un trajet tout en souplesse, tout en privilégiant une mobilité plus responsable.',
   },
   {
     icon: BadgeCheck,

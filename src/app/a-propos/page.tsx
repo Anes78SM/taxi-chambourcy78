@@ -120,13 +120,14 @@ export default function AboutPage() {
           <Reveal>
             <p className="eyebrow text-champagne-dark">Le véhicule</p>
             <h2 className="mt-3 max-w-2xl text-h2 text-ink-900">
-              Un break BMW spacieux, confortable et familial
+              Un break BMW 100% électrique, spacieux et familial
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-800/75">
-              Un break BMW récent et soigneusement entretenu : finitions premium, habitacle
-              spacieux au cuir clair, toit panoramique et coffre généreux pour vos bagages et
-              transferts aéroport. Pour voyager en famille, un siège auto enfant ou un rehausseur
-              peut être installé sur demande.
+              Un break BMW 100% électrique, récent et soigneusement entretenu : conduite
+              silencieuse, zéro émission à l’usage, finitions premium, habitacle spacieux au cuir
+              clair, toit panoramique et coffre généreux pour vos bagages et transferts aéroport.
+              Pour voyager en famille, un siège auto enfant ou un rehausseur peut être installé sur
+              demande.
             </p>
           </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
