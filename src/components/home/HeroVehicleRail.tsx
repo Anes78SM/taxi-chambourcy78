@@ -3,9 +3,18 @@ import Link from 'next/link';
 
 /** Photos réelles de la BMW break noire présentées dans la colonne du hero. */
 const photos = [
-  { src: '/images/vehicule/profil-g7.webp', alt: 'BMW break noire du taxi vue de profil' },
-  { src: '/images/vehicule/avant.webp', alt: 'Face avant de la BMW break noire du taxi' },
-  { src: '/images/vehicule/interieur.webp', alt: 'BMW break noire portière ouverte, intérieur spacieux' },
+  {
+    src: '/images/vehicule/profil-g7.webp',
+    alt: 'Taxi à Chambourcy : break BMW noir vu de profil, siglé G7',
+  },
+  {
+    src: '/images/vehicule/avant.webp',
+    alt: 'Taxi à Chambourcy : face avant du break BMW noir',
+  },
+  {
+    src: '/images/vehicule/interieur.webp',
+    alt: 'Taxi à Chambourcy : intérieur spacieux du break BMW, portière ouverte',
+  },
 ];
 
 /**
@@ -19,18 +28,17 @@ export function HeroVehicleRail() {
         <Link
           key={photo.src}
           href="/a-propos"
-          aria-label={`${photo.alt} — voir la galerie du véhicule`}
+          aria-label={`${photo.alt}, voir la galerie du véhicule`}
           className={`group relative block w-full flex-1 overflow-hidden rounded-[var(--radius-lg)] shadow-card ring-1 transition-all duration-300 ease-premium ${
             index === 0 ? 'ring-2 ring-champagne' : 'ring-champagne/20 hover:ring-champagne/50'
           }`}
         >
           <Image
             src={photo.src}
-            alt=""
+            alt={photo.alt}
             fill
             sizes="20vw"
             className="object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
-            aria-hidden
           />
           <div
             className="absolute inset-0"

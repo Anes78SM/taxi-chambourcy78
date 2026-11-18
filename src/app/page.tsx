@@ -31,6 +31,17 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   const posts = getAllPosts();
 
+  // Sur l'accueil, on met en avant les guides liés à Chambourcy (titre, description
+  // ou slug), puis on complète avec les articles les plus récents si besoin.
+  const isChambourcyPost = (post: (typeof posts)[number]) =>
+    /chambourcy/i.test(post.slug) ||
+    /chambourcy/i.test(post.frontmatter.title) ||
+    /chambourcy/i.test(post.frontmatter.description ?? '');
+  const homePosts = [
+    ...posts.filter(isChambourcyPost),
+    ...posts.filter((post) => !isChambourcyPost(post)),
+  ].slice(0, 3);
+
   return (
     <>
       <JsonLd data={homePageGraph(homeFaq)} />
@@ -45,7 +56,7 @@ export default function HomePage() {
       <AboutSection />
       <EngagementsSection />
       <ReviewsSection />
-      <BlogPreview posts={posts} />
+      <BlogPreview posts={homePosts} />
       <FaqSection items={homeFaq} />
       <CTASection />
     </>
