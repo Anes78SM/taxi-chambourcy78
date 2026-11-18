@@ -4,15 +4,15 @@ import Link from 'next/link';
 /** Photos réelles de la BMW break noire présentées dans la colonne du hero. */
 const photos = [
   {
-    src: '/images/vehicule/profil-g7.webp',
+    src: '/images/vehicule/taxi-chambourcy-bmw-profil.webp',
     alt: 'Taxi à Chambourcy : break BMW noir vu de profil, siglé G7',
   },
   {
-    src: '/images/vehicule/avant.webp',
+    src: '/images/vehicule/taxi-chambourcy-bmw-avant.webp',
     alt: 'Taxi à Chambourcy : face avant du break BMW noir',
   },
   {
-    src: '/images/vehicule/interieur.webp',
+    src: '/images/vehicule/taxi-chambourcy-bmw-interieur.webp',
     alt: 'Taxi à Chambourcy : intérieur spacieux du break BMW, portière ouverte',
   },
 ];
